@@ -1,0 +1,436 @@
+---
+title       : 'R kodutöö nr 1'
+description : 'Esimene teema - kalkulaator, omistamine'
+output:
+  pdf_document:
+    number_sections: true
+---
+
+# Sissejuhatus
+
+Antud kodutöös on praktikumi teemad lühidalt kokku võetud ning iga teema all valik ülesandeid. Kirjuta kõigi ülesannete lahendused ühte teksti faili (RStudio-t kasutades skripti aknasse). Nummerda vastused vastava ülesande numbriga (kasuta kommentaari märki!). Näiteks nii:
+```{r eval = FALSE}
+# Ülesanne 1.1 lahendus
+
+# Ülesanne 1.2 lahendus
+
+```
+
+Kui vastust on palutud kommenteerida, siis lisa samuti seletus kommentaarina. **NB!** Pane koodi kaasa kõik andmed, mis on vajalikud vastuse leidmiseks. Lõpuks peaks vastuse fail olema iseseisvalt R-s käivitatav ehk kui vastuste faili jagada, siis kõik saaksid R koodi vigadeta käivitada.
+
+Faili nimeks pane `<initsiaal>_<perekonnanimi>_Rkodutöö_<nr>.R`. Näiteks `K_Lumiste_Rkodutöö_1.R` ja saada e-postile kaur.lumiste@ut.ee **hiljemalt 20. septembriks, kella 16:00-ks (1. rühm), 8. novembriks, kella 16:00-ks (rühm2)** ehk praktikumi alguseks.
+
+Iga ülesande õige vastus annab 1 punkti ning kodutöö edukaks sooritamiseks on vajalik saada vähemalt 50% punktidest. Kui mõni ülesanne valmistab raskusi või mõnest kohast ei saa edasi, siis on võimalus abi küsida esmaspäevases praktikumis.
+
+Järgmiste kodutööde puhul kehtivad samad juhised ja juhiseid eraldi välja toodud pole.
+
+Edasi teemade ja ülesannete juurde.
+
+
+# Arvutamine ja muutujad
+
+Esmalt mõned arvutusülesanded. 
+
+## Arvutamine
+
+Meeldetuletuseks tehtemärgid:
+
+- Liitmine: `+`
+- Lahutamine: `-`
+- Korrutamine: `*`
+- Jagamine: `/`
+- Astendamine: `^` või `**`
+- Jääk jagamisel: `%%`
+
+ja paar funktsiooni:
+
+- Siinus: `sin()`
+- Naturaallogaritm: `log()`
+- Ruutjuur: `sqrt()`
+- Eksponentfunkstioon `exp()`
+
+**NB!** R teeb vahet suurtel ja väikestel tähtedel. Seega näiteks `sin()` ja `Sin()` viitavad erinevatele funktsioonidele.
+
+
+### Ülesanded
+Leia vastused järgmistele tehetele:
+
+1. $25 - 1:4  + 5:9$ \
+1. $(\sqrt{3} + 4) : 5$ \
+1. $(245 - 3^6)^2$ \
+1. $\frac{\ln{3} + 4}{55}$
+
+**NB!** Pööra tähelepanu tehete järjekorrale.
+
+
+## Muutujate kasutamine
+
+R-is võivad muutujate nimed sisaldada suuri ja väikesi tähti, numbreid, punkti ja alakriipsu. Erandiks on see, et nimi ei või alata numbri või alakriipsuga. 
+
+
+Muutujale `x` saab  väärtuse 3 omistada järgmiselt: `x <- 3`. 
+
+**Tähtis!** R teeb objektide nimetamisel vahet suurte ja väikeste tähtede vahel. Seega on `x` ja `X` kaks erinevat objekti.
+
+Proovi läbi näited 1 ja 2.
+
+```{r eval=FALSE}
+# Näide 1. Omistame muutjale y väärtuse 2 ja väljastame väärtuse
+y <- 2
+y
+
+# Näide 2. Kasutame muutujat y arvutuses
+y + 5
+
+```
+
+
+### Ülesanne
+1. Loo muutuja `w` väärtusega 3 ning  omista muutujale `z` summa, mille liidetavad on `w` ja 5. Väljasta `z` väärtus ekraanile.
+
+
+
+## Muutujate kasutamine tehetes
+
+Kui muutuja on väärtustatud, siis edasistes arvutustes võiks muutujat kasutada selle arvu, avaldise, vektori vms asemel, mida ta tähistab.
+
+### Ülesanded
+
+1. Omista arv $25 \pi$ muutujale `z`. Arv $\pi$ on R-is muutuja `pi` nime all.
+
+1. Leia arvu $25 \pi$ kümnendlogaritm, kasutades muutujat `z`.
+ 
+1. Leia arvu $25 \pi$ naturaallogaritm, kasutades muutujat `z`.
+
+1. Kasutades muutujat `z`, arvuta tehte $25 \pi + \frac{1}{25 \pi} - 2^{\frac{25\pi}{19}}$ vastus.
+
+
+
+## Tekstiväärtusega muutujad
+
+Muutujad võivad olla ka tekstilised. Näiteks `x <- "Tere maailm!"` omistab muutujale `x` väärtuseks teksti `Tere maailm!`.
+Tekstiväärtustega arvutustehteid teha ei saa, küll aga saab tekste omavahel ühendada funktsiooni `paste()` abil.
+
+```{r eval = FALSE}
+# Näide 1: omistame muutujale x väärtuseks  teksti "Tere maailm!" ja väljastame selle
+x <- "Tere maailm!"
+x
+
+# Näide 2: tekstide ühendamine, eri võimalusi
+poisse <- "kolm"
+tydrukuid <- 2
+paste(poisse, "ja", tydrukuid)
+paste(poisse, tydrukuid)
+paste(poisse, tydrukuid, sep = "")
+
+# Näide 3: tekste ei saa liita, tulemuseks on veateade.
+poisse <- "kolm"
+tydrukuid <- 2
+lapsi <- poisse + tydrukuid
+```
+
+### Ülesanded
+Paranda näite 3 koodi nii, et liitmisel tuleks vastuseks arv ning punast veateadet ei ilmuks.
+
+
+## Vektori moodustamine, tehted vektoriga
+
+Üksikuid arve või tekstiväärtusi saab kokku panna vektoriks funktsiooni `c()` (*combine*) abil. 
+
+Veel võimalusi vektorite moodustamiseks:
+    * `1:5                 # arvujada 1, 2, 3, 4, 5`
+    * `rep(1:3, times = 2) # vektorit elementidega 1, 2, 3 korrata 2 korda`
+    * `seq(3, 9, by = 2)   # arvujada sammuga 2: 3, 5, 7, 9`
+
+Kui teha vektorobjektidega arvtusi, siis tehted tehakse läbi iga vektori elemendiga.
+
+```{r eval=FALSE}
+#Näide 1: Moodustame 2 vektorit, millest ühes on kirjas temperatuurid (20.01.2010 kell 10), 
+# teises ilmajaamad, kus need on mõõdetud :
+temp <- c(-6.2, -12.9, -13.0, -15.4, -16.1, -16.9, -17.0, -19.6, -19.9)
+jaam <- c("Ruhnu", "Kihnu", "Pakri", "Tallinn", "Pärnu", "Kunda", "Kuusiku", "Võru", "Jõgeva")            
+
+# Näide 2: Väljastame tulemused ekraanile
+temp; jaam
+
+# Näide 3: Paneme temperatuuridele jaamanimed juurde ja vaatame tulemust
+names(temp) <- jaam
+temp
+
+```
+
+### Ülesanded
+1. Teisenda temperatuurid celsiuse skaalalt fahrenheiti skaalale ($^\circ\hspace{-0.1em} F = ^\circ\hspace{-0.1em} C \times \frac{9}{5} + 32$-->). Omista tulemus muutujale `Fahrenheit` ja prindi see ekraanile.
+1. Defineeri vektor `lisa <- c(-24.9, -16.1)`, selles on veel kaks õhutemperatuuri($^\circ\hspace{-0.1em} C$). Prindi see vektor ekraanile. Pane antud temperatuuridele juurde nimed  `Mustvee` ja `Keila`.
+1. Kasutades funkstiooni `c()` moodusta vektor nimega `temp2`, mille esimesed 9 elementi  on temperatuurid vektorist `temp` ja järgmised 2 temperatuurid vektorist `lisa`. Väljasta tulemus ekraanile.
+
+```{r eval=FALSE}
+# Ülesanne 1: Teisenda temperatuurid celsiuse skaalalt fahrenheiti skaalale (asenda alakriips vajaliku tehtega) ja prindi tulemus ekraanile
+Fahrenheit <- '___________________' 
+Fahrenheit 
+
+# Ülesanne 2. Prindi ekraanile vektor nimega 'lisa'
+
+
+# Ülesanne 3. Moodusta nõutud kujul uus vektor, selleks asenda alakriipsud vajalike objektidega. Prindi tulemus ekraanile.
+temp2 <- c('_____', '_____') 
+temp2
+
+```
+
+
+## Funktsioonide rakendamine vektoritele
+
+Kui anname funktsiooni argumendiks vektori, siis olenevalt funktsioonist võib tulemuseks olla teisendatud väärtustega vektor või mingi kokkuvõtlik summarne näitaja/näitajad.
+
+Töölaual peaks olema temperatuuride vektor nimega `temp2`
+
+### Ülesanne
+1. Rakenda tempratuuride vektorile funktsiooni `exp()`. Kas tulemuses on sama palju elemente kui algses vektoris? Omista oma vastus (tekst "jah" või "ei") muutujale `vastus1` (vt. all R koodi).
+2. Rakenda tempratuuride vektorile funktsiooni `summary()`. Millisest temperatuurist on pooled temperatuuriväärtused madalamad ja pooled kõrgemad? Omista see väärtus muutujale`vastus2`. 
+3. Rakenda tempratuuride vektorile funktsiooni `sd()`. Kas standardhälbe väärtus tuleks negatiivne, kui temperatuuride vektoris esineks nii positiivseid kui negatiiivseid väärtuseid? Omista oma vastus (tekst "jah" või "ei") muutujale `vastus3`. 
+
+```{r eval=FALSE}
+# prindi vektor
+temp2
+
+# Ülesanne 1: Rakenda funktsiooni exp() ja pane kirja vastus (asenda alakriips sobiva koodiga)
+____(temp2)
+vastus1 <- __________
+
+
+# Ülesanne 2: Rakenda funktsiooni summary() ja pane kirja vastus (asenda alakriips sobiva koodiga)
+____(temp2)
+vastus2 <- __________
+
+
+
+# Ülesanne 3: Rakenda funktsiooni sd() ja pane kirja vastus (asenda alakriips sobiva koodiga)
+____(temp2)
+vastus3 <- __________
+
+
+```
+
+
+## Vektori alamosade selekteerimine
+
+Väga sageli on tarvis vektorist kätte saada meile hetkel vajalikku alamosa. Vaatame paari võimalust vektorist elementide välja noppimiseks. 
+
+```{r eval=FALSE}
+# Objektid nimedega temp ja jaam on töölaual juba olemas
+temp; jaam
+
+# Näide 1. Elementide valimine indeksite kaudu
+temp[ 1 ] # vektori esimene element
+temp[ -1 ] # vektori kõik elemendid va esimene
+temp[ c(1, 5, 9) ] # vektori esimene, viies ja üheksas element
+
+# Näide 2. Tulemuseks tõeväärtustega vektorid 
+temp < -15 # Kontrollime millised temperatuurid jäävad alla -15 kraadi 
+jaam == "Tallinn"  # Millisel kohal vektoris on ilmajaama nimi Tallinn?
+
+# Näide 3. Tingimustele vastavate elementide väljavalimine. Tõeväärtusvektori kasutamine
+jaam[ temp < -15 ] # valime välja need  jaamad, kus temperatuur on alla -15
+temp[jaam == "Tallinn"]  # valime välja Tallinnale vastava temperatuuri
+
+```
+
+
+
+### Ülesanded
+1. Tee  näited 1 kuni 3  ükshaaval läbi ja uuri tulemust.
+2. Vali temperatuurivektorist elemendid, mis on paarisarvulistel kohtadel (paarisarvulise vektori moodustamiseks kasuta funktsiooni `seq()`). Omista saadud alamvektor muutujale `vastus1`. Prindi tulemus ekraanile.
+3. Vali välja jaamad, kus temperatuur on olnud -17 või alla selle. Kasuta valiku tegemisel tõeväärtusvektorit ja kandilisi sulge `[]`. Omista saadud alamvektor muutujale `vastus2`.  Prindi tulemus ekraanile.
+
+```{R eval = FALSE}
+# Ülesanne 1: Vali nõutud elemendid temperatuurivektorist, omista tulemus muutujale vastus1. 
+# Prindi tulemus ekraanile
+vastus1 <- temp[_______]
+vastus1
+
+
+# Ülesanne 2: Vali välja tingimusele vastavad ilmajaamade nimed, omista tulemus muutujale vastus2. 
+# Prindi tulemus ekraanile
+vastus2 <- ________
+vastus2
+
+```
+
+Vihjed:
+- Funktsioonis `seq()` peab määrama argumendid `from`, `to` ja `by`.
+- Märgi $\leq$ moodustamiseks kombineeri `<` ja `=` märke:  `<=`.
+
+
+## Väärtuste tüübid. Puuduvad väärtused
+R-is on põhilised väärtuste tüübid, mida kasutame:
+
+* `int` / `integer` -- täisarvud
+* `numeric` -- reaalarvud
+* `char` / `character` -- sõned (tähemärgid ja muud tekstilised sümbolid, sisestamisel kasutada jutumärke)
+* `logical` -- tõeväärtused (ainult kaks väärtust: `TRUE` või `FALSE`)
+
+Erisümbolid
+
+* `NA` -- puuduv väärtus
+* `NaN` -- määramatus
+* `Inf`, `-Inf` -- lõpmatus
+
+
+Tüübi kontroll, teisendamine
+
+* Objekti väärtuse tüübi kontrolliks saab kasutada funktsioone kujul `is.<tüüp>`, näiteks `is.character(muutuja)`, `is.nan(muutuja)`.
+* Tüübi teisenduseks aga funktsioone `as.<tüüp>`, näiteks `as.integer(muutuja)`.
+
+```{r eval=FALSE}
+# Moodustame mõned vektorid ja vaatame tulemust.
+muutuja1 <- c("TRUE", "true",  "Tru", "FALSE", "F", "false", NA)
+muutuja2 <- c(1:3, NA, 0, Inf - Inf)
+muutuja3 <- 1:6
+muutuja1; muutuja2; muutuja3
+
+```
+
+### Ülesanded
+1. Kontrolli, kas vektor `muutuja1` on tõeväärtusvektor. Täienda etteantud koodi, pannes kirja kontrolliks sobiva funktsiooni nime.
+1. Rakenda funktsiooni `is.nan()` teisele moodustatud vektroile `muutuja2`. Pane tähele, et funktsiooni tulemus on ka vektor.
+1. Asenda vektoris `muutuja3` esimene element tühikuga, kasutades funktsiooni `is.na()` abi. Prindi muudetud vektor ekraanile.
+
+```{R eval = F}
+# Ülesanne 1: Kontrolli kas vektor muutuja1 on tõeväärtusvektor 
+# (asenda alakriipis sobivalt, et moodustuks õige funktsiooni nimi).
+is.______(muutuja1)
+
+# Ülesanne 2: Rakenda funktsiooni is.nan() vektorile muutuja2.
+
+
+# Ülesanne 3: Asenda vektori muutuja3 esimene element puuduva väärtusega, selleks asenda 
+# järgmises käsus alakriipis sobiva tõeväärtusega. Prindi tulemus ekraanile.
+is.na(muutuja3)[1] <- _________
+muutuja3
+```
+
+
+## Veel tõeväärtustest 1
+
+Tõeväärtuseid on kaks: `TRUE` ja `FALSE`. R saab aru ka lühenditest `T` ja `F`.
+
+
+Tõeväärtused on tulemuseks kui teeme võrdlusi:
+
+* võrdumine `==`
+* mittevõrdumine `!=`
+* väiksem kui `<`
+* väiksem või võrdne `<=`
+* suurem kui `>`
+* suurem või võrdne `>=`
+
+
+Loogilisi tehteid on kolm
+
+* korrutamine (`&`)
+* liitmine (`|`) 
+* eitus (`!`). 
+
+
+```{r eval=FALSE}
+# antud on vektor x
+x <- c(34, 23, 45, 67, 10, 21, 37)
+
+#Näide 1: Väärtustame tõeväärtusvektori, mille elementide väärtus on `TRUE`, 
+# kui x väärtused on suuremad kui 50. Prindime ekraanile
+x1 <- x > 50
+x1
+
+#Näide 2: Väärtustame tõeväärtusvektori, mille elementide väärtus on `TRUE`, 
+# kui  x väärtused on  väiksemad kui 20. Prindime ekraanile
+x2 <- x < 20
+x2
+
+#Näide 3: Moodustame tõeväärtusvektori, mis näitab, millised x väärtused on 
+# alla 20 või üle 50. Prindime ekraanile
+x3 <- x1 | x2 # loogiline tehe 'või'
+x3
+
+```
+
+
+### Ülesanded
+- Tee läbi näited 1 kuni 3.
+- **Ülesanne 1.**  Väärtusta tõeväärtusvektor, mille elementide väärtus on `TRUE`, kui `x` väärtused on suuremad kui 30 (`FALSE` vastasel juhul). Omista tulemus muutujale `x4` ja prindi see ekraanile.
+- **Ülesanne 2.** Moodusta tõeväärtusvektor, mille elementide väärtus on `TRUE`, kui  `x` väärtused on  väiksemad kui 40  (`FALSE` vastasel juhul). Omista tulemus muutujale `x5` ja prindi see ekraanile.
+- **Ülesanne 3.** Moodusta tõeväärtusvektor `x6`, mille elementide väärtus on `TRUE`, kui  `x` väärtused on vahemikus 30 kuni 40  (`FALSE` vastasel juhul), kasutades vektoreid  `x4` ja  `x5` ning sobivat loogilist tehet (`|`, `&`, `!`). Prindi `x6` ekraanile.
+
+
+```{R eval = F}
+#Ülesanne 1: Väärtusta tõeväärtusvektor x4. Prindi x4 ekraanile
+x4 <- _________________
+x4
+
+
+#Ülesanne 2: Moodusta tõeväärtusvektor vektor x5. Prindi  ekraanile
+x5 <- _________________
+x5
+
+
+#Ülesanne 3: Moodusta tõeväärtusvektor x6 kasutades vektoreid x4 ja x5 
+# ning sobivat loogilist tehet. Prindi tulemus ekraanile
+x6 <- ________ __ __________
+x6
+
+```
+ 
+
+
+
+## Veel tõeväärtustest 2
+
+Tõeväärtuseid on kaks: `TRUE` ja `FALSE`. R saab aru ka lühenditest `T` ja `F`.
+
+
+Tõeväärtused on tulemuseks kui teeme võrdlusi:
+
+* võrdumine `==`
+* mittevõrdumine `!=`
+* väiksem kui `<`
+* väiksem või võrdne `<=`
+* suurem kui `>`
+* suurem või võrdne `>=`
+
+
+Loogilisi tehteid on kolm
+
+* korrutamine (`&`)
+* liitmine (`|`) 
+* eitus (`!`). 
+
+
+```{r eval=FALSE, echo=FALSE}
+
+```
+
+```{r eval=FALSE}
+# Näide: vaatame tähestiku algust, moodustame kolme moodi tõevektori, mille väärtus on TRUE, 
+# kui täht on a või b ning on FALSE vastasel korral
+abc <- letters[1:3]
+abc
+abc == "a" | abc == "b" # täht on 'a' või täht on 'b'
+abc != "c"  # täht ei ole 'c'
+!(abc == "c")  # eitame väidet, et täht on 'c'
+
+
+# Ülesandes on uurimise all tekstiväärtustega vektor y, vaata selle väärtuste sagedustabelit
+table(y)
+
+# Jooksuta järgnev kood
+kordused <- c(45, 20, 68, 9)
+y <- sample(rep(c("tere", "hei", "tsau", "hommikust"), times = kordused), size = sum(kordused))
+
+ 
+```
+
+
+### Ülesanded
+- Tee läbi näide.
+- **Ülesanne**  Leia tõevektor, mis näitaks millised vektori `y` väärtused vastavad sõnele "tere" või "tsau".  
+Omista vektor muutujale `viimane`, prindi see ekraanile. Vektori `y` väärtustest saad ülevaate sagedustabeli `table(y)` abil.

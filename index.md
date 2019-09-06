@@ -1,0 +1,87 @@
+﻿---
+layout: frontpage
+---
+
+<div class="head_example">
+ {% include banner.html %}
+</div>
+
+
+# Õppeaine lühikirjeldus
+
+Tegemist on statistikute lemmik tarkvara R kursusega, kus antakse ülevaade R keele peamistest konstruktsioonidest ja andmetüüpidest, andmetöötlusvõimalustest ning hõlpsast jooniste tegemisest teegi ggplot2 vahenditega.
+
+Aine läbinud üliõpilane:
+
+* tunneb R keele süntaksit ja andmetüüpe,
+* oskab andmeid sisse lugeda, töödelda ja salvestada,
+* oskab kasutada kirjeldava statistika meetodeid,
+* oskab visualiseerida andmeid ja seoseid tunnuste vahel.
+
+# Õppeaine eesmärgid
+
+* Tutvustada üliõpilastele tarkvara R, anda ülevaade R-i võimalustest ja peamistest vigadest mida kiputakse tegema.
+* Õppida käske andmetest ülevaate saamiseks, andmete töötlemiseks ja visualiseerimiseks.
+* Tutvustada tarkvara R võimalusi reprodutseeritava analüüsi läbiviimiseks ning tulemuste visualiseerimiseks.
+
+Miks just R tarkvara?
+
+* R on programmeerimiskeel ja -keskkond, mis on peamiselt arendatud statistiliseks andmetöötluseks,
+* R-i kasutajaskond on viimase kümmekonna aasta jooksul [oluliselt kasvanud](r4stats.com/articles/popularity/) ülikoolides ja ettevõtetes,
+* R on vabavara,
+* R-ga käib kaasas lai valik lisapakette,
+* R võimaldab tänapäeval juba [palju enamat](https://www.google.com/search?q=r+possibilities) kui ainult andmetöötlus,
+* R on ühildatav pea kõigi tuntumate andmetöötlusprogrammidega (nt. MS Excel, Tableau, SPSS, Qlik, Power BI, ...)
+* ...
+
+
+# Sihtgrupp
+
+Kursus on mõeldud statistikahuvilistele üliõpilastele, kes pole varem tarkvaraga R kokku puutunud. 
+
+# Õppetöö korraldus
+
+Õppeaines toimub kokku **10 praktikumi** + **1 projektide kaitsmise praktikum**. Praktikumid toimuvad klassiruumis.
+
+Lisaks praktikumidele sisaldab õppeaine järgnevaid komponente:
+
+* **Kodutööd:** Kokku antakse 5 kodutööd. 
+  * Kodutöö koosneb iseseisvalt lahendavatest ülesannetest praktikumis läbitud teemadel. Iga kodutöö tulemuseks on *.R fail koodi ning kommentaaridega.  
+  * Kodutööde esitamine käib läbi Moodle keskkonna.
+* **Projekt:** Lisaks tuleb läbi viia üks praktiline projekt vabalt valitud andmestiku peal. Projektitöö eesmärgiks on näidata, kuivõrd on tudeng omandanud oskused kasutada R-i andmete töötlemiseks. Samuti oskust R-ga analüüside tulemusi vormistada (nt. joonised)
+Projekti võib teha kas üksinda või paaristööna. Tulemusi on vaja esitleda suulisel kaitsmisel.
+ * Iga projekti esitanud tudeng(id) saavad ühe kaastudengi(te) projekti retsenseerimiseks.
+
+Aine läbimiseks on vaja:
+
+1. kõikide kodutööde eest saada vähemalt 51% punktidest, 
+2. koostada projekt ning seda esitleda, 
+3. retsenseerida kaastudengi projekti.
+
+Õppeaines (3 EAP) ette nähtud 78 tundi tööd jaguneb järgnevalt:
+
+* praktikumid kokku 20 tundi (10 praktikumi, igaüks 2 akadeemilist tundi),
+* kodutööd kokku 20 tundi (5 kodutööd, igaüks 4 tundi),
+* iseseisev töö 10 tundi (10 praktikumi, igaüks 1 tund),
+* projekti koostamine 22 tundi,
+* projekti esitluse ettevalmistus ja esitamine 4 tundi,
+* kaastudengi projekti retsenseerimine 2 tundi.
+
+# Tunniplaan
+
+Õppeaine toimub 2019/2020. õppeaasta sügissemestril. 
+
+* Praktikumid **teisipäeviti kell 10:15** ja **neljapäeviti kell 8:15** ruumis 003
+	* 1. rühm nädalatel 2 - 6
+	* 2. rühm nädalatel 8 - 12
+* **Projektide tähtaeg:
+	* 1. rühm **neljapäeval 24. oktoober kell 12:00** (nädal 8).
+	* 2. rühm **neljapäeval 5. detsember kell 12:00** (nädal 14).
+* **Projektide ettekandmine:
+	* 1. rühm (kokkuleppel)
+	* 2. rühm **teisipäeval 10. detsember kell 10:15** (nädal 15).
+
+# Kontakt ja küsimused
+
+* 1. rühm - Kaur Lumiste kaur.lumiste [at] ut.ee ja Liivi 2-519.
+* 2. rühm - Anne Selart anne.selart [at] ut.ee ja Liivi 2-519.

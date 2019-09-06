@@ -1,0 +1,1019 @@
+---
+title: "Rakendustarkvara R - 4. kodutöö"
+output: 
+  pdf_document:
+    number_sections: true
+---
+
+# Tulpdiagamm esinemissagedustega
+
+Loe töölauale andmestik `jootraha`, see on vaikimisi kaasas paketiga `reshape2`. Tegu on ühe kelneri kogutud andmetega paari kuu pikkusest tööperioodist. Registreeritud on kõik laudkonnad, kes selle perioodi jooksul andsid jootraha. Kirja sai:
+
+- laudkonna arve suurus  dollarites (*total_bill*), 
+- saadud jootraha dollarites(*tip*),
+- arve maksja sugu (*sex*), 
+- kas laudkonnas oli suitsetajaid (*smoker*), 
+- nädalapäev(*day*), 
+- kas tegu oli lõuna või õhtuga(*time*),
+- laudkonnas suurus (*size*).
+
+Kasutame antud andmestikku kõikides järgnevates ülesannetes ja reastame tunnuse `day` tasemed uuesti.
+
+
+```{r eval = F}
+# jootraha andmestik paketist reshape2
+library(reshape2)
+jootraha <-tips
+jootraha$day <- factor(jootraha$day, levels = c("Thur", "Fri", "Sat", "Sun"))
+```
+
+Ülesandeks on nende andmete iseloomustamine graafikute abil, kasutades paketi **ggplot2** vahendeid.
+
+
+## Ülesanded
+
+- **Ülesanne 1** Aktiveeri pakett **ggplot2**.
+- **Ülesanne 2** Täienda joonise koodi
+
+    - sobiva `geom_<...>` funktsiooniga nii, et tulemuseks oleks siniste(`"royalblue"`) tulpadega tulpdiagramm, mis näitaks jootraha andnud laudkondade arvu nädalapäevade kaupa. 
+    - Muuda *x*-telge sobiva `scale_x_<...>` funktsiooniga nii, et *x*-teljel oleksid nädalapäevad ajalises järjestuses ja päevade nimed pikalt väljakirjutatuna ("thursday", "friday", "saturday", "sunday", väiksed tähed!). Lisaks pane *x*- teljele nimi *Day of week*. Kirjuta `scale` funktsioonis argumentide, millele väärtused omistad, nimed välja.
+    - Nimeta *y*-telg nimega *Counts* kasutades funktsiooni `ylab()`. 
+
+```{r eval = F}
+# Tutvu andmetega
+summary(jootraha)
+
+
+# Ülesanne 1: aktiveeri pakett
+_______(ggplot2)
+
+# Ülesanne 2: täienda koodi
+j1 <- ggplot(jootraha, aes(x = day)) + 
+             geom________  + 
+                    scale_x____________   +
+                    ylab(label = "_________")
+j1
+```
+
+
+\pagebreak
+
+**Vihjed**
+
+-  Selleks, et tulpade värv fikseerida kasuta tulpdiagrammi kihis (`geom_???`) argumenti `fill`, aga ära seda pane `aes(.)` funktsiooni argumendiks.
+- Skaala muutmise funktsioonis `scale_x_discrete` peaks määrama argumendid: `name` telje nime muutmiseks, `limits` väärtuste järjekorra seadmiseks ja `labels` selleks, et päevanimed pikalt välja oleks kirjutatud.
+
+
+```{r solution1, eval = F, echo = F}
+# Tutvu andmetega
+summary(jootraha)
+
+
+# Ülesanne 1: aktiveeri pakett
+library(ggplot2)
+
+# Ülesanne 2: täienda koodi
+j1 <- ggplot(jootraha, aes(x = day)) + 
+             geom_bar(fill = "royalblue") + 
+                    scale_x_discrete(name = "Day of week", 
+                             limits = c("Thur", "Fri", "Sat", "Sun"), 
+                             labels = c("thursday", "friday", "saturday", "sunday")) +
+                    ylab(label = "Counts")
+j1
+```
+
+
+```{r testing1, eval = F, echo = F}
+
+test_function("library",
+              args = NULL,
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg =  "Esimeses ülesandes kasuta funktsiooni `library()`.")     
+
+
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli `aes(.)` argumente.", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` elemendi lisamise käsus.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = TRUE, 
+    scale_fail_msg = "Probleem on `scale_` käsus.",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = NULL,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+
+
+test_function("ylab",
+              args = "label",
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg =  "Kasuta *y*-telje nime määramiseks funktsiooni `ylab()`. Liida see olemasolevale joonisele.", 
+              args_not_specified_msg = "Määra *y*-telje nimi `label` argumendiga",
+              incorrect_msg = "*y*-telje nimi on vale!")     
+
+
+
+success_msg("Esimene joonis sai valmis, tubli!")
+
+
+```
+
+
+
+# Tulpdiagamm osakaaludega
+
+Selles ülesandes kasuta *y* telje sildistamiseks paketi **scales** abi. Kui pakett on aktiveeritud, siis saab `scales_` käskudes kasutada väärtuste sildistamiseks mõningaid eeldefineeritud vorme, näiteks protsendi kuvamiseks `labels = percent`, dollarimärgi lisamiseks summadele `labels = dollar` jne.
+
+
+## Ülesanded
+
+- **Ülesanne** Täienda antud koodi nii, et tulemuseks oleks tulpdiagramm, mis esitaks iga päeva kohta lõuna (*Lunch*) ja õhtusöökide (*Dinner*) osakaalud. St iga päeva kohta joonisel üks tulp, tulba sees jaotus lõuna ja õhtusöökide vahel antud erineva värviga ja tulba kõrgus summeeruks väärtuseks üks st esitaks tervikut. Muuda vaikimisi skaalasid joonisel järgnevalt:
+    - sobiva  `scale_` funktsiooniga tee muudatused nii, et *y*-telje nimi oleks *Percentage* ja telje väärtused oleks sildistatud *%*-märgiga;
+    - teise skaalafunktsiooniga `scale_<___>_hue`  muuda värvilegendi pealkiri kujule *Time*;
+    - *x*-telje nimi muuda samuti suurtähega algavaks: *Day*, kasuta nime muutmiseks siin `xlab()` funktsiooni.
+
+```{r eval = F}
+# Vaata tunnuste nimed üle (nädalapäev: day, söögiaeg: time)
+names(jootraha)
+
+# Ülesanne : tulpdiagramm osakaaludega
+library(scales)
+j1 <- ggplot(jootraha, aes(x = ________, ________ = time)) + 
+            geom___________  +
+                    scale______________ + 
+                    scale______________ +
+                    xlab_______ 
+j1
+
+ 
+
+```
+
+**Vihjed**
+
+- Tuleta meelde, mida tegi argument `position = "fill"` ja kus seda kasutada sai.
+
+
+```{r solution2, eval = F, echo = F}
+# Vaata tunnuste nimed üle (nädalapäev: day, söögiaeg: time)
+names(jootraha)
+
+# Ülesanne : tulpdiagramm osakaaludega
+library(scales)
+j1 <- ggplot(jootraha, aes(x = day, fill = time)) + 
+            geom_bar(position = "fill") +
+                    scale_y_continuous(name = "Percentage", labels = percent) + 
+                    scale_fill_hue(name = "Time") + 
+                    xlab(label = "Day")
+j1
+
+```
+
+```{r testin2, eval = F, echo = F}
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli `aes(.)` argumente.", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` elemendi lisamise käsus. Tegu peab olema tulpdiagammiga (`bar`). Lisaks peab määrama `position` argumendi.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = TRUE, 
+    scale_fail_msg = "Probleem on  ühes `scale_` käsus. *y*-telje muutmiseks kasuta `scale_y_continuous()`, värvilegendi korral `scale_fill_hue()`. *y*-telje korral kasuta väärtuste sildistamiseks **scales** paketis olemasolevat vormingut.",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = NULL,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+
+
+
+
+test_function("scale_y_continuous",
+              args = NULL,
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg =  "Kasuta *y*-telje nime määramiseks ja skaala esituse muutmiseks  funktsiooni `scale_y_continuous()`. Lisa argumendid telje nime ja väärtuste siltide jaoks.", 
+              args_not_specified_msg = paste("Funktsioonis `scale_y_continuous()` on puudu argument " , c("`name`", "`label`")),
+              incorrect_msg = paste("Funktsioonis `scale_y_continuous()` on vale väärtus  argumendil " , c("`name`", "`label`")))     
+
+
+
+
+
+test_function("scale_fill_hue",
+              args = NULL,
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg =  "Kasuta siin värvilegendi pealkirja muutmiseks  funktsiooni `scale_fill_hue()` argumendiga `name`.", 
+              args_not_specified_msg = NULL,
+              incorrect_msg = NULL)     
+
+
+
+
+
+test_function("xlab",
+              args = "label",
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg =  "Kasuta *x*-telje nime määramiseks funktsiooni `xlab()`. Liida see olemasolevale joonisele.", 
+              args_not_specified_msg = "Määra *x*-telje nimi `label` argumendiga",
+              incorrect_msg = "*x*-telje nimi on vale!")     
+
+
+
+
+
+
+
+success_msg("Teine joonis sai valmis, tubli! Järgmises kahes ülesandes on vaadatud kahe arvulise tunnuse seose uurimiseks sobivat graafikutüüpi")
+```
+
+
+
+# Hajuvusdiagramm 1
+
+
+## Ülesanded
+
+- **Ülesanne 1** Täienda antud koodi nii, et tulemuseks oleks hajuvusdiagramm restoraniarve suuruse ja jootraha suuruse vahel. Siin vali *x*-teljele arve suuruse tunnus.
+Hajuvusdiagrammi punktid värvi vastavalt sellele, mis nädalapäevaga oli tegu, värv lisa `geom_` funktsiooni kaudu. Kasutades sobivat `scale_<_>_hue` funktsiooni määra värvilegendis õige päevade järjekord, päevade nimed jäta lühendatud kujule, ära muuda legendi pealkirja.
+- **Ülesanne 2** Mis päeval on tehtud kõige suurem arve? Omista selle päeva nimi muutujale `suurim`, kasuta päeva kirjapanekul sama lühendit ja kirjapilti kui on andmestikus.
+
+```{r eval = F}
+# tunnuste nimed andmestikus(total_bill on arve, tip on jootraha dollarites, day nädalapäev)
+names(jootraha)
+
+# Ülesanne1: Hajuvusdiagramm värviliste punktidega
+j1 <- ggplot(jootraha, aes(x = ______, y = _______)) + 
+            geom____________  +
+                       scale_______hue(________________)
+j1
+
+
+# Ülesanne 2: Suurima arvega päev
+suurim  <- "_____"
+```
+
+**Vihjed**
+
+- Värvi määramiseks lisa `geom_point()` argumendiks `aes()` funktsioon, selle funktsiooni abil saab nädalapäeva tunnuse siduda argumendiga `color`.
+- Värviskaala muutmiseks kasuta `scale_color_hue()` funktsiooni, määrama peab päevade järjekorra, selleks sobib `limits` argument.
+
+
+
+```{r solution3, eval = F, echo = F}
+# tunnuste nimed andmestikus(total_bill on arve, tip on jootraha dollarites, day nädalapäev)
+names(jootraha)
+
+# Ülesanne 1: Hajuvusdiagramm värviliste punktidega
+j1 <- ggplot(jootraha, aes(x = total_bill, y = tip)) + 
+            geom_point(aes(color = day)) +
+                    scale_color_hue(limits = c("Thur", "Fri", "Sat", "Sun"))
+
+j1
+
+
+# Ülesanne 2: Suurima arvega päev
+suurim  <- "Sat"
+
+```
+
+
+```{r testing3, eval = F, echo = F}
+
+# limits ja breaks mõlemad läbi läheks
+test_or(
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli `ggplot` käsu argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli  ülesandes `aes(.)`  funktsiooni argumente.", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` elemendi lisamise käsus. Kontrolli, kas lisad sobiva elemendi hajuvusdiagrammi tekitamiseks (punktid). Vaata üle ka argumentide kirjapanek `aes()` funktsioonis.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = TRUE, 
+    scale_fail_msg = "Probleem on `scale_` käsus. Kasuta `scale_color_hue()` funktsiooni",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = NULL,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL), 
+    {
+    test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli `ggplot` käsu argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli  ülesandes `aes(.)`  funktsiooni argumente.", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` elemendi lisamise käsus. Kontrolli, kas lisad sobiva elemendi hajuvusdiagrammi tekitamiseks (punktid). Vaata üle ka argumentide kirjapanek `aes()` funktsioonis.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = FALSE, 
+    scale_fail_msg = " Kontrolli skaala muutmist.",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = NULL,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+    test_student_typed('breaks = c("Thur", "Fri", "Sat", "Sun")')
+    }
+)
+ 
+ 
+ 
+ 
+ 
+ 
+test_object("suurim", 
+            eq_condition = "equal",
+            eval = TRUE,
+            undefined_msg = "Muutuja `suurim` on defineerimata.",
+            incorrect_msg = "Muutuja `suurim` väärtus on vale.")
+ 
+
+
+success_msg("Esimene hajuvusdiagramm on valmis!")
+
+```
+
+
+
+# Hajuvusdiagramm 2
+
+
+
+## Ülesanded
+
+- **Ülesanne 1** Täienda antud koodi nii, et tulemuseks oleks hajuvusdiagramm restoraniarve suuruse ja jootraha suuruse vahel. Siin vali *x*-teljele arve suuruse tunnus.
+Hajuvusdiagrammi punktid värvi vastavalt sellele, mis soost arve maksjaga oli tegu, punkti kuju määra selle järgi kas laudkonnas oli suitsetaja või mitte. Värv ja punktikuju lisa `geom_` funktsiooni kaudu. 
+- **Ülesanne 2** Lisa sobiva `geom_`  käsuga joonisele lineaarse regeressiooni sirge koos varieeruvust näitavate piiridega.
+
+```{r eval = F}
+# tunnuste nimed andmestikus(total_bill on arve, tip on jootraha dollarites, sex sugu, smoker suitsetaja olemasolu)
+names(jootraha)
+
+# Ülesanne 1: Hajuvusdiagramm värviliste ja eri kujuga punktidega
+j1 <- ggplot(jootraha, aes(x = ______, y = _______)) + 
+            geom____________  
+j1
+
+
+# Ülesanne 2:  Regressioonsirge lisamine
+j1 + ________________________________
+```
+
+
+**Vihjed**
+
+- Värvi ja punkti kuju määramiseks lisa `geom_point()` argumendiks `aes()` funktsiooni argumendid:   `color` ja `shape`.
+- Funktsiooniga `geom_smooth()` saab lisada mudeli sirge, selleks pane funktsiooni argumendiks `method = lm`.
+
+
+
+```{r solution4, eval = F, echo = F}
+# tunnuste nimed andmestikus(total_bill on arve, tip on jootraha dollarites, sex sugu, smoker suitsetaja olemasolu)
+names(jootraha)
+
+# Ülesanne 1: Hajuvusdiagramm värviliste ja eri kujuga punktidega
+j1 <- ggplot(jootraha, aes(x = total_bill, y = tip)) + 
+            geom_point(aes(color = sex, shape = smoker)) 
+j1
+
+
+# Ülesanne 2:  Regressioonsirge lisamine
+j1 + geom_smooth(method = lm)
+
+```
+
+
+
+```{r testing4, eval = F, echo = F}
+
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli `ggplot` käsu argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli  ülesandes `aes(.)`  funktsiooni argumente.", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` elemendi lisamise käsus. Kontrolli, kas lisad sobiva elemendi hajuvusdiagrammi tekitamiseks (punktid). Vaata üle ka argumentide kirjapanek `aes()` funktsioonis.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = TRUE, 
+    scale_fail_msg = "Probleem on `scale_` käsus.",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = NULL,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+
+ 
+ 
+ 
+test_function("geom_smooth",
+              args = "method",
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg =  "Kasuta  mudeli sirge lisamiseks  funktsiooni `geom_smooth()`.", 
+              args_not_specified_msg = "Määra `geom_smooth()` argumendi `method` väärtus.",
+              incorrect_msg = "Funktsiooni `geom_smooth()` argumendi `method` väärtus ei ole õige.")      
+ 
+ 
+
+success_msg("Väga tubli!")
+
+```
+
+
+
+# Histogramm jaotuse iseloomustamiseks
+
+
+## Ülesanded
+
+- **Ülesanne 1** Lisa andmestikku uus tunnus nimega `ratio`, mille väärtuseks oleks kelneri saadud jootraha ja makstud arve jagatis.
+- **Ülesanne 2** Täienda antud koodi nii, et tulemuseks oleks jootraha ja makstud arve suhte histogramm. Histogrammil vali intervallide arvuks 15.
+- **Ülesanne 3** Kui joonis valmis, siis uuri veidi andmestikku: kas laudkond, kelle jootraha moodustas arvest rohkem kui poole käis lõunasöögil (*Lunch*) või õhtusöögil(*Dinner*)? Omista õige vastus  stringina (`"Lunch"` või `"Dinner"`) muutujale `erind`.
+
+```{r, eval = F}
+# tunnuste nimed andmestikus (total_bill on arve, tip on jootraha dollarites)
+names(jootraha)
+
+# Ülesanne 1: Uue tunnuse moodustamine
+jootraha$_____ <- _______________
+
+
+# Ülesanne 2:  Histogramm (ära muuda 'y = ..density..' osa koodist!)
+ggplot(jootraha, aes(__ = __________, y = ..density..)) + geom_________
+
+
+# Ülesanne 3: Kas erandlik laudkond käis õhtu või lõunasöögil?
+erind <- "_______"
+
+```
+
+**Vihjed**
+
+- Histogrammi joonistamiseks pead  tunnuse `ratio` siduma `x`-teljega ja kasutama `geom_histogram()` elementi.
+- Erandliku vaatluse andmestikust leidmiseks saad kasutada filtreerimist: nt. `jootraha[<???>, ]`.
+
+
+
+```{r solution5, eval = F, echo = F}
+# tunnuste nimed andmestikus (total_bill on arve, tip on jootraha dollarites)
+names(jootraha)
+
+# Ülesanne 1: Uue tunnuse moodustamine
+jootraha$ratio <- jootraha$tip/jootraha$total_bill
+
+
+# Ülesanne 2:  Histogramm (ära muuda 'y = ..density..' osa koodist!)
+ggplot(jootraha, aes(x = ratio, y = ..density..)) + geom_histogram(bins = 15)
+
+
+# Ülesanne 3: Kas erandlik laudkond käis õhtu või lõunasöögil?
+erind <- "Dinner"
+
+```
+
+
+```{r testing5, eval = F, echo = F}
+#1
+test_data_frame("jootraha",
+                columns = "ratio",
+                eq_condition = "equivalent",
+                undefined_msg = "Oled andmestiku `jootraha` kustutanud, alusta uuesti.",
+                undefined_cols_msg = "Uus tunnus `ratio` on andmestikku lisamata!",
+                incorrect_msg = "Uue tunnuse `ratio` väärtused ei ole õiged. Alusta uuesti.")
+
+
+
+
+#2 
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli `ggplot` käsu argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli  ülesandes `aes(.)`  funktsiooni argumente.", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` elemendi lisamise käsus. Kontrolli, kas lisad sobiva elemendi. Vaata üle ka argumentide kirjapanek.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = FALSE, 
+    scale_fail_msg = "Probleem on `scale_` käsus.",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = NULL,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+
+ 
+ 
+ 
+ 
+ 
+ 
+test_object("erind", 
+            eq_condition = "equal",
+            eval = TRUE,
+            undefined_msg = "Muutuja `erind` on defineerimata.",
+            incorrect_msg = "Muutuja `erind` väärtus on vale.")
+ 
+
+
+success_msg("Tubli! Üks ülesanne on veel histogrammi kohta.")
+
+
+```
+
+
+
+# Histogrammi värvi muutmine
+
+Lisame histogrammi joonistamise käsku värvi järgmisel moel:
+```{r eval = F}
+ggplot(jootraha, aes(x = ratio, y = ..density..)) + 
+        geom_histogram(aes(fill = "chartreuse"))
+        
+```
+
+
+
+## Ülesanded
+
+- **Ülesanne 1** Vali õige vastusevariant, kuidas muutub histogrammi värv?
+
+    1. Tulemuseks oleval joonisel on histogrammi tulbad rohelist tooni.
+    1. Tulemuseks oleval joonisel on histogrammi tulbad ikka hallid, kuid tulbad on raamistatud rohelisega.
+    1. Tulemuseks oleval joonisel on histogrammi tulbad punast tooni.
+    1. Tulemuseks oleval joonisel on histogrammi tulbad halli tooni, kuid tulbad on raamistatud punasega.
+    1. Tulemuseks oleval joonisel on histogrammi tulbad rohelist tooni ja tulbad on raamistatud punasega.
+    1. Tulpade täitevärvi määramiseks tuleks `fill` asemel kasutada argumenti `color`.
+
+
+```{r eval = F}
+# Ülesanne 1
+# Õige vastuse number kommentaarina
+
+```
+
+\pagebreak
+
+**Vihjed**
+
+- Mõtle kas andmestikus on tunnus, mille nimi on *chartreuse*?
+
+
+
+```{r solution6, eval = F, echo = F}
+msg1 = "Vale vastus!"
+msg2 = "Vale vastus!"
+msg3 = "Õige! Kuna täitevärvi määramine on `aes()` funktsiooni argumendiks ja tunnust nimega *chartreuse* andmestikus pole, siis tekitatakse see tunnus (konstantse väärtusega *charteuse*) juurde. Punane värv on vaikimisi kasutatava  diskreetse värviskaala esimene värv, mis värvib siin ära määratud ühe grupi histogrammi."
+msg4 = "Vale vastus!"
+msg5 = "Vale vastus!"
+msg6 = "Vale vastus! `color` määrab raami värvi, mitte täite."
+
+test_mc(correct = 3, feedback_msgs = c(msg1, msg2, msg3, msg4, msg5, msg6))
+```
+
+
+
+
+# Karpdiagrammid
+
+
+## Ülesanded
+
+- **Ülesanne 1** Täienda antud koodi sobivalt,  nii et tulemuseks oleks jootraha ja arve suuruse suhte karpdiagrammid laudkondade suuruse kaupa.
+- **Ülesanne 2** Kohenda saadud joonist, lisades teljenimed `"laudkonna suurus"`, `"jootraha ja arve suhe"` käsuga `labs()`.
+- **Ülesanne 3** Leia sagedustabel laudkonna suuruse tunnusele, omista see muutujale `tabel` ja prindi ekraanile.
+
+```{r eval = F}
+# tunnuste nimed andmestikus (size - laudkonna suurus)
+names(jootraha)
+
+# Ülesanne 1: Karpdiagramm
+j1 <- ggplot(jootraha, aes(x = _______, y = _______, group = _______)) + geom_________
+j1
+
+# Ülesanne 2: Täienda joonist teljenimedega
+j1 + labs(________, ___________)
+
+# Ülesanne 3: Sagedustabel
+tabel <- ________________
+tabel
+
+```
+
+
+**Vihjed**
+
+- Karpdiagammi on inglise keeles *boxplot*.
+- Kuna `size` on arvtunnus, mitte grupeeriv/diskreetne tunnus, siis on gruppide määramiseks vaja `aes()` funktsiooni vaja lisada `group = size`.
+
+
+
+```{r solution7, eval = F, echo = F}
+# tunnuste nimed andmestikus (size - laudkonna suurus)
+names(jootraha)
+
+# Ülesanne 1: Karpdiagramm
+j1 <- ggplot(jootraha, aes(x = size, y = ratio, group = size)) + geom_boxplot()
+j1
+
+# Ülesanne 2: Täienda joonist teljenimedega
+j1 + labs(x = "laudkonna suurus",  y = "jootraha ja arve suhe")
+
+# Ülesanne 3: Sagedustabel
+tabel <- table(jootraha$size)
+tabel
+
+```
+
+
+```{r testing7, eval = F, echo = F}
+
+test_student_typed("group = size", not_typed_msg = "Kas määrasid `ggplot()` käsus `aes()` argumendi `group` väärtuseks `size`?" ) 
+ 
+
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli `ggplot` käsu argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli  ülesandes `aes(.)`  funktsiooni argumente.", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` elemendi lisamise käsus. Kontrolli, kas lisad sobiva elemendi. Vaata üle ka argumentide kirjapanek.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = TRUE, 
+    scale_fail_msg = "Probleem on `scale_` käsus. ",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = NULL,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+
+ 
+test_student_typed("group = size", not_typed_msg = "Kas määrasid argumendi `group` väärtuseks `size`?" ) 
+ 
+ 
+test_function("labs",
+              args = NULL,
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg =  "Kasuta  teljenimede määramiseks funktsiooni `labs()`, argumentidega `x` ja `y`.", 
+              args_not_specified_msg = NULL,
+              incorrect_msg = NULL)     
+
+test_student_typed("laudkonna suurus", not_typed_msg = "Pane *x*-teljele nimi `laudkonna suurus`.")
+
+
+
+test_student_typed("jootraha ja arve suhe", not_typed_msg = "Pane *y*-teljele nimi `jootraha ja arve suhe`.")
+ 
+ 
+ 
+test_function("table",
+              args = NULL,
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg =  "Kasuta viimases ülesanedes funktsiooni `table`.", 
+              args_not_specified_msg = NULL,
+              incorrect_msg = NULL)    
+ 
+ 
+test_object("tabel", 
+            eq_condition = "equal",
+            eval = TRUE,
+            undefined_msg = "Sagedustabel `tabel` on defineerimata.",
+            incorrect_msg = "Sagedustabeli `tabel` sisu on vale.")
+ 
+
+
+success_msg("Karpdiagrammide joonis sai valmis, tubli! Karpdiagramme saab kasutada arvulisel skaalal muutuva tunnuse uurimiseks teise tunnuse gruppides. Grupitunnus on tüüpiliselt mingi faktortunnus, aga võib olla ka arvuline nagu siin ülesandes.")
+
+
+
+```
+
+
+# Joondiagramm 1
+
+## Ülesanded
+
+- **Ülesanne 1** Lisa andmestikku uus tunnus, mis näitaks kui suur on jootraha suurus ühe inimese kohta laudkonnas, st jaga jootraha suurus laudkonna inimeste arvuga. Uue tunnuse nimeks vali `tip.per.person`
+- **Ülesanne 2** Täienda antud joonise koodi nii, et tulemuseks oleks joondiagramm, mille abil saaks näha kuidas muutub keskmine inimese kohta makstud jootraha vastavalt laudkonna suurusele.
+
+```{r eval = F}
+# tunnuste nimed andmestikus (total_bill on arve, tip on jootraha dollarites, size laudkonna suurus)
+names(jootraha)
+
+# Ülesanne 1: Uue tunnuse moodustamine
+jootraha$_____ <- _______________
+
+
+# Ülesanne 2: Joondiagramm
+ggplot(jootraha, aes(x = _______, y = ____________)) + 
+      stat_summary(geom = "_______",  fun.y = _________)  + 
+                    scale_x_continuous(breaks = 1:6)
+
+
+```
+
+**Vihjed**
+
+- Joondiagrammi saamiseks peab iga laudkonna suuruse kohta olema leitud keskmine inimesekohta antud jootraha suurus. 
+- Keskmise arvutamise funktsioon (`mean`) tuleb `stat_summary()` käsus anda `fun.y` väärtuseks.
+- Joondiagramm tekib, kui `stat_summary()` käsus argumendi `geom` väärtus õigesti valida.
+
+
+```{r solution8, eval = F, echo = F}
+# tunnuste nimed andmestikus (total_bill on arve, tip on jootraha dollarites, size laudkonna suurus)
+names(jootraha)
+
+# Ülesanne 1: Uue tunnuse moodustamine
+jootraha$tip.per.person <- jootraha$tip/jootraha$size
+
+
+# Ülesanne 2: Joondiagramm
+ggplot(jootraha, aes(x = size, y = tip.per.person)) + 
+      stat_summary(geom = "line",  fun.y = mean) + 
+                    scale_x_continuous(breaks = 1:6)
+
+```
+
+
+
+```{r testing8, eval = F, echo = F}
+test_data_frame("jootraha",
+                columns = "tip.per.person",
+                eq_condition = "equivalent",
+                undefined_msg = "Oled andmestiku `jootraha` kustutanud, alusta uuesti.",
+                undefined_cols_msg = "Uus tunnus `tip.per.person` on andmestikku lisamata!",
+                incorrect_msg = "Uue tunnuse `tip.per.person` väärtused ei ole õiged. Alusta uuesti.")
+
+
+
+
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli `ggplot` käsu argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli  ülesandes `aes(.)`  funktsiooni argumente.", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` argumendis. Vaja on joondiagrammi, seega `geom = line`.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = TRUE, 
+    scale_fail_msg = "Probleem on `scale_` käsus.  ",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = "Kontrolli `stat_summary()` käsu argumente. *y*-teljele on vaja arvutada keskväärtus, kas andsid keskväärtuse  arvutamise funktsiooni üheks argumendiks?" ,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+
+
+
+success_msg("Ühe grupi joondiagramm sai valmis, väga tubli! Järgmistes ülesannetes on vaadatud grupitunnuse lisamist sellele graafikule.")
+
+
+
+```
+
+
+
+
+# Joondiagramm 2
+
+
+
+Andmestikus peaks olema arvutatu tunnus, mis näitab jootraha suurust ühe inimese kohta laudkonnas. Tunnuse nimi olgu `tip.per.person`.
+ 
+ 
+Tee eelmise ülesandega sarnane joonis, kuid nüüd lisa soo tunnus nii, et graafikule tekiks kaks joont: üks meeste makstud jootraha kohta ja teine naiste jootraha kohta. Jooned olgu erinevat värvi.
+
+
+## Ülesanded
+
+- **Ülesanne** Täienda antud joonise koodi nii, et tulemuseks oleks joondiagramm, mille abil saaks näha kuidas muutub keskmine inimese kohta makstud jootraha vastavalt laudkonna suurusele grupeerituna soo järgi. Soo grupid olgu tähistatud erineva värviga.
+
+```{r eval = F}
+# tunnuste nimed andmestikus 
+names(jootraha)
+
+ 
+
+# Ülesanne : Joondiagramm (soo kaupa)
+ggplot(jootraha, aes(x = _______, y = ____________, ________________)) + 
+        stat_summary(geom = "_______",  fun.y = _________)  + 
+                    scale_x_continuous(breaks = 1:6)
+
+
+```
+
+
+**Vihjed**
+
+-  Joone värvi määramiseks tunnuse järgi, lisa `aes()` käsku  argumendi `color` väärtuseks vastav tunnus.
+
+
+
+
+```{r solution9, eval = F, echo = F}
+# tunnuste nimed andmestikus (total_bill on arve, tip on jootraha dollarites)
+names(jootraha)
+
+# Ülesanne : Joondiagramm (soo kaupa)
+ggplot(jootraha, aes(x = size, y = tip.per.person, color = sex)) +
+        stat_summary(geom = "line",  fun.y = mean) + 
+                    scale_x_continuous(breaks = 1:6)
+
+```
+
+
+```{r testing9, eval = F, echo = F}
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli `ggplot` käsu argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli  ülesandes `aes(.)`  funktsiooni argumente. Kas lisasid soo tunnuse värvi määrama?", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` argumendis. Vaja on joondiagrammi, seega `geom = line`.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = TRUE, 
+    scale_fail_msg = "Probleem on `scale_` käsus.  ",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = "Kontrolli `stat_summary()` käsu argumente. *y*-teljele on vaja arvutada keskväärtus, kas andsid keskväärtuse  arvutamise funktsiooni üheks argumendiks?" ,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+
+
+success_msg("Super! Järgmine ülesanne on viimane!")
+
+
+
+```
+
+
+
+
+# Joondiagramm 3
+ 
+ 
+Tee eelmise ülesandega sarnane joonis, kuid nüüd lisa soo tunnus nii, et graafikule tekiks kaks sama värvi, kuid erinevat tüüpi joont. Joone tüübi määramiseks kasuta `linetype` argumenti.
+
+
+
+## Ülesanded
+
+- **Ülesanne** Täienda antud joonise koodi nii, et tulemuseks oleks joondiagramm, mille abil 
+saaks näha kuidas muutub keskmine inimese kohta makstud jootraha vastavalt laudkonna suurusele grupeerituna soo järgi, soo grupid olgu tähistatud erineva joonetüübiga (aga sama värvi joon).
+
+```{r eval = F}
+# tunnuste nimed andmestikus 
+names(jootraha)
+
+ 
+
+# Ülesanne : Joondiagramm (soo kaupa)
+ggplot(jootraha, aes(x = _______, y = ____________, ________________)) + 
+        stat_summary(geom = "_______",  fun.y = _________)  + 
+                    scale_x_continuous(breaks = 1:6)
+
+```
+
+**Vihjed**
+
+-  Joone tüübi määramiseks tunnuse järgi, lisa `aes()` käsku  argumendi `linetype` väärtuseks vastav tunnus.
+
+
+```{r solution10, eval = F, echo = F}
+# tunnuste nimed andmestikus (total_bill on arve, tip on jootraha dollarites)
+names(jootraha)
+
+# Ülesanne : Joondiagramm (soo kaupa)
+ggplot(jootraha, aes(x = size, y = tip.per.person, linetype = sex)) + 
+        stat_summary(geom = "line",  fun.y = mean) +
+                    scale_x_continuous(breaks = 1:6)
+
+```
+
+
+```{r testing10, eval = F, echo = F}
+test_ggplot(index = 1, 
+    all_fail_msg = NULL, 
+    check_data = TRUE, 
+    data_fail_msg = "Kontrolli `ggplot` käsu argumendiks antud andmestikku.", 
+    check_aes = TRUE, 
+    aes_fail_msg = "Kontrolli  ülesandes `aes(.)`  funktsiooni argumente. Kas lisasid soo tunnuse joone tüüpi `linetype` määrama?", 
+    exact_aes = FALSE, 
+    check_geom = TRUE, 
+    geom_fail_msg = "Viga on `geom` argumendis. Vaja on joondiagrammi, seega `geom = line`.",
+    exact_geom = FALSE, 
+    check_geom_params = TRUE, 
+    check_facet = TRUE, 
+    facet_fail_msg = NULL,
+    check_scale = TRUE, 
+    scale_fail_msg = "Probleem on `scale_` käsus.  ",
+    exact_scale = FALSE, 
+    check_coord = TRUE, 
+    coord_fail_msg = NULL, 
+    exact_coord = FALSE, 
+    check_stat = TRUE,
+    stat_fail_msg = "Kontrolli `stat_summary()` käsu argumente. *y*-teljele on vaja arvutada keskväärtus, kas andsid keskväärtuse arvutamise funktsiooni üheks argumendiks?" ,
+    exact_stat = FALSE, 
+    check_extra = NULL, extra_fail_msg = NULL, exact_extra = NULL, check = NULL)
+
+
+
+success_msg("Väga tubli, viimane ülesanne sai tehtud! Võta kommi!")
+
+
+```
+
+
+
+

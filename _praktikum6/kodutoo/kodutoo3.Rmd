@@ -1,0 +1,434 @@
+---
+title: "Rakendustarkvara R - 3. kodutöö"
+output: 
+  pdf_document:
+    number_sections: true
+---
+
+
+# Faktor-tüüpi tunnuse kasutamine
+
+## Faktori tasemete järjestamine 
+
+R-s on vaikimisi saadval andmestik `iris` (proovi konsooli kirjutada `iris`). Andmed on kolme sort iiriste(lilled mitte kommid!) õie mõõtmete kohta. Mõõdetud on õielehtede (kroonlehed - ik *petal*, tupplehed - ik *sepal*) pikkus ja laius sentimeetrites.
+
+
+Vaata kõigepealt käsuga `summary(iris)` andmestiku ülevaadet. Tunnus `Species` näitab iirise sorti.
+
+
+### Ülesanded
+
+- **Ülesanne 1** Käsu `by` abil leia kõigi kolme iirisesordi kroonlehe keskmine pikkus (kroonlehe pikkus `Petal.Length`), omista saadud vastus muutujale `keskmised`, prindi selle väärtus ekraanile.
+- **Ülesanne 2** Millise sordi kroonlehed on keskmiselt kõige lühemad?
+- **Ülesanne 3** Kasutades `factor` käsku lisa andmestikku tunnus nimega `sordinimi`, mis oleks sama sisuga kui `Species`, kuid mille väärtuste järjekord oleks: `versicolor`, `setosa`, `virginica`.
+- **Ülesanne 4** Kasutades `tapply` käsku leia maksimaalsed kroonlehe pikkused igal sordil, tulemuste järjestus muutujas `maksimumid` olgu järgmine: `versicolor`, `setosa`, `virginica`. Prindi muutuja väärtus ekraanile. Käsu `tapply` kirjapilt `tapply(uuritavtunnus, grupitunnus, funktsioon)`.
+
+```{r eval = F}
+# Vaata esmalt andmestikust ülevaadet
+summary(iris)
+
+
+# Ülesanne 1: Leia keskmised kroonlehepikkused käsu by abil
+keskmised <- by(_______________)
+keskmised
+
+
+# Ülesanne 2: Mis sordil keskmiselt kõige lühemad kroonlehed
+#"_________"
+
+
+# Ülesanne 3: Muuda sordinimede järjestust, tekita selleks uus tunnus
+iris$sordinimi <- ____________________________
+
+
+# Ülesanne 4: Leia maksimaalne kroonlehe pikkus sortide kaupa, sordid olgu uues järjestuses
+maksimumid <- tapply(____________)
+maksimumid
+```
+
+**Vihjed**
+
+- `by` käsu kirjapilt on järgmine: `by(uuritavtunnus, grupitunnus, funktsioon)`.
+- Faktori tasemete ümberjärjestamiseks kasuta `factor` käsku, andes argumendile `levels` väärtuseks sordinimede vektori nõutud järjestuses.
+
+
+
+## Faktor-tunnuse loomine arvtunnusest
+
+
+Kasutame jällegi andmestikku `iris`. Kui arvtunnuse väärtused on vaja jagada intervallidesse, siis saab kasutada käsku `cut`. Loodav tunnus on faktor-tüüpi. 
+
+ 
+### Ülesanded
+
+- **Ülesanne 1** Jaga kroonlehtede pikkuse tunnus `Petal.Length` intervallidesse, selleks tekita töölauale vektor `intervallid`. Intervallid olgu pikkusega 0.5 sentimeetrit ja kujul: `[1, 1.5)`, `[1.5, 2)` jne kuni `[6.7, 7)`. Ära unusta tekkivate faktoritasemete silte muuda.
+- **Ülesanne 2** Kontrolli, kas vektor `intervallid` on ikka faktor-tüüpi. Pane kirja, mis funktsiooniga saab faktor-tüübile vastavust kontrollida.
+- **Ülesanne 3** Leia tekitatud vektori sagedustabel. Omista see muutujale `sagedustabel` ja prindi ekraanile.
+- **Ülesanne 4** Vaata sagedustabelist mitu intervalli jäi tühjaks? Omista tühjade intervallide arv muutujale `tyhjad`.
+
+```{r eval = F}
+#Ülesanne 1 Jaga kroonlehtede pikkus intervallidesse
+intervallid <- cut(______________)
+
+
+#Ülesanne 2: Kas vektor intervallid on faktor-tüüpi?
+__.______(intervallid)
+
+
+#Ülesanne 3: Sagedustabel
+sagedustabel <- ________(intervallid)
+sagedustabel
+
+
+#Ülesanne 4: Mitu tühja intervalli tekkis?
+tyhjad <- __
+
+```
+
+**Vihjed**
+
+- Vaata `cut` käsu abifaili, loe milleks saab kasutada argumenti `right`.
+- Ära määra `cut` käsus argumenti `labels`.
+
+
+
+# Andmestiku sorteerimine
+
+
+## Sorteerimine
+
+
+
+Ühe vektori väärtuste sorteerimiseks saab kasutada käsku `sort`, käsk annab tulemuseks järjestatud väärtused.
+
+Käsk `order` annab väljundiks sorteerimisreegli: kuhu peaksime vastavate indeksitega elemendid vektoris/andmetabelis ümber tõstma, et saada kasvavas(kahanevas) järjestuses tulemus. 
+
+Käsule `order` saab argumendiks anda rohkem kui ühe vektori, oluline on siis vektorite järjekord käsus.  Näiteks `order(x, y, z)` annab sellise indeksite järjekorra
+kus elemendid on esmalt järjestatud `x` järgi, kui mingid `x` väärtused langevad kokku, siis nende järjestus määratakse `y` väärtuste põhjal, kui kokkulangevate `x` väärtuste korral esineb ka võrdseid `y` väärtuseid, siis nende järjestus määratakse `z` põhjal.
+
+
+Tekita töölauale vektorid `x` ja `y` ning andmestik `xy`.
+
+```{r eval = F}
+x <- c(2:1, 2:1, 2:1, 4)
+y <- c(7, 1, 5, 2, 6, 3, 4)
+xy <- data.frame(x, y)
+```
+
+### Ülesanded
+
+- **Ülesanne 1** Sorteeri andmestik `xy` kasvavalt `x` ja `y` järgi, kasuta selleks `order` käsku. Omista sorteeritud andmestik muuutujale `xy1`, prindi ekraanile.
+- **Ülesanne 2** Moodusta andmestik `xy2`, selleks anna andmestikule `xy` ridade järjestus ette käsuga `order(x, -y)`. Prindi tulemus ekraanile.
+- **Ülesanne 3** Võrdle kahte tulemust, milles seisneb erinevus? 
+
+```{r eval = F}
+# Vaata vektorite x, y ja andmestiku xy sisu
+x; y; xy
+
+# Ülesanne 1: andmestiku sorteerimine kasvavalt
+xy1 <- xy[_____, ]
+xy1
+
+
+# Ülesanne 2: ridade järjestus order(x, -y) põhjal
+xy2 <- xy[_____, ]
+xy2
+
+
+# Ülesanne 3: Milles seisneb erinevus? (vastust kirjuta kommentaarina)
+# _____
+
+```
+
+
+##  Andmestiku sorteerimine kasvavalt
+
+Töölaual on andmestik `iris`. Andmestik tuleb erinevate tunnuste järgi kasvavalt sorteerida.
+
+
+### Ülesanded
+
+- **Ülesanne 1** Järjesta andmestik `iris` kasvavasse järjestusse tunnuste `Sepal.Width`, `Sepal.Length` ja `Petal.Width` järgi.  Omista tulemus muutujale `iris.sort1`.
+- **Ülesanne 2** Mis sorti iiris on eelviimasel kohal? Kuidas leidsid
+
+```{r eval = F}
+# vaata andmestikku
+head(iris)
+
+# Ülesanne 1: sorteerimine
+iris.sort1 <- iris[____, ]
+
+# ülesanne 2: eelviimase lille sort
+# "_______"
+
+
+```
+
+**Vihjed**
+
+- Andmestiku lõpu vaatamiseks kasuta  näiteks funktsiooni `tail`.
+
+
+
+##  Andmestiku sorteerimine 
+
+Siin ülesandes tuleb kombineerida kasvavalt ja kahanevalt sorteerimist.
+
+
+### Ülesanded
+
+- **Ülesanne 1** Järjesta andmestik `iris`  nii, et vaatlused oleks tunnuse `Sepal.Width` järgi järjestatud kasvavalt ning need vaatlused, mil on kroonlehe laius sama, oleksid tunnuse `Sepal.Length` järgi järjestatud kahanevasse järjestusse. Omista sorteeritud andmestik muutujale `iris.sort2`. 
+- **Ülesanne 2** Mis sorti iiris on sorteeritud andmestikus 30 kohal?.
+
+```{r eval = F}
+# vaata andmestikku
+head(iris)
+
+# Ülesanne 1: sorteerimine
+iris.sort2 <- iris[____, ]
+
+# ülesanne 2: kolmekümnenda lille sort
+# "_______"
+
+```
+
+**Vihjed**
+
+- Kui andmestikku on vaja sorteerida ühe tunnuse järgi kasvavalt ja teise järgi kahanevalt, siis saad `order` käsus lisada miinusmärgi selle tunnuse nime ette, mille järgi tuleb sorteerida kahanevalt (tingimusel, et `decreasing = FALSE`). See abinõu sobib aga ainult siis kui tegu on arvtunnustega!
+- Kolmekümnenda vaatluse nägemiseks kasuta näiteks indeksit 30.
+
+
+# Andmestiku kuju teisendused
+
+
+## Andmestiku viimine pikka formaati
+
+Loe töölauale andmestik `B`. Andmestikus on 160 inimese kohta mitmete testide (40 testi) tulemused.
+```{r eval = F}
+B <-  read.csv2(file = "http://kodu.ut.ee/~annes/R/B.csv",   nrows = 160, stringsAsFactors = T)
+B <- B[, substr(names(B), 1, 3) %in% c("id", "gru", "tes") ]
+```
+
+
+### Ülesanded
+
+- **Ülesanne 1** Aktiveeri pakett `reshape2`.
+- **Ülesanne 2** Kasutades käsku `melt` vii andmestik `B` pikale kujule, nii, et iga uuritava kohta tekib andmestikku 40 rida (testitulemused paigutatakse ühte veergu). Nimeta uus andmestik nimega `testid.pikk`. Andmestikus peab säilima inimese identifiakaator `id` kuid välja jääma testi tüübi tunnus `grupp`.
+- **Ülesanne 3** Vaata uue andmestiku struktuuri käsuga `str`.
+
+```{r eval = F}
+# Vaata andmestiku kirjeldust
+str(B)
+
+# Ülesanne 1: aktiveeri lisapakett
+______(reshape2)
+
+
+# Ülesanne 2: vii andmestik pikale kujule
+testid.pikk <- melt(_______________________)
+
+
+# Ülesanne 3: vaata andmestiku struktuuri
+_____(testid.pikk)
+
+
+```
+
+**Vihjed**
+
+- Käsus `melt` määra argumentide `measure.vars` ja  `id.vars` väärtus. `id.vars` on need tunnused, mida me andmestiku kuju muutes ümberpaigutada ei taha.  
+
+
+## Andmestiku viimine laia formaati
+
+Lae ÕIS-st alla anmdestik `rotid.csv` ja loe andmestik töölauale nimega `rotid`. 
+
+```{r eval = F}
+# file.choose() avab akna, kus saad andmestiku 'rotid.csv' üles otsida
+rotid <- read.csv(file.choose(), header = T, stringsAsFactors = F, 
+                  colClasses = c("numeric", "character", "character", "factor"))
+```
+
+Rotid on jagatud 3 gruppi, iga grupp sai erinevat toitu (`Diet`). Sööda mõju uurimiseks kaaluti rotid korduvalt, mõõtmisajad on kirjas tunnuses `Time` (aeg päevades katse algusest) kaal grammides on toodud veerus `weight`.
+
+
+
+### Ülesanded
+
+- **Ülesanne 1** Kui sul veel ei ole, siis aktiveeri pakett `reshape2`.
+- **Ülesanne 2** Kasutades käsku `dcast` vii andmestik `rotid` sellisele kujule, et iga roti kaalumõõtmised oleksid ühes reas, koos roti identifikaatori(`Rat`) ja söödatüübiga (`Diet`). Omista uus andmestik muutujale `rotid.lai`. 
+- **Ülesanne 3** Prindi uus andmestik ekraanile. Pane tähele, et tabelis on tühikuväärtused `NA`.
+
+```{r eval = F}
+# vaata andmestikku
+summary(rotid)
+
+# Ülesanne 1: aktiveeri lisapakett
+______(reshape2)
+
+
+# Ülesanne 2: vii andmestik laiale kujule
+rotid.lai <- dcast(_______________________)
+
+# Ülesanne 3: prindi uus andmestik ekraanile
+____________
+
+```
+
+**Vihjed**
+
+- Käsus `dcast` on argument `value.var`, mille abil saab ette anda selle tunnuse nime, mille väärtuseid kasutatakse ridade täitmisel.
+- Käsus `dcast` peaks ridade-veergude paigutuse määrama valemi: `formula = x + y ~ z` abil. Muutujad `xyz` asenda vastavalt ülesandele andmestiku veerutunnustega.
+
+
+## Andmestiku agregeerimine 1
+
+Kasuta sama andmestikku `rotid`.  Pakett `reshape2` peaks olema juba aktiveeritud
+
+
+### Ülesanded
+
+- **Ülesanne 1** Mitu korda on iga rotti kaalutud? Leia sagedustabel tunnusele `rotid$Rat`, omista tabel muutujale `tabel1`, prindi see ekraanile.
+- **Ülesanne 2** Kasutades funktsiooni `dcast` leia samad näitajad andmetabelisse st teisenda andmestikku `rotid` nii, et  tulemuseks olevas andmetabelis oleks ühes veerus rottide indikaatorid ja teises igal rotil tehtud mõõtmiste arv (selle veeru nimi olgu `"mootmisi"`). Omista saadud tulemus muutujale `tabel2`, prindi see ekraanile.
+- **Ülesanne 3** Mitu rotti on enne katse lõppu katkestanud, st mitmel pole kõiki 11 mõõtmist? Kirjuta vastus kommentaarina.
+
+```{r eval = F}
+# vaata andmestikku
+summary(rotid)
+
+# Ülesanne 1: Leia sagedustabel
+tabel1 <- ________________
+tabel1
+
+
+# ÜLesanne 2: Leia samad näitajad käsu dcast abil
+tabel2 <- dcast(_______________________)
+tabel2
+
+
+# Ülesanne 3: Kui palju on katkestajaid
+# _______
+
+```
+
+
+**Vihjed**
+
+- Käsus `dcast` käsus saad arvutatavale veerule nime panemiseks käsu argumendi `formula` kirja panna nii `reatunus1 + reatunnus2 ~ "uustunnus"`.
+- Kui rea- ja veertunnuste valem on selline, et ühte lahtrisse peaks minema mitu väärtust, siis vaikimisi leitakse nende väärtuste arv ja esitatakse tabelis st `fun.aggregate` väärtuseks on vaikimisi vektori pikkuse leidmise funktsioon. Seda siin ülesandes peaksi kasutama.
+
+
+## Andmestiku agregeerimine 2
+
+Kasutame sama andmestikku `rotid`.
+
+
+
+### Ülesanded
+
+- **Ülesanne 1** Kasutades funktsiooni `dcast` leia tabel, kus rotid on grupeeritud vastavalt dieedile ja igale rotile on leitud tema kaalude mediaan. Kaalu mediaani veerule määra nimeks `"kaalu mediaan"`. Omista saadud tabel muutujale `tabel3`, prindi see eraanile.
+- **Ülesanne 2** Omista muutujale `rott2mediaan` roti nimega `no.02` kaalu mediaani väärtus. 
+
+```{r eval = F}
+# Ülesanne 1: Leia mediaanide tabel dcast käsuga
+tabel3 <- ________________
+tabel3
+
+
+# Ülesanne 2: roti nr 2 kaalu mediaan
+rott2mediaan <- _______
+
+```
+
+**Vihjed**
+
+- Käsus `dcast` käsus saad arvutatavale veerule nime panemiseks käsu argumendi `formula` kirja panna nii `reatunus1 + reatunnus2 ~ "uustunnus"`.
+
+
+
+## Tabeli pööramine
+
+Kasutades teisendusi pika ja laia kuju vahel saab läbi viia ka andmetabeli pööramist ehk transponeerimist. Sellist tabeli ridade ja veergude vahetust võib vaja minna sel juhul kui tegu on juba mingi koondandmete tabeliga.
+
+Näiteks kui on tegu tabeliga, kus on kirjas keskmine brutotunnitasu (eurot) vanusgruppides kahel eri aastal:
+
+<!-- PA640 tabel statistikaamet,  Täis- ja osalise tööajaga töötajate keskmine brutotunnitasu soo, vanuserühma ja ametiala pearühma järgi, oktoober -->
+
+| vanusgrupp  | 2010   | 2014|
+|---------|--------|---------|
+|Alla 30	 |	4,55 |	5,40 |
+|30-39	|	5,49 |	6,52 |
+|40-49	|	4,94 |	6,01 |
+|50-59	|	4,35 |	5,16 |
+|60 ja vanemad|		4,00| 	4,72 |
+\
+
+Siis pööratud tabelis oleks aastad ridadeks ja vanusgrupid veergudeks:
+
+
+|Aasta|	Alla 30|  30-39| 40-49	|50-59	|60 ja vanemad|
+|-----|--------|-------|--------|-------|-------------|
+|2010	|4,55    |	5,49 | 	4,94  |	  4,35| 4,00 |
+|2014	|5,40    |	6,52 |	6,01  |   5,16| 4,72 |
+
+\
+
+Loe töölauale tabel nimega  `arstiabita`, kus on kirjas eri aastatel arsiabi mittesaanud inimeste osakaalud (Eesti sotsiaaluuringu andmete põhjal). Aktiveeri pakett **reshape2** kui seda pole seni tehtud. Ülesandeks on antud tabeli pööramine.
+ 
+```{r eval = F}
+arstiabita <- read.table("http://math.ut.ee/~annes/R/eisaanud-arstiabi.txt", 
+                         sep = "\t", dec = ",", header = T, check.names = FALSE)
+
+```
+
+
+
+### Ülesanded
+
+- **Ülesanne 1** Prindi ekraanile andmestik `arstiabita`.
+- **Ülesanne 2** Vii andmestik esmalt pikale kujule käsuga `melt`. Ühte veergu peaks minema kõik tabelis olevad protsendid. Tunnusele, mis hakkab sisaldama vanu veerunimesid (ehk aastanumbreid) pane nimeks `Aasta`. Ära teisi käsu argumente täpsusta. Prindi tulemus ekraanile.
+- **Ülesanne 3** Teisenda pikk andmestik tagasi laiaks, aga nii, et uue andmestiku ridadeks oleks ühe aasta tulemused erinevate arstiabiliikide kohta. Vaata tulemust.
+
+```{r eval = F}
+# Ülesanne 1: prindi andmestik ekraanile
+___________
+
+# Ülesanne 2: vii andmestik pikale kujule, vaata tulemust
+pikk <- melt(arstiabita, variable.name = ___________________)
+______
+
+# Ülesanne 3: teisenda pikk andmestik laiaks nii, et tulemuseks on pööratud andmestik. Prindi tulemus ekraanile
+transponeeritud <- dcast(pikk, __________~___________)
+___________
+
+```
+
+**Vihjed**
+
+- Käsus `dcast` peaks ridade-veergude valem olema kujul `Aasta ~ Arstiabiliik`.
+
+
+
+## Tabeli pööramine ühe sammuga 
+ 
+Eelmises ülesandes vaadatud tabeli pööramise, mis oli läbi viidud kahe sammuna: esmalt tabel pikale kujule käsuga `melt` ja siis laiale kujule käsuga `dcast`, saab läbi viia ka ühe käsuga. Käsk `recast` võimaldab kombineerida järjestikused pikk -> lai teisendused.  Enne ülesande lahendamist vaata käsu abilehte `?recast`.
+ 
+Kasuta eelmisest ülesandest tabelit `arstiabita`. Ülesandeks on jälle antud tabeli pööramine, aga nüüd ühe käsu abil.
+ 
+
+
+### Ülesanded
+
+- **Ülesanne 1** Pööra andmestik nagu eelmises ülesandes, aga nüüd käsuga `recast`. Käsus tuleb määrata kaks argumenti. Prindi tulemus ekraanile. 
+
+```{r eval = F}
+# Ülesanne 1: pööra andmestik. Prindi tulemus ekraanile
+transponeeritud <- recast(________________)
+___________
+
+```
+
+**Vihjed**
+
+- Käsus `recast` on praegu oluline ära määrata teisendatav andmestik ja ridade-veergude valem, ehk argument `formula`. 
+- Kuna pikaks teisendamise sammul läheb vanu tunnusenimesid hoidev veerg vaikimisi nime `variable` alla, siis valem peaks olema kujul `variable ~ Arstiabiliik`

@@ -1,0 +1,461 @@
+---
+title: "Rakendustarkvara R - 2. kodutöö"
+output: 
+  pdf_document:
+    number_sections: true
+---
+
+# Andmete R-i toimetamine
+
+## Andmete import 1
+
+Impordi andmed tekstifailist *http://kodu.ut.ee/~annes/R/tulemused.txt*. Failis on kirjas inimeste nimed ja nende testitulemused.  Pööra tähelepanu sellele, mis on failis tunnuseveergude eraldaja ning kuidas on esitatud murdarvud.
+
+
+### Ülesanded
+
+- **Ülesanne 1** Kasutades käsku `read.table()` impordi R-i fail *tulemused.txt* aadressilt  *http://kodu.ut.ee/~annes/R/tulemused.txt*, omista andmestik muutujale `andmed2`. Prindi andmestik ekraanile
+- **Ülesanne 2** Vaata andmestiku tunnuste ülevaadet käsuga `summary()`.
+
+
+**Vihjed**
+
+- Ava fail brauseri aknas ja vaata, mis on veergude eraldaja ja milline sümbol on kümnendkohtade eraldajaks.
+- Kaldkriipsu `\` saad eraldajana esitada nii `sep = "\\"`.
+- Andmetabelis on 5 vaatlust ja 2 tunnust, üks tekstiline ja üks arvuline.
+
+
+
+## Andmete import  2
+
+Vaata abiinfot funktsioonile `read.csv`. Selleks kirjuta käsureale:
+
+```{r, eval = F}
+?read.csv
+
+```
+
+Loe avanevast vaatest funktsiooni argumentide ja töö kirjeldust. Seejärel vali õige vastusevariant.
+
+
+### Ülesanded
+
+-**Ülesanne 1** Milline neist väidetest on õige? (Vastus anna näiteks õige väite numbriga, NB! kirjuta vastus kommentaarina).
+
+  1. Funktsiooni `read.csv` argumentide vaikeväärtused määravad, et imporditavas failis peab väljaeraldajaks olema semikoolon.
+  1. Funktsiooni `read.csv` ei saa kasutada *.txt*-laiendiga faili importimiseks.
+  1. Funktsiooni `read.csv` argumentide vaikeväärtused määravad, et imporditavas failis peab kümnendemurru eraldajaks olema punkt.
+  1. Funktsiooni `read.csv` argumentide vaikeväärtused määravad, et imporditavas failis peab kümnendemurru eraldajaks olema koma.
+
+**Vihjed**
+
+- Funktsiooni argumentide vaikeväärtuste leidmiseks vaata abilehelt **Usage** plokist funktsiooni argumente, kui argumendil on võrdusmärgiga omistatud mingi väärtus, siis see ongi vaikeväärtus, mida funktsioon kasutab, kui kasutaja ei ole määranud teisiti. Näiteks funktsiooni `read.table` korral: `read.table(file, header = FALSE, dec = ".", ...)` saame, et faili nimel pole vaikeväärtust, selle peab kasutaja ise määrama, aga vaikimisi eeldab funktsioon, et veergudel pole päist(`header = FALSE`) ning kümnedekoha eraldajaks on vaikimisi punkt (`dec = "."`). 
+ 
+
+
+## Andmete import 3
+
+Andmeid saab alla laadida otse internetist aga kui andmed on juba om arvutis olemas, siis mugavamaks töötamiseks sätime paika töökausta. Seda saad teha käsuge `setwd(.)`. Argumendiks tuleks panna kasuta aadress. NB! Windows Explorerist aadressi kopeerides ole ettevaatlik kausta eraldajatega. R-i jaoks on `'\'` eraldi tähendusega, sellisl juhul kasuta `'\'` asemel `'\\'`.
+
+Kui kasutad RStudiot, siis saad mugavalt töökausta paika panna skripti faili asukoha kausta järgi. Selleks salvesta skripti fail, kuhu hakkad kodutöö vastuseid kirjutama ning käivita:
+
+```{r, eval = F}
+# Juhul kui sa pole 'rstudioapi' paketti veel R-i lisanud, siis kustuta
+# alumise rea eest '#' märk ja käivita mõlemad käsud
+
+#install.packages('rstudioapi')
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+```
+
+Nüüd edaspidi piisab kui viitad allalaetud failidele nende nime järgi, mitte täieliku failipuu aadressiga.
+
+Lae alla andmed *http://kodu.ut.ee/~annes/R/A.csv* ja õpime kasutama funktsioonie `read.csv()` ja `read.csv2()`.
+
+```{r eval = F}
+download.file("http://kodu.ut.ee/~annes/R/A.csv", "A.csv",  mode = "wb")
+
+```
+
+
+### Ülesanded
+
+- **Ülesanne 1** Loe funktsioonide `read.csv()` ja `read.csv2()` abilehte. Tee kindlaks, mis argumendi abil saab määrata maksimaalse imporditava ridade arvu. Omista selle argumendi nimi stringina muutujale nimega `argumendinimi`.
+- **Ülesanne 2**: Kontrolli, kas fail *A.csv*  on juba töökaustas olemas, kasuta selleks käsku `list.files()`. Tulemuseks peab olema töökaustas failide nimed. Faili saad vaadata ka aadressil *http://kodu.ut.ee/~annes/R/A.csv*  
+- **Ülesanne 3**: Impordi failist *A.csv* andmed, kasuta selleks funktsiooni `read.csv()` või `read.csv2()`, vali see funktsioon, mille korral pead vähem argumente väärtustama st see, mis argumentide vaikeväärtuste poolest paremini sobib.  Omista andmestik muutujale `andmed4`.  Pane tähele, et failis on andmeteploki all kommentaaritekst, mille peab importimisel välja jätma.
+- **Ülesanne 4**: Omista muutujale `valik` andmestikust `andmed4` esimesed 10 rida ja kõik veerud väljaarvatud neljas ja viies. Prindi see ekraanile. 
+
+
+```{r eval = F}
+# Ülesanne 1: Omista muutujale selle argumendi nimi, mis määrab imporditava ridade arvu
+argumendinimi <- "_______________"
+
+
+# Ülesanne 2: kontrolli faili olemasolu töökaustas
+ 
+
+
+# Ülesanne 3: täienda antud koodi
+andmed4 <- read.csv__("A.csv", ____________)
+
+
+# Ülesanne 4: prindi ekraanile nõutud alamosa andmestikust
+valik <- ______________
+valik
+
+
+```
+
+
+**Vihjed**
+
+- Andmestikust alamosa valikuks kasuta kandilisi sulge ja viitamist rea/veeru indeksitega. Negatiivne indeks jätab vastava elemendi valikust välja.
+
+
+
+## Andmete import 4
+
+Lae töölauale andmestik nimega *B.csv*, failis on andmed 160 isiku testitulemustega. Fail on R-i imporditav järgmise käsu abil:
+
+```{r eval = F}
+download.file("http://kodu.ut.ee/~annes/R/B.csv", "B.csv",  mode = "wb")
+andmed5a <- read.csv2("B.csv")
+
+```
+
+Kui andmestiku objekti uurida, siis ilmneb, et midagi on impordil läinud valesti. Ülesandes peadki leidma vea ja tegema importimise käsku parandused.
+
+
+### Ülesanded
+
+- **Ülesanne 1**: Vaata, mis on imporditud andmestiku `andmed5a` dimensioon (`dim`), millised on tunnused (`str`). Prindi ekraanile andmestiku esimese 5 veeru lõpp käsuga `tail`.
+- **Ülesanne 2**: Täienda antud koodi nii, et andmete impordi tulemus oleks korrektne (korrektne arv vaatlusi). Lisaks kasuta funktsiooni `read.csv2` argumenti, mis määraks tekstiliste tunnuste tüübiks `character` mitte `Factor`. Omista tekkiv andmestik muutujale `andmed5`. 
+- **Ülesanne 3**: Moodusta andmestik `valik`, kus oleks andmestiku `andmed5` kõik vaatlused, kuid veergudest vaid need, mille nimi algab sõnega *hinnang* või *taust*. 
+
+
+```{r eval = F}
+# Ülesanne 1: Pane kirja sobivad funktsiooninimed, ning viimases käsus sobivad indeksid
+_____(andmed5a)
+_____(andmed5a)
+tail(andmed5a[ , ___:___ ])
+
+
+# Ülesanne 2: tee antud koodi vajalik täiendus, prindi tulemus ekraanile
+andmed5 <- read.csv2(file = "B.csv", ________________)
+
+
+# Ülesanne 3: vali andmestikust nõutud alamosa
+valik <- __________________________
+
+
+```
+
+**Vihjed**
+
+- Uuri, mida teeb argument `stringsAsFactors`.
+- Viimases ülesandes saad kasutada funktsiooni `substr`. Vaata ka sarnase ülesande näidet teise praktikumi juhendist.
+
+
+
+# Toimingud andmestikuga
+
+## Andmete filtreerimine tingimuse põhjal
+
+Kasutame andmestikku `pojad`. Mõõdetud on perede esimese ja teise poja pea pikkus ja laius. Mõõtmised on millimeetrites. Tunnused andmestikus on järgmised:
+
+- `l1` – esimese poja pea pikkus
+- `l2` – teise poja pea pikkus
+- `b1` – esimese poja pea laius
+- `b2` – teise poja pea laius
+
+```{r eval = F}
+pojad <- read.table("http://math.ut.ee/~annes/R/pojad.txt", header = T)
+
+
+```
+
+
+### Ülesanded
+
+- **Ülesanne 1** Loe töölauale andmestik `pojad`. Prindi see ekraanile.
+- **Ülesanne 2** Moodusta tõeväärtusvektor nimega `filter`, mille väärtus on `TRUE` kui pere esimese poja pea pikkus on keskmisest suurem. Prindi loodud filter ekraanile.
+- **Ülesanne 3** Vali andmestikust alamosa: need pered, kus esimese poja pea pikkus on keskmisest suurem, kasutades eelnevalt loodud filtritunnust. Omista valitud read andmestikust objektile `pojad1`. Rakenda loodud andmestikule funktsiooni `dim()`.
+
+
+```{r eval = F}
+# Ülesanne 1: prindi andmestik ekraanile
+
+
+# Ülesanne 2: moodusta tõeväärtusvektor
+filter <- ___________________________
+filter
+
+
+# Ülesanne 3: vali tingimusele vastavad read andmestikust, küsi andmestiku dimensioone
+pojad1 <- ____________________
+______(pojad1)
+
+
+```
+
+**Vihjed**
+
+- Keskmise pea pikkuse esimese poja korral saad leida käsuga `mean(pojad$l1)`. Võrdluse kirjapanekuks kasuta märke `>` või `<`.
+- Andmete filtreerimiseks kasuta kas `subset` funktsiooni või kantsulge: `andmestik[filter, ]`.  Objektide valimiseks andmestikust tuleb filtritunnuse nimi kirjutada kantsulgusesse esimesele kohale st enne koma.
+
+
+
+
+## Andmete filtreerimine, tingimuste kombineerimine
+
+Kasutame admestikku `kapsad`. Uuritud on kahe kapsasordi kapsapeade kaalu ja vitamiinide sisaldust.  Tunnused andmestikus on järgmised:
+
+- `Cult` -  kapsa sort 
+- `Date` - külvikuupäev: 16., 20. või 21. kuupäev
+- `HeadWt` - kapsapea kaal, kg
+- `VitC` - kapsapea C-vitamiini sisaldus
+
+
+```{r eval = F}
+kapsad <- read.table("http://math.ut.ee/~annes/R/cabbages.txt", header = T)
+
+
+```
+
+
+### Ülesanded
+
+- **Ülesanne 1** Loe töölauale andmestik  `kapsad`. Prindi selle andmestiku kirjeldus käsuga `summary()` ekraanile.
+- **Ülesanne 2** Moodusta kaks tõeväärtusvektorit. Esimene nimega `filter1`, mille väärtus on `TRUE`, kui kapsapea on sordist `c52` ja `FALSE` vastasel juhul. Teine vektor nimega `filter2`, mille väärtus on `TRUE`, kui kapsas on külvatud 21. kuupäeval (`d21`) ja `FALSE` vastasel juhul. 
+- **Ülesanne 3** Kasutades loodud filtreid ja sobivat loogilist tehet vali andmestikust alamosa: need kapsad, mis on sordist `c52` ning on külvatud 21. kuupäeval. Omista valitud read andmestikust objektile `kapsad1`. 
+- **Ülesanne 4** Kasutades loodud filtreid ja sobivat loogilist tehet vali andmestikust alamosa: need kapsad, mis on sordist `c52` või on külvatud 21. kuupäeval. Omista valitud read andmestikust objektile `kapsad2`. 
+- **Ülesanne 5** Kummas alamandmestikus on rohkem vaatlusi? 
+
+
+
+```{r eval = F}
+# Ülesanne 1: prindi andmestiku kirjeldus nõutud käsuga
+
+
+# Ülesanne 2: moodusta tõeväärtusvektorid
+filter1 <- ___________________________
+filter2 <- ___________________________
+
+
+# Ülesanne 3: vali tingimusele vastavad read andmestikust 
+kapsad1 <- ____________________
+ 
+
+# Ülesanne 4:  vali tingimusele vastavad read andmestikust 
+kapsad2 <- ____________________
+
+
+# Ülesanne 5:  pane kirja suurema objektide arvuga andmetabeli nimi
+__________________
+
+
+
+```
+ 
+
+**Vihjed**
+
+- Loogilise võrdumise kontrolliks kasuta topelt võrdusmärki `==`.
+
+
+
+## Tunnuste lisamine andmestikku
+
+Analüüsi käigus on sageli vaja olemasolevaid tunnuseid teisendada või arvutada uusi tunnuseid. Andmetabelisse tunnuste lisamisel lisatakse uued veerud andmetabeli lõppu.
+
+
+Kasutame andmestikku `pojad`. Meeldetuletuseks:
+
+- `l1` – esimese poja pea pikkus
+- `l2` – teise poja pea pikkus
+- `b1` – esimese poja pea laius
+- `b2` – teise poja pea laius
+
+
+### Ülesanded
+
+- **Ülesanne 1** Lisa olemasolevasse andmestikku tunnus `pikkus_vahe`, mille väärtuseks on esimese ja teise poja pea pikkuse vahe (esimene - teine).  
+- **Ülesanne 2** Lisa olemasolevasse andmestikku tunnus `laus_suhe`, mille väärtuseks on esimese ja teise poja pea laiuse suhe (esimene / teine).  
+- **Ülesanne 3** Moodusta andmestikuobjekt `uus`, kus oleks samad objektid ja samad 6 tunnust kui andmestikus `pojad`, kuid erinev oleks tunnuste järjestus andmestikus.  Andmestiku `uus` tunnused peaks olema järjestuses:  `l1`, `l2`, `pikkus_vahe`, `b1`, `b2`, `laius_suhe`.
+
+
+```{r eval = F}
+# Vaata meeldetuletuseks andmestikku:
+summary(pojad)
+
+# Ülesanne 1: uue tunnuse lisamine, vahe
+
+
+# Ülesanne 2: uue tunnuse lisamine, suhe
+
+
+# Ülesanne 3: andmestiku veergude ümberjärjestamine
+uus <- pojad[, ____________]
+
+ 
+
+
+```
+
+
+**Vihjed**
+
+- Tunnuse lisamiseks andmestikku saab kasutada omistamist kujul `andmed$uusveerg <- väärtused` või `andmed[, "uusveerg"] <- väärtused`.
+- veergude ümberjärjestamiseks pead kantsulgudesse teisele kohale panema uut järjestust näitava indeksite vektori või uues järjestuses veerupäiste nimedaga vektori.
+
+
+## Paranda viga andmestikus
+
+Enne analüüsiga alustamist on alati vaja andmeid ka kontrollida ja võimalusel leitud vead parandada. 
+
+```{r eval = F, echo = F}
+# Informatiivne osa koodi, et kuidas 'dieet' andmestik loodi.
+set.seed(123)
+n <- 365
+id <- sample(100:999, size = n)
+grupp <- sample(letters[1:5], size = n, replace= T)
+kaal1 <- round(rnorm(n, m = 80, s = 15))
+kaal2 <- round(kaal1 * 1.2 + rnorm(n, s = 10)  + as.numeric(as.factor(grupp))*rbinom(n, 1,   .5))
+dieet <- data.frame(id, grupp, kaal1, kaal2)
+dieet[250, "kaal1"] <- dieet[25, "kaal1"]*1000
+dieet[145, "kaal2"] <- 350
+ 
+rm(n, id, grupp, kaal1, kaal2)
+
+```
+
+
+
+Lae ÕIS-st kodutööde kaustast alla fail `dieet.csv`, paiguta see oma töökausta ja loe töölauale andmestik `dieet`. Tegu on teatavate dieetide mõju uuringuga. Uuringus osalejaid on kaalutud enne dieeti (`kaal1`) ja pärast dieeti (`kaal2`). Lisaks on teada iga inimese identifikaator ja dieedi tüüp.
+ 
+
+```{r eval = F}
+dieet <- read.csv2("dieet.csv", header = T)
+
+```
+
+
+### Ülesanded
+
+- **Ülesanne 1** Prindi andmestik `dieet` kirjeldus käsuga `summary()` ekraanile.
+- **Ülesanne 2** Teada on, et ühel objektil on kaalu väärtus kilogrammide asemel sisestatud grammides. Leia see vaatlus ja tee parandus.
+- **Ülesanne 3** Lisaks on ühel vaatlusel teise  kaalumise väärtuse sisestamisel tekkinud viga: kaalu väärtus 350 ei ole korrektne. Kuna õiget kaalu väärtust pole enam võimalik tagantjärele saada, siis asenda vigane väärtus tühikuga. 
+
+```{r eval = F}
+# Ülesanne 1: prindi andmestiku kirjeldus nõutud käsuga
+
+
+
+# Ülesanne 2: Tee grammides kaalule teisendus kilodeks
+
+
+
+# Ülesanne 3: Asenda vigane väärtus tühikuga
+
+
+
+```
+
+**Vihjed**
+
+- Et leida, millisel objektil on kaal sisestatud grammides ehk millisel objektil on `kaal1` maksimaalne, saad kasutada funktsiooni `which.max()`.
+- Andmestikus oleva väärtuse muutmiseks pead tegema omistamistehte, näiteks  kujul `andmed[veagaobjektiindeks, tunnusenr] <- õigeväärtus`.
+- Tühiku lisamiseks andmestikku kasuta funktsiooni `is.na()` abi.
+
+
+
+
+
+## Hulgatehted ja andmestike ühendamine
+
+Hulgatehtedeid saab R-is teha  järgmiste käskudega
+
+- ühend `union`
+- ühisosa `intersect`
+- vahe `setdiff`
+
+
+Loe töölauale uuesti kaks varem kasutatud andmestikku: 
+
+- andmestikus `A` on kirjas vastajate id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine
+- andmestikus `B` on kirjas vastajate id-kood, uuringugrupi tunnus ning vastused mitmesugustele testidele
+
+```{r eval = F}
+A <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
+B <- read.csv2("http://kodu.ut.ee/~annes/R/B.csv", nrows = 160)
+B <- B[, c("id", "grupp", sort(names(B)[-(1:2)]))]
+
+```
+
+
+Uurida tuleb vaatlusobjektide kattuvust. Andmestike ühendamiseks nn võtmetunnuse kaudu saab kasutada käsku `merge`. Loe tähelepanelikult ülesannete teksti!
+
+
+### Ülesanded
+
+- **Ülesanne 1** Kontrolli id-koodi põhjal ja sobivat hulgatehet kasutades, millised isikud esinevad andmestikus `B`, kuid mitte andmestikus `A`. Omista nende isikute id-koodidide  vektor muutujale `olemasBmitteA`.
+- **Ülesanne 2** Kontrolli id-koodi põhjal, millised isikud esinevad mõlemas andmestikus. Omista nende isikute id-koodide tähestiku järgi kahanevalt järjestatud vektor muutujale `AjaB`. Vektori sorteerimiseks kasuta käsku `sort`, kaheneva järjestuse määramiseks muuda argumendi `decreasing` väärtust.
+- **Ülesanne 3** Liida andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `uuring1`. Tulemuseks olevas andmestikus peaks olema mõlemast andmestikust kõik isikud.
+- **Ülesanne 4** Leia ühendatud andmestiku põhjal tunnuse `test101` keskväärtus ja standardhälve, omista need muuutjatele `kesk` ja `stand`.
+- **Ülesanne 5** Liida andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `uuring2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kelle kohta on teada sugu, elukoht, vanus, pikkus, kaal, käte siruulatus,  arstivisiidi toimumine, uurignugrupi tunnus ning testitulemused. St need objektid, kelle kohta on mõlemas andmestikus info olemas.
+- **Ülesanne 6** Tekita liidetud andmestikku veel üks sootunnus `sugu2`: uuel tunnusel lisa sootunnuse koodidele sildid: kood `0` vastab naissoole, määra siia silt `Naine`, koodile `1` lisa silt `Mees`.
+
+- **Ülesanne 7** Leia liidetud andmestiku korral uuringugrupi tunnuse ja soo sagedustabel, nii, et uurignugrupi tunnus määrab tabeli read. Kasuta seda sootunnust, mille tekitasid eelmises ülesandes. Omista tabel muutujale `tabel1`, prindi see tabel ekraanile.
+
+- **Ülesanne 8** Kasutades eelnevalt leitud sagedustabelit leia tabel, kust oleks näha soo jaotus uuringugrupiti. Omista see muutujale `tabel2`, prindi ekraanile.
+
+- **Ülesanne 9** Omista mutujale `c.naisi` naiste arv uuringugrupis `c`.
+
+
+```{r eval = F}
+# Ülesanne 1: leia isikud, kes on andmestikus B, kuid mitte A-s
+olemasBmitteA <- ________________
+
+
+# Ülesanne 2: leia isikud, kes on mõlemas andmestikus
+AjaB <- ________________
+
+
+# Ülesanne 3: Liida anmdestikud, tulemuses olgu kõik isikud mõlemast andmestikust.
+uuring1 <- merge(_____________________)
+
+
+# Ülesanne 4: leia nõutud keskväärtus ...
+kesk <- ________________
+# ... ja standardhälve
+stand <- ______________
+
+# Ülesanne 5: Liida andmestikud, tulemuses olgu kõik isikud kel on mõlemas andmestikus info olemas.
+uuring2 <- merge(_____________________)
+
+# Ülesanne 6: faktortunnuse loomine
+uuring2$sugu2 <- _____(uuring2$sugu, labels = ________)
+
+# Ülesanne 7: Sagedustebel
+tabel1 <- table(_____, ______)
+
+
+# Ülesanne 8: Jaotustabel
+tabel2 <-  ______________
+
+
+# Ülesanne 9: Naiste arv grupis c
+c.naisi <- __________
+
+
+```
+
+
+**Vihjed**
+
+- Esimeses ülesandes tuleks leida hulkade vahe.
+- Teises ülesandes saab kasutada ühisosa funktsiooni.
+- Seda, millised objektid ühendatud andmestikku lähevad, reguleerivad käsu `merge()` argumendid `all, all.x, all.y`.
+- Faktortunnuse tekitamiseks kasuta käsku `factor`, koodide siltidena määra vektor `c("Naine", "Mees")`.
+
+

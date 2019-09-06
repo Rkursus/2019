@@ -1,0 +1,1362 @@
+---
+title: "Rakendustarkvara R - 4. kodutöö"
+output: 
+  pdf_document:
+    number_sections: true
+---
+
+# Pakett dplyr - Andmestikku tunnuste lisamine 
+
+
+Paketi **dplyr** funktsioonidest `mutate()` on abiks kui on vaja andmestikku uusi tunnuseid lisada. Korraga saab defineerida mitu uut tunnust, kusjuures tunnust, mille definitsioon on käsus juba kirjas, saab kohe samas kasutada.
+
+
+Loe töölauale andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine.
+
+```{r eval = F}
+A <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
+
+```
+
+
+## Ülesanded
+
+- **Ülesanne 1** Aktiveeri pakett **dplyr**.
+- **Ülesanne 2** Kasutades paketi **dplyr** funktsiooni `mutate()`, lisa andmestikku uuritavate KMI väärtus (tunnus nimega `kmi`) ja tunnus, mis sellesama KMI põhjal jagab inimesed 2 gruppi: kui KMI on kuni 25 (kaasa arvatud), siis on grupitunnuse väärtus `ala voi normkaal`, kui KMI on üle 25, siis `ylekaal`. Grupitunnuse nimeks vali `kaalugrupp`, selle moodustamiseks kasuta funktsiooni `ifelse()`.
+- **Ülesanne 3** Vaata üle uue andmestiku struktuur käsuga `str()`.
+
+```{r eval = F}
+# Vaata andmestik üle
+head(A)
+
+
+# Ülesanne 1: aktiveeri pakett
+_____________
+
+
+# Ülesanne 2: lisa tunnused
+A1 <- mutate(___________________)
+
+
+# Ülesanne 3: vaata tulemust
+____________
+
+
+```
+
+**Vihjed**
+
+- Kui kirjutad `mutate()` käsku uute tunnuste definitsioonid, siis vaata, et KMI arvutus eelneks kaalugruppide määramisele, sest siis on KMI väärtust juba vaja kasutada.
+- KMI  arvutusvalem: (kaal kilogrammides) / (pikkus meetrites)^2
+
+
+```{r solution1, eval = F, echo = F}
+# Vaata andmestik üle
+head(A)
+
+
+# Ülesanne 1: aktiveeri pakett
+library(dplyr)
+ 
+
+
+# Ülesanne 2: lisa tunnused
+A1 <- mutate(A, 
+            kmi = kaal/(kasv/100)^2, 
+            kaalugrupp = ifelse(kmi <= 25, "ala voi normkaal", "ylekaal"))
+
+
+# Ülesanne 3: vaata tulemust
+str(A1)
+```
+
+```{r testing1, eval = F, echo = F}
+# 1
+test_function(name = "library", 
+              args = "package",
+              index = 1,
+              eval = FALSE,
+              eq_condition = "equivalent",
+              not_called_msg = "Esimeses ülesandes pead kasutama funktsiooni `library()`.",
+              args_not_specified_msg = "Käsule `library()` tuleb argumendiks anda paketi nimi.",
+              incorrect_msg =  "Käsu `library()` argumendiks anna paketi nimi  `dplyr`")
+
+
+
+# 2
+test_function(name = "mutate", 
+              args = ".data",
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Teises ülesandes pead kasutama funktsiooni `mutate()`.",
+              args_not_specified_msg = "Käsule `mutate()` tuleb  esimeseks argumendiks anda andmestiku nimi `A`.",
+              incorrect_msg =  "Käsule `mutate()` antud andmestik on vale.")
+
+
+
+
+test_function(name = "ifelse", 
+              args = c("test", "yes", "no"),
+              index = 1,
+              eval = c(F, T, T),
+              eq_condition = "equivalent",
+              not_called_msg = "Teises ülesandes pead kasutama funktsiooni `ifelse()`.",
+              args_not_specified_msg = paste("Käsu `ifelse()` argumentidest peab " ,
+                                c("esimene olema loogiline test", 
+                                "teine  määratav väärtus, kui loogilise testi tulemus on `TRUE`", 
+                                "kolmas olema `FALSE` tulemuse korral määratav väärtus."))
+                                ,
+              incorrect_msg =  paste("Käsule `ifelse()` on antud vale väärtus ", c("esimeseks", "teiseks", "kolmandaks"), " argumendiks.")   )
+
+
+
+
+test_data_frame("A1", columns = c("kmi", "kaalugrupp"),
+            undefined_msg = "Andmetabel `A1` on defineerimata.",
+            undefined_cols_msg = paste("Andmestikus `A1` on mingi veerg puudu, võibolla on veeru nimi vale."),
+            incorrect_msg = "Andmetabelis `A1` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti." )
+
+ 
+
+# 3
+test_function(name = "str", 
+              args = "object",
+              index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Viimases ülesandes pead kasutama funktsiooni `str()`.",
+              args_not_specified_msg = "Käsule `str()` tuleb argumendiks anda andmestiku nimi.",
+              incorrect_msg =  "Käsu `str()` argumendiks on vale andmestik.")
+
+			  
+			  
+
+success_msg("Tubli!")               
+       
+            
+
+###########################################################
+```
+
+
+
+# Pakett dplyr - Grupikokkuvõtete arvutamine
+
+Paketi **dplyr** funktsiooni `summarise()` saab kasutada andmete agregeerimiseks.
+
+Kasuta andmestikku `A1` eelmisest ülesandest. 
+
+## Ülesanded
+
+- **Ülesanne 1** Kasutades funktsiooni `summarise()` leia tabel, kus soo ja elukoha gruppides oleks esitatud uuritavate arv (`n`), keskmine vanus (`kesk.vanus`), keskmine KMI (`kesk.kmi`) ja  arstivisiidil käinute osakaal (`visiit.osak`). Tulemuseks olevas tabelis peaks esimeseks veeruks olema soo tunnus, teiseks elukoht.  Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
+- **Ülesanne 2** Milline grupp on kõige madalama arstivisiidil käinute osakaaluga? Omista selle grupi koodid (0 või 1)  vastusesse.
+
+```{r eval = F}
+# Vaata andmestik üle
+str(A1)
+
+
+# Ülesanne 1: leia tabel
+tabel <- A1 %>%   
+            ______________ %>% 
+                    ____________________________
+tabel
+
+# Ülesanne 2: leia mis grupp on kõige madalama arstivisiidil käimise osakaaluga.
+# sugu = ___, elukoht = ___
+```
+
+
+**Vihjed**
+
+- Kasuta funktsiooni `group_by()`, et määrata andmestikule grupeering soo ja elukoha põhjal
+
+
+```{r solution2, eval = F, echo = F}
+# Vaata andmestik üle
+str(A1)
+
+
+# Ülesanne 1: leia tabel
+tabel <- A1 %>% 
+            group_by(sugu, elukoht) %>% 
+                summarise(n = length(sugu),
+                kesk.vanus = mean(vanus), kesk.kmi = mean(kmi), 
+                visiit.osak = sum(visiit)/length(visiit))
+tabel
+
+# Ülesanne 2: leia mis grupp on kõige madalama arstivisiidil käimise osakaaluga.
+madal <- list(sugu = 1, elukoht = 0)
+```
+
+```{r testing2, eval = F, echo = F}
+
+# 1
+test_function("group_by",
+              args = c(".data"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Esimeses ülesandes peab andmestiku grupeerima enne kui hakata arvutusi tegeama.",
+              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma  andmestiku `A1`." ),
+              incorrect_msg = paste("Funktsiooni `group_by()`  rakendatakse valele andmestikule. "))
+       
+
+ 
+
+test_function("summarise",
+              args = c(".data"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `summarise()`.",
+              args_not_specified_msg = paste("Funktsiooni `summarise()`", 
+                                c(" esimeseks argumendiks peab sattuma grupeeritud andmestik.") ),
+              incorrect_msg = paste("Funktsiooni `summarise()`  ",  c(" rakendatakse  valele andmestikule.")   ))
+ 
+
+
+test_pipe(num = 2, absent_msg = "Kasuta aheldamisoperaatorit `%>%`.", insuf_msg = "Kasuta aheldamisoperaatorit `%>%` vähemalt 2 korda.") 
+  
+       
+test_data_frame("tabel",
+                columns = c("sugu", "elukoht",  "n",  "kesk.vanus", "kesk.kmi", "visiit.osak"),
+                eq_condition = "equivalent",
+                undefined_msg = "Tabelit `tabel` pole tekitatud!",
+                undefined_cols_msg = paste("Tabelis `tabel` on mõni nõutud veerg puudu või on veeru nimi vale! "),
+                incorrect_msg = paste("Tabelis `tabel` on mõni veerg valede väärtustega või on veeru nimi vale!"))
+                
+                
+ 
+
+# 2
+test_object("madal",
+            eq_condition = "equivalent",
+            eval = TRUE,
+            undefined_msg = "List `madal` on tekitamata.",
+            incorrect_msg = "Listis `madal` on mingi väärtus vale.")
+
+
+
+
+
+
+success_msg("Väga tubli!")               
+       
+            
+
+###########################################################
+```
+
+
+
+
+
+# Pakett dplyr - Mitmele tunnusele kirjeldavate karakteristikute leidmine 
+
+
+Paketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid prefiksitega `_at`, `_if` ja `_all` juhuks kui funktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
+
+
+Loe töölauale andmestik `B`. Andmestikus on 160 inimese kohta mitmete testide ja ankeetküsitluse tulemused ning taustatunnuste väärtused.
+
+```{r eval = F}
+B <- read.csv2("http://kodu.ut.ee/~annes/R/B.csv", nrows = 160)
+
+```
+
+Ülesandeks on moodustada tabel, kus on igale testitulemusele leitud keskväärtus, standardhälve ning miinimum ja maksimum. Tabelis peaks iga testitunnus määrama ühe rea, mis on täidetud tema karakteristikutega:
+
+nr|variable|   mean  |    sd   |  min | max
+--|--------|---------|---------|------|-------
+ 1| test109| 19.82375| 2.034034|  14.0|  26.3
+ 2| test141| 20.14250| 2.173267|  14.3| 26.5
+ 3| test113| 19.94500| 2.157940|  13.9|  25.1
+ 4| test177| 19.84625| 1.958754|  15.3|  24.7
+ ...| ...  | ...     | ...     |  ... |  ...
+
+
+
+## Ülesanded
+
+- **Ülesanne 1** Kasutades funktsioone `select()` ja `starts_with()` ning aheldamisoperaatorit `%>%` vali andmestikust need tunnused, mille nimi algab sõnaga *test*, omista valitud andmed muutujale `B1`.
+- **Ülesanne 2** Täienda koodi kasutades funktsioone  `melt()`, `group_by()` ja `summarise_all()`, nii et tulemuseks oleks tabel kõigi *test*-tunnuste keskväärtuste, standardhälvete, miinimumide ja maksimumidega. Omista saadud tabel muutujale `tabel`.  Pane tähele, et funktsioon `melt()` ei ole **dplyr** paketi funktsioon.
+
+```{r eval = F}
+# Vaata üle tunnusenimed ja andmestiku dimensioonid
+names(B)
+dim(B)
+
+# Ülesanne 1: Alamandmestiku valik
+B1 <- __________________________________
+
+
+
+# Ülesanne 2: Täienda koodi
+library(____________)
+tabel <- B1 %>% 
+  __________________  %>%  
+  _____________(___________)  %>%  
+  ______________(.funs = c("mean", "sd", "min", "max"))
+arrange(tabel, variable)
+ 
+
+```
+
+
+**Vihjed**
+
+- Funktsiooni `melt()` kasutamiseks pead aktiveerima paketi kuhu see kuulub.
+- Proovi `B1 %>% melt()`. Mis tulemuseks said ja miks?
+
+
+```{r solution3, eval = F, echo = F}
+# Vaata üle tunnusenimed ja andmestiku dimensioonid
+names(B)
+dim(B)
+
+# Ülesanne 1: Alamandmestiku valik
+B1 <-  B %>% select(starts_with("test"))
+
+
+
+# Ülesanne 2: Täienda koodi
+library(reshape2)
+tabel <- B1 %>% melt()  %>%  group_by(variable)  %>%  summarise_all(.funs = c("mean", "sd", "min", "max"))
+arrange(tabel, variable)
+```
+
+```{r testing3, eval = F, echo = F}
+
+#1
+test_function("select",
+              args = c(".data"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `select()`.",
+              args_not_specified_msg = paste("Funktsioonis `select()` pead määrama  argumendi `.data`" ),
+              incorrect_msg = paste("Funktsioonis `select()` on argumendi `.data` väärtus vale."))
+       
+
+
+test_function("starts_with",
+              args = c("match"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `starts_with()`.",
+              args_not_specified_msg = paste("Funktsioonis `starts_with()` pead määrama  argumendiks sobiva tunnusenime alguse jutumärkides." ),
+              incorrect_msg = paste("Funktsioonis `starts_with()`  on  tunnusenime algus vale, kirjuta see samal kujul nagu ülesande tekstis."))
+       
+
+test_data_frame("B1",
+                columns = NULL,
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestikku `B1` pole tekitatud!",
+                undefined_cols_msg = paste("Andmestikus `B1` on mõni nõutud veerg puudu! "),
+                incorrect_msg = paste("Andmestikus `B1`  on mõni veerg valede väärtustega!"))
+                
+                
+
+
+# 2
+test_function(name = "library", 
+              args = "package",
+              index = 1,
+              eval = FALSE,
+              eq_condition = "equivalent",
+              not_called_msg = "Esimeses ülesandes pead kasutama funktsiooni `library()`, et aktiveerida pakett **reshape2**.",
+              args_not_specified_msg = "Käsule `library()` tuleb argumendiks anda paketi nimi.",
+              incorrect_msg =  "Käsu `library()` argumendiks anna paketi nimi `reshape2`")
+
+
+
+test_function("melt",
+              args = c("data"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta teises ülesandes funktsiooni `melt()`.",
+              args_not_specified_msg = paste("Funktsioonile `melt()` peab aheldamise kaudu argumendiks minema andmestik `B1`. Teisi argumente antud funktsioonis pole vaja täpsustada." ),
+              incorrect_msg = paste("Funktsioonile `melt()` saadetakse argumendiks vale andmestik."))
+       
+
+
+
+
+test_function("group_by",
+              args = c(".data"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta teises ülesandes funktsiooni `group_by()`.",
+              args_not_specified_msg = paste("Funktsiooni `group_by()` esimeseks argumendiks peab aheldamine saatma pikas formaadis andmestiku. Grupeerivaks tunnuseks peab minema veerg, kus on kirjas testide nimed." ),
+              incorrect_msg = paste("Funktsiooni `group_by()`  rakendatakse valele andmestikule. "))
+       
+
+ 
+
+
+
+test_function("summarise_all",
+              args = c(".tbl", ".funs"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta teises ülesandes funktsiooni `summarise_all()`.",
+              args_not_specified_msg = paste("Funktsiooni `summarise_all()`", 
+                                c(" esimeseks argumendiks peab sattuma grupeeritud andmestik.", "teiseks arumendiks peab olema vektor funktsioonide nimedega.") ),
+              incorrect_msg = paste("Funktsiooni `summarise_all()`  ",  c(" rakendatakse  valele andmestikule.", " funktsioonide nimekiri pole sama, mis etteantud koodis. Ära kustuta, ega muuda seda kohta koodist.")   ))
+ 
+ 
+ 
+ 
+test_pipe(num = 4, absent_msg = "Kasuta aheldamisoperaatorit `%>%`.", insuf_msg = "Kasuta aheldamisoperaatorit `%>%` vähemalt 4 korda.") 
+ 
+ 
+ 
+test_data_frame("tabel",
+                columns = c("variable", "mean", "sd", "min", "max"),
+                eq_condition = "equivalent",
+                undefined_msg = "Tabelit `tabel` pole tekitatud!",
+                undefined_cols_msg = paste("Tabelis `tabel` on mõni nõutud veerg puudu! "),
+                incorrect_msg = paste("Tabelis `tabel` on mõni veerg valede väärtustega!"))
+                
+                
+                
+                
+                
+                
+                
+success_msg("Ülesanne tehtud. Väga tubli!")               
+       
+
+```
+
+
+
+
+# Pakett dplyr - Mitmele tunnusele teisenduse määramine 
+
+Nagu öeldud on lisapaketis **dplyr** on olemas funktsioonide `mutate()` ja `summarise()` eriversioonid sufiksitega `_at`, `_if` ja `_all` juhuks kui fuktsioone on vaja rakendada mingite tunnuste valikule nime järgi, loogilise tingimuse järgi või kõigile tunnustele, mis ei esine grupeeriva tunnusena. 
+
+Loe töölauale andmestikud `mass` (tuttav praktikumist) ja `antropo`. Andmestikus  `antropo` on mõned antropomeetrilised mõõtmised, mõõdetud on  pikkus õlani (mm), kerepikkus istudes (mm),  põlve kõrgus, istudes (mm),  talje ümbermõõt (mm),  õlgade ümbermõõt (mm),  randmeümbermõõt (mm) ja  kaal (kg*10), lisaks on teada uuritava sugu.
+
+```{r eval = F}
+antropo <- read.table("http://kodu.ut.ee/~annes/R/antropo.txt", header=T, sep="\t")
+mass<- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt", header=T, sep="\t")
+
+```
+ 
+
+
+## Ülesanded
+
+- **Ülesanne 1**  Teisenda andmestikus `mass` kõik tunnused, mis on tüüpi `factor` tavaliseks tekstiks ehk tüüpi `character`. Selleks täienda antud koodi sobivalt. Teisendatud tunnustega andmestik nimeta `mass_char`. Koodi kirjapanekul kasuta aheldamisoperaatorit `%>%`.
+- **Ülesanne 2** Teisenda andmestikus `antropo` kõik mõõtmised, mis on millimeetrites sentimeetriteks ja tunnus, mille mõõtühik on 10*kg, kilogrammidesse (st teisendada tuleks kõik tunnused peale soo tunnuse). Defineeri selleks uus funktsioon, mida saad edasi kasutada sobiva sufiksiga `mutate_`-käsus. Teisenduse tegemiseks täienda antud koodi. Täiendamisel kasuta aheldamisoperaatorit `%>%`, muudetud andmestik omista muutujale `antropo_cm_kg`. 
+
+```{r eval = F}
+# Tutvu andmestikega
+str(mass)
+str(antropo)
+
+# Ülesanne 1: teisenda faktorid tavaliseks tekstiks
+_________ <-  __________ %>% mutate______(.predicate = __________, .funs = __________)
+
+
+# Ülesanne 2: teisenda ühikud
+uus_funktsioon <- function(_____) ____________
+antropo_cm_kg <- _______  ____  mutate______(.vars = vars(-SEX), .funs = uus_funktsioon)
+
+```
+
+
+**Vihjed**
+
+- Selleks, et kontrollida, kas tunnus on faktortüüpi, saab kasutada funktsiooni `is.factor()`.
+- Selleks, et tunnuse tüüpi määrata tavaliseks tekstitüübiks, kasuta funktsiooni `as.character()`.
+- Uus funktsioon peaks läbi viima jagamise arvuga 10, `function(x) x/10`.
+
+
+```{r solution4, eval = F, echo = F}
+# Tutvu andmestikega
+str(mass)
+str(antropo)
+
+# Ülesanne 1: teisenda faktorid tavaliseks tekstiks
+mass_char <-  mass %>% mutate_if(.predicate = is.factor, .funs = as.character)
+
+
+# Ülesanne 2: teisenda ühikud
+uus_funktsioon <- function(x) x/10
+antropo_cm_kg <- antropo %>% mutate_at(.vars = vars(-SEX), .funs = uus_funktsioon)
+
+
+```
+
+```{r testing4, eval = F, echo = F}
+# 1
+test_function("mutate_if",
+              args = c(".tbl", ".predicate", ".funs"), index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta esimeses ülesandes funktsiooni `mutate_if()`.",
+              args_not_specified_msg = paste("Funktsiooni `mutate_if()`", 
+                                c(" esimeseks argumendiks peab sattuma andmestik `mass`, st see saadetakse aheldamisega funktsiooni esimeseks argumendiks.", 
+                                " peab määrama loogilise kontrolli, millele vastavatele veergudele hakatakse teisendust tegema. Kontrollima peab, kas veerus on `factor`-tüüpi tunnus.", 
+                                " peab määrama teisenduse, mida valitud veergudele rakendada, see peaks veeru tüübiks määrama `character`") ),
+              incorrect_msg = paste("Funktsiooni `mutate_if()`  ",  c(" rakendatakse  valele andmestikule.", 
+              " on antud vale tingimus, millele veerud peavad vastama.", 
+              " on määratud vale teisendus.")   ))
+ 
+
+ 
+ 
+  
+test_data_frame("mass_char",
+                columns = NULL,
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestikku `mass_char` pole tekitatud!",
+                undefined_cols_msg = paste("Andmestikus `mass_char` on mõni veerg puudu! "),
+                incorrect_msg = paste("Andmestikus `mass_char` on mõni veerg valede väärtustega!"))
+                
+                
+ 
+ 
+#2
+test_function_definition("uus_funktsioon",
+                         function_test = test_expression_result("uus_funktsioon(c(Inf, -Inf, 0, -5, 1, 2))"),
+                         body_test = NULL,
+                         undefined_msg = "Funktsioon `uus_funktsioon` on defineerimata.",
+                         incorrect_number_arguments_msg = "Piisab, kui defineeritaval funkstioonil on üks argument.")
+
+
+
+
+test_function("mutate_at",
+              args = c(".tbl", ".vars", ".funs"), index = 1,
+              eval = c(TRUE, TRUE,  TRUE),
+              eq_condition = "equivalent",
+              not_called_msg = "Kasuta teises ülesandes funktsiooni `mutate_at()`.",
+              args_not_specified_msg = c("Funktsiooni `mutate_at()` esimeseks argumendiks peab sattuma andmestik `antropo`, st see saadetakse aheldamisega funktsiooni esimeseks argumendiks.", 
+                                " Ära kustuta funktsiooni `mutate_at()` etteantud argumentide väärtusi.", 
+                                " Ära kustuta funktsiooni `mutate_at()` etteantud argumentide väärtusi.") ,
+              incorrect_msg = c("Funktsiooni `mutate_at()`   rakendatakse  valele andmestikule.", 
+              "Ära muuda funktsiooni `mutate_at()` etteantud argumentide väärtusi.", 
+              "Ära muuda funktsiooni `mutate_at()` etteantud argumentide väärtusi või kirjapilti.")   )
+
+			  
+			  
+			  
+			  
+
+test_pipe(num = 2, absent_msg = "Kasuta aheldamisoperaatorit `%>%`.", insuf_msg = "Kasuta aheldamisoperaatorit `%>%` vähemalt 2 korda.") 
+ 
+ 
+ 
+test_data_frame("antropo_cm_kg",
+                columns = NULL,
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestikku `antropo_cm_kg` pole tekitatud!",
+                undefined_cols_msg = paste("Andmestikus `antropo_cm_kg` on mõni veerg puudu! "),
+                incorrect_msg = paste("Andmestikus `antropo_cm_kg` on mõni veerg valede väärtustega!"))
+                
+                
+ 
+                
+                
+                
+                
+                
+                
+success_msg("Ülesanne tehtud. Tubli!")               
+       
+
+
+
+
+
+```
+
+
+
+
+# Pakett dplyr - Andmestike ühendamine
+
+Paketis **dplyr** on olemas valik funktsioone, mis on mõeldud andmestike ühendamiseks:
+
+* `inner_join()`
+* `left_join()`
+* `right_join()`
+* `full_join()`
+* `semi_join()`
+* `anti_join()`
+
+Selles ülesandes tuleb valida sobiv funktsioon ülaltoodud nimekirjast.
+
+Töölaual on olemas kaks andmestikku: 
+
+- andmestikus `A` on kirjas vastajate id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine.
+- andmestikus `B` on kirjas vastajate id-kood, uuringugrupi tunnus ning vastused mitmesugustele testidele.
+
+```{r eval = F}
+A <- read.csv2("http://kodu.ut.ee/~annes/R/A.csv", nrows = 45)
+B <- read.csv2("http://kodu.ut.ee/~annes/R/B.csv", nrows = 160)
+B <- B[, c("id", "grupp", sort(names(B)[-(1:2)]))]
+```
+
+## Ülesanded
+
+- **Ülesanne 1** Teisenda esmalt mõlemas andmestikus faktortunnused tavaliseks tekstiks, selleks täienda etteantud koodi. Teisendatud andmestikud omista muutujatele `A1` ja `B1`. Edasi kasuta neid andmestikke.
+- **Ülesanne 2** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB1`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kelle kohta on olemas info mõlemas andmestikus, kuid veergudest ainult need, mis on olemas andmestikus `B`. Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
+- **Ülesanne 3** Ühenda andmestikud id-koodi tunnuse põhjal, nimeta ühendatud andmestik nimega `AB2`. Tulemuseks olevas andmestikus peaks olema ainult need uuritavad, kes on andmestikus `A` ja kellel on vaste andmestikus `B`ning  kõik veerud mõlemast andmestikust.
+ Ühendamise läbiviimiseks vali üks `_join()` funktsioon ülaltoodud nimekirjast. Koodi kirjapanekul kasuta `%>%` operaatorit.
+
+```{r eval = F}
+# Vaata anmdestikud üle
+str(A)
+str(B)
+
+
+# Ülesanne 1:  Teisenda tunnuse tüüp
+A1 <- A %>% mutate_if(__________)
+B1 <- B %>% mutate_if(__________)
+
+
+# Ülesanne 2: ühenda andmestikud
+AB1 <- ___ %>% _________________
+
+# Ülesanne 3: ühenda andmestikud
+AB2 <- ___ %>% _________________
+
+
+```
+
+
+```{r solution5, eval = F, echo = F}
+# Vaata andmestikud üle
+str(A)
+str(B)
+
+
+# Ülesanne 1:  Teisenda tunnuse tüüp
+A1 <- A %>% mutate_if(is.factor, as.character)
+B1 <- B %>% mutate_if(is.factor, as.character)
+
+
+# Ülesanne 2: ühenda andmestikud
+AB1 <- B1 %>% semi_join(A1, by = "id")
+
+# Ülesanne 3: ühenda andmestikud
+AB2 <- A1 %>% inner_join(B1, by = "id")
+
+
+```
+
+```{r testing5, eval = F, echo = F}
+test_predefined_objects("A", 
+                        eq_condition = "equivalent",
+                        eval = TRUE,
+                        undefined_msg = "Ära kustuta andmestikku `A`.", 
+                        incorrect_msg = "Ära muuda andmestiku `A` sisu.")
+ 
+
+test_predefined_objects("B", 
+                        eq_condition = "equivalent",
+                        eval = TRUE,
+                        undefined_msg = "Ära kustuta andmestikku `B`.", 
+                        incorrect_msg = "Ära muuda andmestiku `B` sisu.")
+
+
+# 1
+test_function(name = "mutate_if",
+              args = c(".predicate", ".funs"),
+              index = 1,
+              eval = TRUE,
+             eq_condition = "equivalent",
+             not_called_msg = "Pead ülesandes  1  kasutama funktsiooni `mutate_if()`",
+             args_not_specified_msg = paste("Määra `mutate_if()` käsus argumendi", c("`.predicate`", "`.funs`" ), "väärtus."),
+             incorrect_msg = paste("Muuda `mutate_if()` käsus argumendi", c("`.predicate`", "`.funs`"), "väärtust, see pole praegu õige.")) 
+
+test_function(name = "mutate_if",
+              args = c(".predicate", ".funs"),
+              index = 2,
+              eval = TRUE,
+             eq_condition = "equivalent",
+             not_called_msg = "Pead ülesandes  1  kasutama funktsiooni `mutate_if()`",
+             args_not_specified_msg = paste("Määra `mutate_if()` käsus argumendi", c("`.predicate`", "`.funs`" ), "väärtus."),
+             incorrect_msg = paste("Muuda `mutate_if()` käsus argumendi", c("`.predicate`", "`.funs`"), "väärtust, see pole praegu õige.")) 
+
+ 
+ 
+
+# 2
+test_function(name = "semi_join",
+              args = c("x", "y", "by"),
+              index = 1,
+              eval = TRUE,
+             eq_condition = "equivalent",
+             not_called_msg = "Pead teises ülesandes    kasutama funktsiooni `semi_join()`",
+             args_not_specified_msg = paste("Käsus `semi_join()`  ", c("saadetakse esimene liidetav andmestik läbi aheldamisoperaatori", " tuleb märkida teine liidetav andmestik", "tuleb määrata võtmetunnus `by`", "." )),
+             incorrect_msg = paste("Muuda `semi_join()` käsus ", c("läbi aheldamise saadetav andmestik.", " teine liidetav andmestik. ", "argumendi `by` väärtus."))) 
+
+
+test_data_frame("AB1",
+                columns = NULL,
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestikku `AB1` pole tekitatud!",
+                undefined_cols_msg = paste("Andmestikus `AB1` on mõni veerg puudu! "),
+                incorrect_msg = paste("Andmestikus `AB1` on mõni veerg valede väärtustega!"))
+                
+                
+ 
+
+
+
+
+# 3
+test_or(
+test_function(name = "inner_join",
+              args = c("x", "y", "by"),
+              index = 1,
+              eval = TRUE,
+             eq_condition = "equivalent",
+             not_called_msg = "Pead kolmandas ülesandes  teises  funktsiooni `inner_join()`.",
+             args_not_specified_msg = paste("Käsus `inner_join()`  ", c("saadetakse esimene liidetav andmestik läbi aheldamisoperaatori", " tuleb märkida teine liidetav andmestik", "tuleb määrata võtmetunnus `by`", "." )),
+             incorrect_msg = paste("Muuda `inner_join()` käsus ", c("läbi aheldamise saadetav andmestik.", " teine liidetav andmestik. ", "argumendi `by` väärtus.")) )
+,
+test_function(name = "inner_join",
+              args = c("by"),
+              index = 1,
+             eval = TRUE,
+             eq_condition = "equivalent",
+             not_called_msg = "Pead kolmandas ülesandes  teises  funktsiooni `inner_join()`",
+             args_not_specified_msg = paste("Käsus `inner_join()`  tuleb määrata võtmetunnus `by`.", "." ),
+             incorrect_msg = paste("Muuda `inner_join()` käsus argumendi `by` väärtus.")) 
+)
+
+
+test_data_frame("AB2",
+                columns = NULL,
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestikku `AB2` pole tekitatud!",
+                undefined_cols_msg = paste("Andmestikus `AB2` on mõni veerg puudu! "),
+                incorrect_msg = paste("Andmestikus `AB2` on mõni veerg valede väärtustega!"))
+                
+                
+ 
+ test_pipe(num = 4, absent_msg = "Kasuta aheldamisoperaatorit `%>%`.", insuf_msg = "Kasuta aheldamisoperaatorit `%>%` vähemalt 4 korda.") 
+ 
+            
+            
+            
+            
+success_msg("Hästi!")
+
+```
+
+
+
+# Pakett data.table - Ridade filtreerimine ja veergude valik/defineerimine
+
+Kui `DT` on *data.table* tüüpi andmetabel, siis paketi **data.table** põhisüntaksi kuju saab kirja panna järgnevalt
+```{r, eval = F}
+DT[i, j, by]
+```
+kus 
+
+- `i` määrab read/objektid, mida edasi kasutada
+- `j` määrab veerud, mis valitakse, uuendatakse või tekitatakse
+- `by` määrab vajadusel grupitunnuse `j` tehtavateks arvutusteks.
+
+Töölaual peaks varasemast olema andmestik `A`. Andmestikus on kirjas 40 inimese id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine.
+
+
+
+## Ülesanded
+
+- **Ülesanne 1** Aktiveeri pakett **data.table** ja muuda andmestik `A` tüüpi `dt` ehk `data.table`.
+- **Ülesanne 2** Kasutades **data.table** süntaksit, tekita tabel `tabel1`, kus on näha üle 50 aastaste ja üle 80 kg kaaluvate uuritavate KMI väärtus (tunnus `kmi`) ja käte siruulatus (tunnus `sirutus`). Prindi tulemus ekraanile.
+- **Ülesanne 3** Kasutades **data.table** süntaksit, leia soo ja elukoha gruppides keskmine vanus (`kesk.vanus`) ja keskmine pikkus (`kesk.pikkus`) neile, kes pole käinud arstivisiidil (tunnuse `visiit` väärtus on `FALSE`). Määra grupeering nii, et tulemustabelis on soo tunnus esimene veerg ning elukoht teine. Prindi tulemus ekraanile.
+
+```{r eval = F}
+# Ülesanne 1: aktiveeri pakett
+_______________________
+class(A) # Mis tüüpi on andmestik A?
+
+A <- as._________(A)
+class(A) # Mis tüüpi nüüd?
+
+# Ülesanne 2: tee valik objektidest ja vali/arvuta tunnused
+tabel1 <- A[______, ______]
+______
+
+# Ülesanne 3: tee valik objektidest ja vali/arvuta tunnused gruppide kaupa
+tabel2 <- A[______, ______, ______]
+______
+
+```
+
+
+**Vihjed**
+
+- Teises ülesandes peab KMI väärtuse arvutama ja omistama veergu nimega `kmi`, teise tunnuse `sirutus` väärtustega mingit teisendust pole vaja teha. Arvutatav tunnus ja valitud veeru nimi peab olema antud listina:  `.(kmi = _____, sirutus)` või `list(kmi = _____, sirutus)`.
+- Kolmandas ülesandes on vaja määrata kaks grupeerivat tunnust, kasuta ka siin listi.
+
+
+```{r solution6, eval = F, echo = F}
+# Ülesanne 1: aktiveeri pakett
+library(data.table)
+
+# Ülesanne 2: tee valik objektidest ja vali/arvuta tunnused
+tabel1 <- A[vanus > 50 & kaal > 80, .(kmi = kaal/(kasv/100)^2, sirutus )]
+tabel1
+
+# Ülesanne 3: tee valik objektidest ja vali/arvuta tunnused  tunnused gruppide kaupa
+tabel2 <-A[visiit == FALSE, .(kesk.vanus = mean(vanus), kesk.pikkus = mean(kasv)), by = .(sugu, elukoht)]
+tabel2
+
+```
+
+```{r testing6, eval = F, echo = F}
+#1
+test_function(name = "library", 
+              args = "package",
+              index = 1,
+              eval = FALSE,
+              eq_condition = "equivalent",
+              not_called_msg = "Esimeses ülesandes pead kasutama funktsiooni `library()`.",
+              args_not_specified_msg = "Käsule `library()` tuleb argumendiks anda paketi nimi.",
+              incorrect_msg =  "Käsu `library()` argumendiks anna paketi nimi  `data.table`")
+
+
+#2
+test_data_frame("tabel1", columns = c("kmi", "sirutus"),
+            undefined_msg = "Andmetabel `tabel1` on defineerimata.",
+            undefined_cols_msg = paste("Andmestikus `tabel1` on mingi veerg puudu, võibolla on veeru nimi vale. Või pole tabel data.table-tüüpi!"),
+            incorrect_msg = "Andmetabelis `tabel1` on mingi veeru väärtused/sisu valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks." )
+
+test_output_contains("tabel1", incorrect_msg = "Esimene tabel on ekraanile printimata.")
+
+
+test_or(
+test_student_typed(", .(",  not_typed_msg = "Kontrolli, kas kasutad ikka **data.table** tüüpi süntaksit."),
+test_student_typed(", list(",  not_typed_msg = "Kontrolli, kas kasutad ikka **data.table** tüüpi süntaksit.")
+)
+
+
+ 
+#2
+test_or(
+test_student_typed(", by = .(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina."),
+test_student_typed(", by = list(sugu, elukoht)",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed listina."),
+test_student_typed(", by = c('sugu', 'elukoht')",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeerivate tunnuste nimed, kasuta selleks listi.")
+)
+
+ 
+
+
+test_data_frame("tabel2", columns = c("sugu", "elukoht", "kesk.vanus", "kesk.pikkus"),
+            undefined_msg = "Andmetabel `tabel2` on defineerimata.",
+            undefined_cols_msg = paste("Andmestikus `tabel2` on mingi veerg puudu, võibolla on veeru nimi vale."),
+            incorrect_msg = "Andmetabelis `tabel2` on mingi veeru väärtused valed või on veeru nimi vale. Proovi uuesti. Kontrolli ka tingimust, mille sead uuritavate filtreerimiseks." )
+
+test_output_contains("tabel2", incorrect_msg = "Teine tabel on ekraanile printimata.")
+
+ 
+
+ 
+```
+
+
+# Pakett data.table - Tunnuse tüübi teisendus, sagedustabeli leidmine.
+
+Kui `DT` on *data.table* tüüpi andmetabel, siis paketi **data.table** põhisüntaksi kuju saab kirja panna järgnevalt
+```{r, eval = F}
+DT[i, j, by]
+```
+kus 
+
+- `i` määrab read/objektid, mida edasi kasutada
+- `j` määrab veerud, mis valitakse, uuendatakse või tekitatakse
+- `by` määrab vajadusel grupitunnuse `j` tehtavateks arvutustesse.
+
+
+Töölaual on andmestik `tekstid`, mis sisaldab tekstilõike ajalehe Postimees artiklitest. Kõigil lõikudel on ka emotsionaalne hinnang st kas lugejad on hinnanud lõigu negatiivseks, postiivseks, neutraalseks või vastuoluliseks(tunnus `hinnang`). Tekstilõigud on andmestikus tunnuse `tekst` nime all.
+
+Andmed on pärit: http://peeter.eki.ee:5000/valence/paragraphsquery/
+
+```{r eval = F}
+tekstid <- fread("http://kodu.ut.ee/~annes/R/tekstid.csv", nrow = 1000, encoding = "UTF-8", 
+               col.names = c("rubriik", "loigunr", "hinnang", "tekst"), select = c(1,3:5))
+tekstid <- tekstid[loigunr != "None", ] # Eemaldame read, kus 'loigunr' puudub.
+```
+
+## Ülesanded
+
+- **Ülesanne 1** Kontrolli, kas andmestik on *data.table* tüüpi, kasutades funktsiooni `is.data.table()`. 
+- **Ülesanne 2** Kasutades  **data.table** süntaksit, teisenda tunnus `loigunr`, mis on esialgu tüüpi `character`, arvuliseks, täpsemalt täisarvuks. Ära tekita uut tabelit, tee muudatus andmestiku `tekstid` sees.
+- **Ülesanne 3** Kasutades **data.table** süntaksit, vali andmestikust `tekstid` need read, kus tegu on lõiguga, mille number on suurem kui 2 ja lõik algab tähega *A* (suurtäht), leia mitu sellist lõiku on igas lugejahinnangu `hinnang` grupis.  Omista tulemus muutujale `valik`. 
+
+
+```{r eval = F}
+# Ülesanne 1: kontrolli, kas andmestik on data.table-tüüpi
+_______________________
+
+# Ülesanne 2: tee tüübiteisendus
+tekstid[_________]
+
+
+# Ülesanne 3: vali read ja leia sagedused (ära pane veergudele uusi nimesid)
+valik <- tekstid[___________]
+
+```
+
+
+**Vihjed**
+
+- Lõigu numbri tüübi teisendamisel pead tegema teisenduse andmestiku sees, st kasutama `:=` operaatorit kujul.
+- Kolmandas ülesandes võib kasutada funktsiooni `startsWith()`.
+
+
+```{r solution7, eval = F, echo = F}
+# Ülesanne 1: kontrolli, kas andmestik on data.table-tüüpi
+is.data.table(tekstid)
+
+# Ülesanne 2: tee tunnuse tüübiteisendus
+tekstid[, loigunr := as.integer(loigunr)]
+
+
+# Ülesanne 3: vali read ja leia sagedused (ära pane veergudele uusi nimesid)
+valik <- tekstid[loigunr > 2 & startsWith(tekst, "A"), .N, by = hinnang]
+valik
+
+```
+
+```{r testing7, eval = F, echo = F}
+#1
+test_function("is.data.table",
+              args = "x", index = 1,
+              eval = TRUE,
+              eq_condition = "equivalent",
+              not_called_msg = "Esimeses ülesandes kasuta funktsiooni `is.data.table()`.",
+              args_not_specified_msg = "Funktsiooni `is.data.table()` argumendiks läheb andmestik.",
+              incorrect_msg = "Funktsiooni `is.data.table()` argumendiks on vale andmestik.")
+
+#2
+test_function("as.integer",
+              args = "x", index = 1,
+              eval = FALSE,
+              eq_condition = "equivalent",
+              not_called_msg = "Teises ülesandes kasuta funktsiooni `as.integer()`.",
+              args_not_specified_msg = "Funktsiooni `as.integer()` argumendiks läheb teisendatava tunnuse nimi.",
+              incorrect_msg = "Funktsiooni `as.integer()` argumendiks on vale tunnus.")
+
+
+
+test_student_typed("loigunr := " , not_typed_msg = "Kontrolli, kas teed teisenduse olemasoleva andmestiku sees st kas kasutad operaatorit `:=`")
+test_student_typed(", loigunr ",  not_typed_msg = "Kontrolli, kas panid teisenduse kirja `j`-pesasse.")
+
+
+test_data_frame("tekstid",
+                columns = "loigunr",
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `tekstid` on kadunud! Alusta uuesti.",
+                undefined_cols_msg = "Veerg tekstilõigu numbriga on andmestikust kadunud.",
+                incorrect_msg = "Veeru `loigunr` väärtus on vale.")
+
+
+# 3
+
+test_student_typed(", by = hinnang",  not_typed_msg = "Kontrolli, kas panid  `by`-pesasse kirja grupeeriva tunnuse nime. Jutumärke selle tunnuse nime ümber pole vaja!")
+
+
+
+test_student_typed(".N, ", not_typed_msg = "Sageduse leidmiseks kirjuta `j`-pesasse: `.N` Ära praegu nimeta arvutatavat veergu ümber! ")
+
+
+
+
+test_data_frame("valik",
+                columns = c( "hinnang", "N"),
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestikku `valik` pole! Alusta uuesti.",
+                undefined_cols_msg = "Andmestikus `valik` pole kõiki veerge mis vaja.",
+                incorrect_msg = "Andmestikus `valik` on mingid väärtused valed.")
+
+
+
+                
+                
+success_msg("Väga tubli! Viimane ülesanne sai tehtud!")               
+ 
+
+
+```
+
+
+# Töö tekstiga -  Teksti esinemise kontroll
+
+Kasuta eelmise ülesande andmestikku `tekstid`, mis sisaldab tekstilõike ajalehe Postimees artiklitest. Tekstilõigud on andmestikus tunnuse `tekst` nime all.
+
+
+## Ülesanded
+
+- **Ülesanne 1** Kasutades paketi `stringr` sobivat käsku tuvasta, millistes tekstilõikudes esineb string 'Eesti' või 'eesti'. Tulemuseks peaks olema tõevektor (`TRUE` kui otsitav väärtus on tekstis), omista see muutujale `esineb`. Väike/suurtähe võimaluse otsitavas tekstis saab kirja panna järgnevalt `[Ss]uurtäht`.
+- **Ülesanne 2** Kasutades eelmises ülesandes tekitatud tunnust leia käsuga `table` sagedustabel, kus oleks näha tekstilõigu emotsionaalsete hinnangute kaupa ülalvaadatud stringi esinemissagedused.
+Määra emotsiooni tunnus sagedustabelis reatunnuseks. Tekkiv sagedustabel omista muutujale `sagedustabel`, prindi see ekraanile.
+- **Ülesanne 3** Kasutades eelnevalt tekitatud sagedustabeli-objekti leia tekstilõikude hinnangute jaotus mõlemas tekstilõikude grupis (st nii nende lõikude osas, kus stringi ei esinenud, kui selles grupis, kus esines). Omista saadud tabel muutujale `tinglikjaotus`, prindi see ekraanile.
+
+```{r eval = F}
+library(stringr)
+
+# vaata andmestikku
+str(tekstid)
+
+
+# Ülesanne 1: tuvasta stringi esinemine
+esineb <- _______________________
+
+# Ülesanne 2: sagedustabeli leidmine
+sagedustabel <- table(______________)
+sagedustabel
+
+# Ülesanne 3: osakaalude leidmine
+tinglikjaotus <- __________________
+tinglikjaotus
+
+```
+
+
+**Vihjed**
+
+- Esimeses ülesandes kasuta funktsiooni `str_detect` või  `str_count`, kus määra `pattern` argumendi õige väärtus. Käsk `str_count` annab tulemuseks esinemiste arvu, seega nõutud tõeväärtustega vektori saamiseks peab veel kontrollima, kas tulemused on üle nulli.
+- Kolmandas ülesandes kasuta käsku `prop.table`, määrama peab ka selle, kas jaotus leida kogu tabeli summa või rea/veerusummade suhtes.
+
+
+```{r solution8, eval = F, echo = F}
+# vaata andmestikku
+str(tekstid)
+
+
+# Ülesanne 1: tuvasta stringi esinemine
+esineb <- str_detect(tekstid$tekst, pattern = "[Ee]esti")
+# või ka
+esineb.alt <- str_count(tekstid$tekst, pattern = "[Ee]esti") > 0 
+
+# Ülesanne 2: sagedustabeli leidmine
+sagedustabel <- table(tekstid$hinnang, esineb)
+sagedustabel
+
+# Ülesanne 3: osakaalude leidmine
+tinglikjaotus <- prop.table(sagedustabel, 2)
+tinglikjaotus
+```
+
+```{r testing8, eval = F, echo = F}
+#test_predefined_objects(tekstid, 
+#                        eq_condition = "equivalent",
+#                        eval = TRUE,
+#                        undefined_msg = "Ära kustuta antud andmestikku!", 
+#                        incorrect_msg = "Ära muuda antud andmestikku!")
+
+
+#test_data_frame(tekstid,
+#                columns = "tekst",
+#                eq_condition = "equivalent",
+#                undefined_msg = NULL,
+#                undefined_cols_msg = "Kas kustutasid tekstilõigud andmestikust?",
+#                incorrect_msg = "Oled tekstilõike muutnud. Alusta uuesti!")
+
+
+
+#------------
+
+# 1
+test_or(
+test_function(name = "str_detect",
+              args = c("string", "pattern"),
+              index = 1,
+             eq_condition = "equivalent",
+             not_called_msg = "Esimeses ülesandes saab kasutada funktsiooni `str_detect`.",
+             args_not_specified_msg = paste("Käsus `str_detect` on vaja ", 
+             c("esimeseks argumendiks panna tekstilõikude vektor", 
+             "teiseks argumendiks panna otsitav string")),
+             incorrect_msg = paste("Käsus `str_detect` on praegu ", 
+             c("esimene argument  vale.",
+             "teine argument   vale, määra otsitavaks stringiks `[E|e]esti`."))), 
+test_function(name = "str_count",
+              args = c("string", "pattern"),
+              index = 1,
+             eq_condition = "equivalent",
+             not_called_msg = "Esimeses ülesandes saab kasutada funktsiooni `str_count`.",
+             args_not_specified_msg = paste("Käsus `str_count` on vaja ", 
+             c("esimeseks argumendiks panna tekstilõikude vektor", 
+             "teiseks argumendiks panna otsitav string")),
+             incorrect_msg = paste("Käsus `str_count` on praegu ", 
+             c("esimene argument  vale.",
+             "teine argument   vale, määra otsitavaks stringiks `[Ee]esti`.")))
+)
+
+
+test_object("esineb", 
+            undefined_msg = "Muutuja  `esineb` on defineerimata.",
+            incorrect_msg = "Muutuja  `esineb` väärtus ei ole korrektne. Proovi uuesti." )
+
+
+
+# 2
+test_function(name = "table", 
+                args = NULL,
+              index = 1,
+             eq_condition = "equivalent",
+             not_called_msg = "Teises ülesandes pead kasutama funktsiooni `table`.",
+             args_not_specified_msg = NULL,
+             incorrect_msg = "Funktsioonile `table` on antud valed argumendid.")
+
+
+test_object("sagedustabel", 
+            undefined_msg = "Tabeli  `sagedustabel` on defineerimata.",
+            incorrect_msg = "Tabeli  `sagedustabel` väärtus ei ole korrektne. Proovi uuesti." )
+
+
+test_output_contains("sagedustabel",
+                     times = 1,
+                     incorrect_msg = "Prindi sagredustabel ekraanile!")
+
+# 3
+test_function(name = "prop.table", 
+            args = c("x", "margin"),
+            index = 1,
+             eq_condition = "equivalent",
+             not_called_msg = "Kolmandas ülesandes pead kasutama funktsiooni `prop.table`.",
+             args_not_specified_msg = paste("Käsu `prop.table` ", c("esimeseks argumendiks pane sageustabel", "teiseks argumendiks määra kas jaotus leitakse rea või veerusumma suhtes.") ),
+             incorrect_msg = paste("Oled käsus `prop.table` ", c("argumendiks andmed vale sagedustabeli", " teise argumendi väärtuse valesti määranud, vaja on `margin = 2`.")))
+
+
+test_object("tinglikjaotus", 
+            undefined_msg = "Tabeli `tinglikjaotus` on defineerimata.",
+            incorrect_msg = "Tabeli `tinglikjaotus` väärtus ei ole korrektne. Proovi uuesti." )
+
+
+test_output_contains("tinglikjaotus",
+                     times = 1,
+                     incorrect_msg = "Tingik jaotus on ekraanile väljastamata.")
+
+
+
+success_msg("Hästi!")
+
+
+
+
+```
+
+
+
+# Töö kuupäevadega -  Date-tüüpi muutuja loomine
+
+Loe töölauale andmestik `apelsinid` (andmestik mis tuleb vaikimisi kaasa paketiga `nlme`).
+
+```{r eval = F}
+library(nlme)
+apelsinid <- as.data.frame(Orange)
+
+```
+
+Mõõdetud on apelsinipuude tüve ümbermõõtu (`circumference`). Iga puud on mõõdetud korduvalt, mõõtmise aeg on veerus `age`, mis näitab puu vanust päevades mõõtmishetkel. Puu vanust hakati lugema alates katse algusest, mis oli 1968 aasta 31. detsember. Kõiki puid mõõdeti samadel päevadel.
+
+
+
+
+## Ülesanded
+
+- **Ülesanne 1** Lisa andmestikku uus tunnus nimega `kuupaev`, mis näitaks mõõtmiste kuupäevi kujul "YYYY-MM-DD".
+- **Ülesanne 2** Vali kuupäeva veerust unikaalsed väärtused ja omista muutujale `ajad`. Veendu, et need on kasvavas järjekorras.
+- **Ülesanne 3** Kasutades funktsiooni `difftime` ja eelmises sammus tehtud muutujat `ajad`, leia mõõtmistevahelised ajad nädalates. Tutvu ka funktsiooni `difftime` abifailiga. Arvutuste tulemus omista muutujale `nadalad`.
+
+```{r eval = F}
+# Vaata andmestikku
+head(apelsinid)
+
+
+# Ülesanne 1: Lisa kuupäeva tunnus andmestikku
+apelsinid$kuupaev <- _______________________
+
+
+# Ülesanne 2: Moodusta unikaalsete väärtuste vektor
+ajad <- ______(apelsinid$kuupaev)
+
+
+# Ülesanne 3: Kui pikk on mõõtmistevaheline aeg nädalates?
+nadalad <- difftime(___________)
+nadalad
+
+```
+
+
+**Vihjed**
+
+- Kuupäevad saad luua `as.Date` funtksiooniga, määrama peab ka `origin` argumendi - see on kuupäev milest alates päevi hakati loendama.
+- Käsus `difftime` on kaks esimest argumenti ajavektorid. Mõtle kuidas saad ette anda vektori ajad ühe realises nihkes. Käsus `difftime` on vaja kasutada argumenti `units`!
+
+
+```{r solution9, eval = F, echo = F}
+# Vaata andmestikku
+head(apelsinid)
+
+# Ülesanne 1: Lisa kuupäeva tunnus andmestikku
+apelsinid$kuupaev <- as.Date(apelsinid$age, origin = "1968-12-31")
+
+
+# Ülesanne 2: Moodusta unikaalsete väärtuste vektor
+ajad <- unique(apelsinid$kuupaev)
+
+
+# Ülesanne 3: Kui pikk on mõõtmistevaheline aeg nädalates?
+nadalad <- difftime(ajad[-1], ajad[-length(ajad)], units = "weeks")
+nadalad
+
+```
+
+```{r testing9, eval = F, echo = F}
+#1
+test_function(name = "as.Date", 
+              args = c("x", "origin"),
+              index = 1,
+              eq_condition = "equivalent",
+              not_called_msg = "Esimeses ülesandes saad kasutada funktsiooni `as.Date`.",
+              args_not_specified_msg = c("Määra `as.Date` esimeseks argumendiks vektor `age`", "Pead `as.Date` funktsiooni lisama `origin` arguemndi."),
+              incorrect_msg =  c("Oled `as.Date` esimeseks argumendiks vale tunnuse andnud", "Oled `as.Date`  käsus vale `origin` argumendi väärtuse määranud."))
+              
+test_data_frame("apelsinid", columns = "kuupaev",
+            undefined_msg = "Andmetabel `apelsinid` on kustutatud!!.",
+            undefined_cols_msg = "Andmestikus `apelsinid` pole veergu nimega `kuupaev`.",
+            incorrect_msg = "Andmetabeli `apelsinid`  veeru `kuupaev` väärtused ei ole korrektsed. Proovi uuesti." )
+
+
+test_object("ajad", 
+            undefined_msg = "Muutuja  `ajad` on defineerimata.",
+            incorrect_msg = "Muutuja  `ajad` väärtus ei ole korrektne. Proovi uuesti. " )
+
+
+
+
+
+test_function(name = "difftime", 
+              args = c("time1", "time2", "units"),
+              index = 1,
+              eq_condition = "equivalent",
+              not_called_msg = "Viimases ülesandes kasuta  funktsiooni `difftime`.",
+              args_not_specified_msg = c("Käsus `difftime` peab esimene argument olema ajavektor.","Käsus `difftime` peab teine argument ka olema ajavektor.",  
+              "Määra `difftime` käsus argumendi `units` väärtus."),
+              incorrect_msg =  c("Käsus `difftime` on esimesel kohal olev ajavektor vale.", "Käsus `difftime` on teisel kohal olev ajavektor vale.", "Oled `difftime` käsus argumendi `units` väärtuse valesti määranud."))
+              
+
+test_object("nadalad", 
+            undefined_msg = "Muutuja `nadalad` on defineerimata.",
+            incorrect_msg = "Muutuja `nadalad` väärtus ei ole korrektne. Proovi uuesti. " )
+
+
+test_output_contains("nadalad",
+                     times = 1,
+                     incorrect_msg = "Muutuja `nadalad` väärtus on ekraanile printimata.")
+
+#
+success_msg("Hästi!")
+
+
+
+```
+
+
+# Töö kuupäevadega -  Kuupäevade võrdlemine
+
+Loe töölauale andmestik `haigla`, mille saad alla laadida ÕISist. See sisaldab infot patsientide haiglasse saabumise(`haiglasse.kp`) ja lahkumise(`haiglast.kp`) kuupäevade kohta.
+
+```{r eval = F}
+# file.choose() avab akna, kus saab faili valida.
+haigla <- read.csv2(file.choose(), colClasses = c("integer", "Date", "Date"))
+```
+
+
+## Ülesanded
+
+- **Ülesanne 1** Kontrolli, kas andmestikus on vigaseid vaatlusi: ridu, kus patsient on haiglast lahkunud enne haiglasse saabumise kuupäeva. Vali selliste vaatluste read andmestikust ja omista muutujale `vead1`. Prindi tulemus ekraanile. 
+- **Ülesanne 2** Kontrolli, kas andmestikus on patsiente, kelle kohta pole teada nende haiglast lahkumise kuupäev. Vali selliste vaatluste read andmestikust ja omista muutujale `vead2`. Prindi tulemus ekraanile.
+
+```{r eval = F}
+# vaata andmestikku
+str(andmed)
+
+
+# Ülesanne 1: leia enne haiglasse tulekut lahkunud isikud
+vead1 <- _________________________________
+vead1
+
+
+
+# Ülesanne 2: leia need, kelle haiglast lahkumise kuupäev pole teada
+vead2 <- _________________________________
+vead2
+
+
+```
+
+**Vihjed**
+
+- Alamandestiku moodustamiseks võib kasutada käsku `subset` või konstruktsiooni `andmed[tingimus,]`. 
+- Arvesta, et `NA` väärtus võrdluses annab väärtuse `NA`.
+
+
+```{r solution10, eval = F, echo = F}
+# vaata andmestikku
+str(andmed)
+
+
+# Ülesanne 1: leia enne haiglasse tulekut lahkunud isikud
+vead1 <- subset(andmed, andmed$haiglast.kp < andmed$haiglasse.kp)
+vead1
+
+
+
+# Ülesanne 2: leia need, kelle haiglast lahkumise kuupäev pole teada
+vead2 <- subset(andmed, is.na(andmed$haiglast.kp))
+vead2
+```
+
+```{r testing10, eval = F, echo = F}
+test_predefined_objects("andmed", 
+                        eq_condition = "equivalent",
+                        eval = TRUE,
+                        undefined_msg = "Ära kustuta antud andmestikku!", 
+                        incorrect_msg = "Ära muuda andmtud andmestikku!")
+
+#-------------------
+
+#1
+test_object("vead1", 
+            undefined_msg = "Andmestik  `vead1` on defineerimata.",
+            incorrect_msg = "Andmestik  `vead1` väärtus ei ole korrektne. Proovi uuesti. Alamandmestiku valikuks kasuta näiteks käsku `subset`." )
+
+
+test_output_contains("vead1",
+                     times = 1,
+                     incorrect_msg = "Andmestik `vead1`  on ekraanile printimata.")
+
+
+
+#2
+test_object("vead2", 
+            undefined_msg = "Andmestik  `vead2` on defineerimata.",
+            incorrect_msg = "Andmestik  `vead2` väärtus ei ole korrektne. Proovi uuesti. Puuduvate väärtuse kontrolliks saad kasutada käsku `is.na`." )
+
+
+test_output_contains("vead2",
+                     times = 1,
+                     incorrect_msg = "Andmestik `vead2`  on ekraanile printimata.")
+
+
+
+#
+success_msg("Super! Viimane ülesanne sai tehtud. Kiida ennast!")
+
+
+```
+
+
