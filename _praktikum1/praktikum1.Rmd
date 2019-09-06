@@ -3,6 +3,7 @@ title: 'Rakendustarkvara: R. Kevad 2018, 1. praktikum^[Praktikumijuhendid põhin
 output: 
   html_document:
     theme: null
+    number_sections: true
 ---
 
  

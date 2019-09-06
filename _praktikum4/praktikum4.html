@@ -49,10 +49,10 @@ if (window.hljs) {
 
 <!-- eelmise aasta praksid 5   -->
 <div id="toimingud-andmestikuga-jatk" class="section level1">
-<h1>Toimingud andmestikuga – jätk</h1>
+<h1><span class="header-section-number">1</span> Toimingud andmestikuga – jätk</h1>
 <!-- # Veel toimingud andmestikuga-->
 <div id="andmestike-taiendamine-ja-uhendamine" class="section level2">
-<h2>Andmestike täiendamine ja ühendamine</h2>
+<h2><span class="header-section-number">1.1</span> Andmestike täiendamine ja ühendamine</h2>
 <p>Oleme tutvunud, kuidas andmestikust saab eraldada alamhulki (nt ridu või veerge, mis vastavad teatud kriteeriumitele). Ühekaupa saab uusi veerge <code>data.frame</code>-tüüpi objektile lisada nii dollarimärgi kui kantsulgude abil, kui anname ette uue veeru nime.</p>
 <p>Vaatame siin näiteandmestikuna andmestikku <code>mk</code> (<em>maakonnad.txt</em>), mis sisaldab infot USA 5 osariigi mõnede maakondade kohta (425 maakonda). Loeme andmed sisse <!--ja lisame tunnuse, mis näitab, kas maakonna sündimuskordaja väärtus ületab 2.1 piiri:--></p>
 <pre class="r"><code>mk &lt;- read.table(&quot;http://kodu.ut.ee/~annes/Rkursus/maakonnad.txt&quot;, sep = &quot; &quot;, header = TRUE)</code></pre>
@@ -99,7 +99,7 @@ tulemused &lt;- data.frame(nimi = c(&quot;Mari&quot;, &quot;Peeter&quot;, &quot;
 ## 5  Tiina    N    25    18.4   jooks2
 ## 6 Toomas &lt;NA&gt;    NA    20.4   jooks2</code></pre>
 <div id="ulesanded" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Kuidas peaks <code>merge</code> käsu kirja panema, kui <code>isikud</code> ja <code>tulemused</code> andmestikes on võtmetunnusel erinev nimi?</li>
 <li>Proovi, mis muutub <code>merge</code> käsu tulemuses, kui kasutada <code>all = TRUE</code> argumendi asemel <code>all.x = TRUE</code> või <code>all.y = TRUE</code>.</li>
@@ -107,7 +107,7 @@ tulemused &lt;- data.frame(nimi = c(&quot;Mari&quot;, &quot;Peeter&quot;, &quot;
 </div>
 </div>
 <div id="sorteerimine" class="section level2">
-<h2>Sorteerimine</h2>
+<h2><span class="header-section-number">1.2</span> Sorteerimine</h2>
 <p>Väga sageli soovime, et andmestiku read oleks mingi tunnuse (nt inimese vanuse) alusel sorteeritud. Sorteeri-miseks on R-is kaks olulist käsku:</p>
 <ul>
 <li><code>order(.)</code> tagastab etteantud vektori elementide järjekorranumbrid sellises järjekorras, et saaksime järjestatud vektori, mh argumendiga <code>decreasing</code> saab määrata, kas see on kahanev või kasvav;</li>
@@ -130,7 +130,7 @@ kokku[order(kokku$vanus, kokku$tulemus, decreasing = TRUE), ] </code></pre>
 ## 1  Laine    N    20      NA     &lt;NA&gt;
 ## 6 Toomas &lt;NA&gt;    NA    20.4   jooks2</code></pre>
 <div id="ulesanded-1" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.2.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Loe sisse kaks andmestikku ja tutvu nendega (dimensioon, tunnused):<br />
 <code>link &lt;- &quot;http://kodu.ut.ee/~annes/Rkursus/&quot;</code><br />
@@ -149,7 +149,7 @@ kokku[order(kokku$vanus, kokku$tulemus, decreasing = TRUE), ] </code></pre>
 </div>
 </div>
 <div id="unikaalsed-ja-mitmekordsed-elemendid.-hulgatehted." class="section level2">
-<h2>Unikaalsed ja mitmekordsed elemendid. Hulgatehted.</h2>
+<h2><span class="header-section-number">1.3</span> Unikaalsed ja mitmekordsed elemendid. Hulgatehted.</h2>
 <p>Mõnikord on üks objekt andmestikus mitu korda, ent me soovime seda ainult ühel korral analüüsi kaasata. Etteantud vektorist saab unikaalsed elemendid kätte käsuga <code>unique(.)</code>. Käsuga <code>duplicated(.)</code> saab teada, kas ette antud vektoris/andmetabelis on element esimest või juba mitmendat korda (tulemuseks on tõeväärtusvektor, kus <code>TRUE</code> tähendab seda, et antud väärtus on juba mitmendat korda).</p>
 <pre class="r"><code># vaatame andmestikku 'kokku', andmestike ühendamise alapunktist
 kokku$nimi</code></pre>
@@ -169,7 +169,7 @@ union(x, y)
 intersect(x, y)
 setdiff(x, y)</code></pre>
 <div id="ulesanded-2" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.3.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li><p>Kontrolli kas alapunktis <strong>1.1</strong> tekitatud andmestikus <code>mktopelt</code> on dubleeritud andmeid. Mitu objekti on korduvad? Kas mõni maakond on rohkem kui 2 korda korratud? Kui jah, siis millised?</p></li>
 <li><p>Vaata visiitide ja isikukoodide ühendatud andmestikku. Kas arsti mitte külastanud isikute osakaal (protsentuaalselt) on suurem meeste või naiste hulgas?</p></li>
@@ -178,9 +178,9 @@ setdiff(x, y)</code></pre>
 </div>
 </div>
 <div id="andmestiku-teisendused" class="section level1">
-<h1>Andmestiku teisendused</h1>
+<h1><span class="header-section-number">2</span> Andmestiku teisendused</h1>
 <div id="pikk-ja-lai-andmetabel.-pakett-reshape2" class="section level2">
-<h2>Pikk ja lai andmetabel. Pakett reshape2</h2>
+<h2><span class="header-section-number">2.1</span> Pikk ja lai andmetabel. Pakett reshape2</h2>
 <p>Teise praktikumi materjali alguses näiteks toodud traditsioonilist andmetabeli kuju ehk <span class="math inline">\(objekt \times\  tunnus\)</span>-maatriksit nimetatakse vahel ka nn <strong>laias formaadis andmestikuks</strong>, tabeli iga rida vastab ühele objektile, infoliiasus on viidud miinimumini. Näide laias formaadis andmestikust:</p>
 <pre><code>##   nimi kaal pikkus sugu pulss0m pulss10m pulss30m
 ## 1 Mari   68    170    2      70      130      150
@@ -256,7 +256,7 @@ vr &lt;- data.frame(nimi = c(&quot;Mari&quot;, &quot;Jaan&quot;, &quot;Jyri&quot
 ## 2 Jyri 135.0000
 ## 3 Mari 116.6667</code></pre>
 <div id="ulesanded-3" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">2.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Kasuta arstivisiitide ja isikute andmestiku ühte alamosa:<br />
 <code>link &lt;- &quot;http://kodu.ut.ee/~annes/Rkursus/&quot;</code><br />
@@ -274,7 +274,7 @@ Leia iga isiku keskmine vererõhk ja CRV.</li>
 </div>
 </div>
 <div id="veel-andmestruktuure" class="section level1">
-<h1>Veel andmestruktuure</h1>
+<h1><span class="header-section-number">3</span> Veel andmestruktuure</h1>
 <p>Oleme varem tutvunud sellega, mis tüüpi võivad olla üksikud andmeelemendid (<code>int</code>, <code>char</code>, <code>Factor</code> jm). Üksikuid elemente saab kokku panna üheks vektoriks näiteks käsuga <code>c(.)</code>, millega oleme samuti tuttavad. Samuti oleme tuttavad <code>data.frame</code>-tüüpi objektiga – see on R-is andmetabeli tüüp. Andmeid on aga võimalik R-is hoida ka teistsugustes struktuurides kui vektor või <code>data.frame</code>.</p>
 <p><strong>Maatriks</strong> on sisuliselt vektor, mille elemendid on paigutatud ridadesse ja veergudesse. Kuna tegemist on vektoriga, siis peavad kõik elemendid olema sama tüüpi. Maatriksit saab luua mitmel moel. Käsule <code>matrix(.)</code> tuleks ette anda vastav vektor ning see, mitmesse ritta ja veergu selle vektori elemendid paigutatakse. Olemasolevaid reavektoreid saab omavahel ühendada käsuga <code>rbind(.)</code>, veeruvektoreid käsuga <code>cbind(.)</code>.</p>
 <pre class="r"><code>(m &lt;- matrix(1:12, nrow = 3, byrow = F))</code></pre>
@@ -334,7 +334,7 @@ str(minulist)</code></pre>
 <pre class="r"><code>is.list(df)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <div id="ulesanded-4" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">3.0.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Tekita list:<br />
 <code>sõnad &lt;- list(</code><br />

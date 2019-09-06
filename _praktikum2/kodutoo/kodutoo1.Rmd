@@ -1,8 +1,9 @@
 ---
 title       : 'R kodutöö nr 1'
 description : 'Esimene teema - kalkulaator, omistamine'
-output:
-  pdf_document:
+output: 
+  html_document:
+    theme: null
     number_sections: true
 ---
 

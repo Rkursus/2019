@@ -48,7 +48,7 @@ if (window.hljs) {
 
 
 <div id="andmetootlus-paketiga-dplyr" class="section level1">
-<h1>Andmetöötlus paketiga dplyr</h1>
+<h1><span class="header-section-number">1</span> Andmetöötlus paketiga dplyr</h1>
 <p>Pakett <strong>dplyr</strong> mõeldud andmetabelite täienduste, tabelis olevate objektide või tunnuste alamhulkade valiku, grupeerimise ja sorteerimise teostamiseks. Samuti saab selle abil leida erinevaid andmeid agregeerivaid tabeleid, mis sobivad kirjeldava statistilise analüüsi läbiviimiseks. Paketi <strong>dplyr</strong> käskude juures võib välja tuua veel nende töö kiiruse suuremate andmestike korral. Põhjalik ülevaade selle paketi käskudest on paketi dokumentatsioonis<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. Põhifunktsioonid paketis on järgmised</p>
 <ul>
 <li><code>mutate()</code> – lisab andmestikku uusi tunnuseid, mis on leitud olemasolevate põhjal.</li>
@@ -60,7 +60,7 @@ if (window.hljs) {
 <p>Kõigi funktsioonide esimene argument on andmetabel, järgmised argumendid täpsustavad, mida andmestikuga teha tuues ära tunnuste nimed, mille kirjapanekuks siin käskudes jutumärke pole vaja kasutada. Kõik funktsioonid väljastavad tulemuseks omakorda andmetabeli. Kõiki funktsioone saab kombineerida käsuga <code>group_by()</code>, mis määrab toimingute tegemise gruppide kaupa.</p>
 <!-- Nagu näha, siis mitu funktsiooninime langeb kokku paketiga **plyr**. Seega pakette kasutades peaks neist korraga valima ühe. Või aktiveerida mõlemad paketid, siis kindlasti enne **plyr** pakett, seejärel **dplyr**. -->
 <div id="paketi-dplyr-kaskude-kasutamine" class="section level2">
-<h2>Paketi dplyr käskude kasutamine</h2>
+<h2><span class="header-section-number">1.1</span> Paketi dplyr käskude kasutamine</h2>
 <p>Loeme kõigepealt sisse näiteandmestiku: Massachusettsi valikuuring</p>
 <pre class="r"><code>mass &lt;- read.table(&quot;http://kodu.ut.ee/~annes/Rkursus/mass.txt&quot;, sep = &quot;\t&quot;, header = T)</code></pre>
 <p>Paketi installimine ja aktiveerimine:</p>
@@ -145,7 +145,7 @@ arrange(osa, SEX, desc(AGEP), WKHP)</code></pre>
 <p>Kui paneksime sama asja kirja “tavaliselt”, siis peaksime koodirida alustama nö tagantpoolt ettepoole ehk alustama viimasest operatsioonist, mida andmetele rakendada (<code>head</code>)</p>
 <pre class="r"><code>head(summarise(group_by(mass, SEX, MAR), keskpalk = mean(WAGP, na.rm = T), n = n()))</code></pre>
 <div id="ulesanded" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Leia inimeste vanuses 16 aastat kuni 85 (kaasaarvatud) aastat, keskmine ja maksimaalne nädala töötundide arv (WKHP), soo ja vanusgruppide (5-aastased vanusgrupid) kaupa. Esita tabelis ka gruppide mahud ja vaatluste arv, mida on keskväärtuse/maksimumi leidmisel kasutatud. Leia küsitud tabel kahte moodi, nii “toru” kasutades kui ilma.</li>
 <li><p>Tee eelmise ülesande andmete põhjal joondiagramm.</p></li>
@@ -155,7 +155,7 @@ arrange(osa, SEX, desc(AGEP), WKHP)</code></pre>
 </div>
 </div>
 <div id="pakett-data.table" class="section level1">
-<h1>Pakett data.table</h1>
+<h1><span class="header-section-number">2</span> Pakett data.table</h1>
 <p>Suurte andmete filtreerimiseks, teisendamiseks, agregeerimiseks ja grupeerimiseks sobib ka pakett <strong>data.table</strong><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.</p>
 <p>Paketi andmetabel ehk <em>data.table</em> on tavalise andmetabeli <em>data.frame</em>-i edasiarendus. Nagu tavalise andmetabeli korral on <em>data.table</em> tabelist võimalik objekte ja veerge valida kantsulgudes indekseid määrates. Lisavõimalus on see, et <em>data.table</em> tabelis saab sel moel uusi tunnuseid arvutada, tunnuseid jooksvalt uuendada ning andmeid grupitunnuse põhjal agregeerida.</p>
 <p>Kui <code>DT</code> on <em>data.table</em> tüüpi andmetabel, siis põhisüntaksi kuju saab kirja panna järgnevalt</p>
@@ -167,7 +167,7 @@ arrange(osa, SEX, desc(AGEP), WKHP)</code></pre>
 <li><code>by</code> määrab vajadusel grupitunnuse <code>j</code> tehtavateks arvutustesse.</li>
 </ul>
 <div id="naited-data.table-suntaksi-kasutamisest" class="section level2">
-<h2>Näited data.table süntaksi kasutamisest</h2>
+<h2><span class="header-section-number">2.1</span> Näited data.table süntaksi kasutamisest</h2>
 <p>Siinkohal mõned näiteid andmestikust objektide või veergude valimisest ja arvutuste kirjapanekust. Proovi need läbi ja uuri tulemust. Erinevalt tavalisest andmestikust ei ole <em>data.table</em> tabelites reanimesid, on ainult reanumbrid, seega rida nime järgi valida saa. Teiseks võib välja tuua, et tekstitunnused on neis tabelites vaikimisi <em>character</em> tüüpi, mitte <em>factor</em> tüüpi.</p>
 <pre class="r"><code>#install.packages(&quot;data.table&quot;)    # vajadusel installeerida
 library(data.table)  
@@ -225,7 +225,7 @@ DT[c(2, 4),  uus5 := a*10L][]
 DT[, uus5 := NULL][]  
 DT[, c(&quot;uus1&quot;, &quot;uus2&quot;) := NULL][] </code></pre>
 <div id="ulesanded-1" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">2.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Teisenda andmestik <code>mass</code> paketi <strong>data.table</strong> andmetüübiks käsuga <code>as.data.table(.)</code>.</li>
 <li>Kasutades <code>DT[i, j, by]</code> konstruktsiooni leia mitu meessoost üle 60 aastast on uuritavate hulgas.</li>

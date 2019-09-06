@@ -50,12 +50,12 @@ if (window.hljs) {
 <!-- 2017, 2018: ggplot2 näide välja võetus, sest see tuleb tagapool -->
 <p>=(Date())</p>
 <div id="toimingud-andmestikuga" class="section level1">
-<h1>Toimingud andmestikuga</h1>
+<h1><span class="header-section-number">1</span> Toimingud andmestikuga</h1>
 <p>Impordime uuesti andmestiku, mida korra kasutasime ka eelmises praktikumis (Massachusettsi andmestik), ja vaatame andmestikust ülevaadet</p>
 <pre class="r"><code>andmed &lt;- read.table(&quot;http://kodu.ut.ee/~annes/Rkursus/mass.txt&quot;, header = T, sep = &quot;\t&quot;)
 str(andmed)</code></pre>
 <div id="veergude-ja-ridade-eraldamine-andmestikust-indeksi-ja-nime-jargi" class="section level2">
-<h2>Veergude ja ridade eraldamine andmestikust: indeksi ja nime järgi</h2>
+<h2><span class="header-section-number">1.1</span> Veergude ja ridade eraldamine andmestikust: indeksi ja nime järgi</h2>
 <p>Kui tahame andmestikust ainult üht veergu uurida, siis kõige mugavam on kasutada dollari-sümbolit:</p>
 <pre class="r"><code>vanused &lt;- andmed$AGEP
 median(andmed$AGEP)
@@ -76,7 +76,7 @@ andmed[c(5, 3,  9), ]  # viies, kolmas ja üheksas rida</code></pre>
 head(andmed[, 5:9])  # vaatame milline on tulemus
 andmed[c(&quot;rida-23&quot;, &quot;rida-62&quot;), 5:9]  # eraldame read 23 ja 62  </code></pre>
 <div id="uue-tunnuse-lisamine" class="section level3">
-<h3>Uue tunnuse lisamine</h3>
+<h3><span class="header-section-number">1.1.1</span> Uue tunnuse lisamine</h3>
 <p>Uue tunnuse lisamiseks andmestikku tuleb valida tunnuse nimi, mida andmestikus veel ei esine, ja omistada uuele andmeveerule valitud väärtused. Lisame oma andmestikku näiteks keskmise kuusissetuleku veeru, mis on arvutatud olemasoleva 12 kuu sissetuleku tunnuse <code>WAGP</code> abil. Uus tunnus lisatakse viimaseks veeruks andmestikus:</p>
 <pre class="r"><code>andmed$kuusissetulek &lt;- andmed$WAGP/12
 # või
@@ -85,7 +85,7 @@ str(andmed)</code></pre>
 </div>
 </div>
 <div id="veergude-ja-ridade-eraldamine-andmestikust-toevaartusvektori-abil" class="section level2">
-<h2>Veergude ja ridade eraldamine andmestikust: tõeväärtusvektori abil</h2>
+<h2><span class="header-section-number">1.2</span> Veergude ja ridade eraldamine andmestikust: tõeväärtusvektori abil</h2>
 <p>Tõeväärtusvektoreid on väga mugav kasutada nn filtritena. Nimelt on <code>data.frame</code> puhul võimalik ridu (ja ka veerge!) eraldada mitte ainult indeksi või -nime järgi, vaid ka tõeväärtusvektori abil. Kui eraldada ridu, siis vastav tõeväärtusvektor peab olema sama pikk kui on andmestikus ridu ning väärtused selles vektoris näitavad, kas vastavat rida kasutada (<code>TRUE</code>) või mitte(<code>FALSE</code>). Tõeväärtusvektorite kombineerimisel saab andmestikust väga spetsiifilisi alamhulki eraldada.</p>
 <pre class="r"><code># eraldame kõik read, kus SEX == &quot;Male&quot; ning salvestame selle uueks objektiks
 mehed &lt;- andmed[andmed$SEX == &quot;Male&quot;, ]  
@@ -101,7 +101,7 @@ alamandmestik &lt;- andmed[filter_kod &amp; filter_vanus, ]   # Ära unusta: [re
 abielu &lt;- andmed[, onMAR]
 str(abielu)</code></pre>
 <div id="ulesanded-massachusettsi-andmestik" class="section level3">
-<h3>Ülesanded (Massachusettsi andmestik)</h3>
+<h3><span class="header-section-number">1.2.1</span> Ülesanded (Massachusettsi andmestik)</h3>
 <ol style="list-style-type: decimal">
 <li><p>Selekteeri andmestikust iga 5. rida ja salvesta see alamandmestik uue nimega <code>valik5</code>. Mitu vaatlust on selles andmestikus?</p></li>
 <li><p>Moodusta alamandmestik, kuhu kuuluvad uuritavad, kelle kohta pole teada, kas nad on viimase aasta jooksul elukohta vahetanud. Kes sellesse andmestikku kuuluvad?</p></li>
@@ -109,7 +109,7 @@ str(abielu)</code></pre>
 </div>
 </div>
 <div id="lihtsam-kirjeldav-statistika" class="section level2">
-<h2>Lihtsam kirjeldav statistika</h2>
+<h2><span class="header-section-number">1.3</span> Lihtsam kirjeldav statistika</h2>
 <p>Allpool on loetletud mõned käsud, mille abil mõnd konkreetset tunnust (veergu andmestikust) kirjeldada.</p>
 <ul>
 <li><code>min(tunnus)</code>, <code>max(tunnus)</code>, <code>median(tunnus)</code>, <code>mean(tunnus)</code>, <code>sd(tunnus)</code> – arvulise tunnuse karakteristikud</li>
@@ -132,7 +132,7 @@ sagedustabel / rowSums(sagedustabel)  #proovi, mis juhtub, kui kasutada /colSums
 prop.table(sagedustabel, margin = 1)  # iga rida kokku 1 (ehk 100%)
 prop.table(sagedustabel, margin = 2)  # iga veerg kokku 1 (ehk 100%)</code></pre>
 <div id="ulesanded-massachusettsi-andmestik-1" class="section level3">
-<h3>Ülesanded (Massachusettsi andmestik)</h3>
+<h3><span class="header-section-number">1.3.1</span> Ülesanded (Massachusettsi andmestik)</h3>
 <ol style="list-style-type: decimal">
 <li>Mitu protsenti vastajatest on mehed?</li>
 <li>Milline on palk, millest väiksemat palka saab 80% inimestest?</li>
@@ -145,7 +145,7 @@ prop.table(sagedustabel, margin = 2)  # iga veerg kokku 1 (ehk 100%)</code></pre
 </div>
 </div>
 <div id="faktortunnus" class="section level2">
-<h2>Faktortunnus</h2>
+<h2><span class="header-section-number">1.4</span> Faktortunnus</h2>
 <p><strong>Faktortunnus</strong> pole tegelikult nn elementaartüüp (nagu näiteks <code>integer</code>), vaid keerulisem konstruktsioon. Nimelt faktortunnus on sildistatud koodide tunnus. Kui andmestik R-i sisse loetakse, siis vaikimisi pannakse tähelisi väärtuseid sisaldavate tunnuste tüübiks <code>factor</code> (seda võib ka <code>read.table(.)</code> argumendiga <code>stringsAsFactors</code> keelata) ning iga erinev väärtus kodeeritakse mingi täisarvuga, aga lisaks tehakse kodeerimistabel, kus on kirjas iga täisarvu (kodeeringu) tekstiline väärtus (ehk silt).</p>
 <p>Et teada saada, mitu erinevat väärtust antud faktortunnusel võib üldse olla, kasutatakse käsku <code>levels(.)</code>. Sealjuures ei pruugi kõiki faktori väärtustasemeid antud andmetes üldse esineda:</p>
 <pre class="r"><code>levels(mehed$SEX)</code></pre>
@@ -175,7 +175,7 @@ table(palgad)</code></pre>
 ##     0-999 1000-4999   &gt;= 5000 
 ##      1903       296      3114</code></pre>
 <div id="ulesanded" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.4.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Tekita tunnus, kus oleks kirjas, millisesse vanusgruppi inimene kuulub: 0–17, 18–49, 50–64, 65 või vanem.</li>
 <li>Kas USA kodakonsust mitteomavate naiste ja meeste hulgas on vanusgrupid erinevalt jaotunud?</li>

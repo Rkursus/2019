@@ -3,6 +3,7 @@ title: 'Rakendustarkvara: R. Sügis 2018, 2. praktikum^[Praktikumijuhendid põhi
 output: 
   html_document:
     theme: null
+    number_sections: true
 ---
 
 

@@ -48,10 +48,10 @@ if (window.hljs) {
 
 
 <div id="programmeerimine-r-is" class="section level1">
-<h1>Programmeerimine R-is</h1>
+<h1><span class="header-section-number">1</span> Programmeerimine R-is</h1>
 <p>R on programmeerimiskeele S<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> implementatsioon; selles on olemas enamus teistest programmeerimiskeeltest tuttavaid konstruktsioone nagu tsüklid, <code>if-else</code> tingimuslaused ning võimalus kirjutada lisafunktsioone.</p>
 <div id="tsuklid" class="section level2">
-<h2>Tsüklid</h2>
+<h2><span class="header-section-number">1.1</span> Tsüklid</h2>
 <p>Tsükkel on programmikonstruktsioon, mis kordab teatud tegevust mitu korda järjest. See on kasulik näiteks siis, kui tahame vektori ükshaaval järjest üle vaadata ja vastavalt elemendi väärtusele midagi teha. R-is on võimalik kasutada kahte tüüpi tsükleid:</p>
 <ul>
 <li><code>for</code>-tsükkel teeb ettemääratud arvu samme. Tsükli defineerimisel antakse ette mingi vektor, mille elemente ükshaaval hakatakse läbi käima. Enamasti koosneb see vektor järjestikustest täisarvudest, näiteks täisarvudest 1:10, kuid võib olla ka tekstiväärtustega.</li>
@@ -72,7 +72,7 @@ while(a &lt; 10) {
   a &lt;- a + 1  # kui seda rida poleks, jääks tsükkel lõpmatult korduma
 }</code></pre>
 <div id="ulesanded" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Loe sisse Massachusetts’i andmestik:<code>mass &lt;- read.table(&quot;http://kodu.ut.ee/~annes/Rkursus/mass.txt&quot;, sep = &quot;\t&quot;, header = TRUE)</code> Kasutades tsüklit leia tabel, kus oleks üle 15 aastaste korral arvutatud ametialade (<code>OCCP</code>) kaupa keskmine ja summaarne nädala töötundide (<code>WKHP</code>) arv. Vaata ainult neid, kel on ametiala teada ja kes pole <code>OCCP</code> järgi töötud.</li>
 <li>Tee sama tabel <strong>dplyr</strong> ja <strong>data.table</strong> paketide käske kasutades; võrdle kulunud aega kasutades käsku <code>system.time({.})</code>. <!--1. Tee sama **plyr**,  **dplyr**  ja  **data.table** teegi käske kasutades; võrdle kulunud aega kasutades käsku `Sys.time(.)` või `system.time({.})`.--></li>
@@ -80,7 +80,7 @@ while(a &lt; 10) {
 </div>
 </div>
 <div id="tingimuslause-if" class="section level2">
-<h2>Tingimuslause <code>if</code></h2>
+<h2><span class="header-section-number">1.2</span> Tingimuslause <code>if</code></h2>
 <p>Nagu praktiliselt kõigis programmeerimiskeeltes, on ka R-is tingimuslause <code>if</code>, millega saab kontrollida erinevate loogiliste tingimuste kehtimist ja vastavalt sellele, kas tulemus on TRUE või FALSE, rakendada erinevaid tegevusi. <code>if</code>-ploki sisu täidetakse juhul, kui tingimuse väärtus on <code>TRUE</code>; võib defineerida ka <code>else</code>-ploki, mis täidetakse siis, kui <code>if</code>-tingimuse väärtus on <code>FALSE</code>.</p>
 <pre class="r"><code>if (väärtus %% 2 == 0) {
   print(väärtus)
@@ -103,14 +103,14 @@ while(a &lt; 10) {
 <p>Kasulikud on ka <code>ifelse(.)</code> ja <code>switch(.)</code> käsud. Käsu <code>ifelse(.)</code> esimene argument on tõeväärtusvektor, teine argument tulemus, mis vastab tõesele väärtusele, ja kolmas, mis vastab väärale väärtusele. Käsu <code>switch(.)</code> esimene argument on tavaliselt täisarv (ainult üks täisarv!) ning ülejäänud argumendid erinevatele täisarvudele vastavad toimingud (kasvavas järjekorras).</p>
 <pre class="r"><code>table(ifelse(is.na(mass$WAGP), &quot;palgatu&quot;, &quot;palgaga&quot;)  )</code></pre>
 <div id="ulesanne" class="section level3">
-<h3>Ülesanne</h3>
+<h3><span class="header-section-number">1.2.1</span> Ülesanne</h3>
 <ol style="list-style-type: decimal">
 <li>Loe sisse arstivisiitide andmestik: <code>visiidid &lt;- read.table(&quot;http://kodu.ut.ee/~annes/Rkursus/visiidid.txt&quot;, sep = &quot;\t&quot;, header = TRUE)</code><code>for</code>-tsüklit kasutades käi läbi kõik inimesed ning trüki ekraanile nende inimeste isikukoodid, kellel esimese ja viimase vererõhu mõõtmise vahe on &gt; 5.</li>
 </ol>
 </div>
 </div>
 <div id="funktsioonide-defineerimine" class="section level2">
-<h2>Funktsioonide defineerimine</h2>
+<h2><span class="header-section-number">1.3</span> Funktsioonide defineerimine</h2>
 <p>Uusi käske ehk <strong>funktsioone</strong> saab R-is tekitada funktsiooni <code>function(.){.}</code> abil. Funktsiooni <strong>päises</strong> on võimalik defineerida ja vaikeväärtustada argumendid, mida see funktsioon töö jaoks vajab. Argumendina võib defineerida/kasutada mistahes objekti, k.a mingit muud funktsiooni. Loogeliste sulgude vahel paiknevas funktsiooni <strong>kehas</strong> tuleb kirjeldada, mida teha nende argumentidega, mis funktsiooni päises on defineeritud. Hea tava on see, et funktsioon toimetab ainult nende objektidega, mis päises on defineeritud, ega muuda funktsiooniväliseid objekte.</p>
 <pre class="r"><code>minukäsk &lt;- function(argument1, argument2 = &quot;tere&quot;, argument3 = mean, ...) {
   # funktsiooni sisu
@@ -122,7 +122,7 @@ while(a &lt; 10) {
 <pre class="r"><code>minukäsk(argument1 = 1:6, argument3 = mean, na.rm = T) # argument na.rm saadetakse käsule mean
 minukäsk(1:6, , min)</code></pre>
 <div id="ulesanded-1" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.3.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Kirjutada funktsioon, mis teisendab etteantud vektori väärtused Z-skoorideks (igast väärtusest lahutatakse vektori keskmine ja jagatakse standardhälbega).</li>
 <li>Defineeri uus funktsioon, mida saaks kasutada paketi <strong>dplyr</strong> käsus <code>summarise(.)</code> selleks, et leida arstivisiitide andmestikus iga inimese puhul, kui sageli (mitu korda aastas) külastab ta keskmiselt arsti. Andmestikus on genereeritud andmeid vahemikus 2004 kuni 2014, aga arvuta nõutud keskmine igal inimesel selles ajavahemikus milles on tal selles andmestikus andmed. Selleks on vaja defineerida funktsioon, mis etteantud <code>data.frame</code>-tüüpi objekti puhul leiab esimese ja viimase visiidi kuupäeva, leiab mitu aastat jääb nende kuupäevade vahele, loendab visiitide arvu ja leiab nende kahe arvu jagatise.</li>
@@ -133,7 +133,7 @@ minukäsk(1:6, , min)</code></pre>
 </div>
 </div>
 <div id="juhuarvud.-simuleerimine" class="section level1">
-<h1>Juhuarvud. Simuleerimine</h1>
+<h1><span class="header-section-number">2</span> Juhuarvud. Simuleerimine</h1>
 <p>Statistikas tuleb ette olukordi, kus kõige lihtsam viis mingi väite kontrollimiseks on vastavat situatsiooni simuleerida. R-is on palju juhuarvude genereerimise käske kujul <code>rJAOTUS(.)</code>, teoreetiliste jaotuste kvantiilide leidmiseks on käsud kujul <code>qJAOTUS(.)</code>; tihedus- ja jaotusfunktsiooni väärtuste teadasaamiseks on vastavad käsud <code>dJAOTUS(.)</code> ja <code>pJAOTUS(.)</code>. Et simulatsioonid oleks korratavad (st iga kord koodi läbi jooksutades tuleks sama tulemus), võiks ette anda pseudojuhuarvude generaatori algväärtuse käsuga <code>set.seed(algväärtus)</code>. Näited ühtlase jaotusega:</p>
 <pre class="r"><code>set.seed(1357) # kui seda rida poleks, tuleks järgmiste ridadega iga kord erinev tulemus
 (x &lt;- runif(n = 3, min = 0, max = 10))  # kolm arvu ühtlasest jaotusest U(0,10)</code></pre>
@@ -153,7 +153,7 @@ minukäsk(1:6, , min)</code></pre>
 </ul>
 <p>Väga kasulik on käsk <code>sample(.)</code>, mis aitab lihtsasti teha juhuvalikut etteantud vektori elementide hulgast. Näiteks siis, kui on vaja mingisuguse algoritmi tööd teatud suurel andmestikul kontrollida, on mõistlik võtta sellest andmestikust juhuvalim ja kontrollida selle peal.</p>
 <div id="ulesanded-2" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">2.0.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Kirjuta funktsioon, mis genereerib kasutaja poolt määratud mõõtmetega arvutabeli (maatriksi) Poissoni jaotusest arvudega, kusjuures Poissoni jaotuse parameeter on samuti kasutaja poolt määratud.</li>
 <li>Kirjuta funktsioon, mis ette antud 2x2 maatriksi põhjal teeb hii-ruut testi ja tagastab vastava p-väärtuse.</li>

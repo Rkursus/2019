@@ -1,19 +1,9 @@
 ---
 title: 'Rakendustarkvara: R. Sügis 2018, 10. praktikum^[Praktikumijuhendid põhinevad aine MTMS.01.092 Rakendustarkvara: R (2 EAP) materjalidel, mille autorid on Mait Raag ning Raivo Kolde]'
-output:
-  pdf_document:
-    highlight: tango
-    fig_crop: no
-    fig_height: 3
-    fig_width: 4
-    keep_tex: yes
-    number_sections: yes
-    #includes:
-    #  in_header: header.tex
+output: 
   html_document:
-    highlight: tango
-    number_sections: yes
-  word_document: default
+    theme: null
+    number_sections: true
 ---
 
 
@@ -29,7 +19,7 @@ Kui kasutada RStudiot, siis on taolise analüüsiraporti koostamine väga lihtne
 Käesolevas kursuses tutvume  paketiga **knitr**^[http://yihui.name/knitr/]. Selle paketi kõige olulisem käsk on `knit(.)`, millele tuleb ette anda punktis 1. koostatud faili nimi. Selles failis on mingis formaadis tekst ja R-i kood vaheldumisi, näiteks nii:-->
 
 ```{r,eval=TRUE,results='hold',echo=FALSE,comment=""}
-load("andmed.RData")
+load("../data/andmed.RData")
 cat("---\noutput: pdf_document\n---\n# Esimene arvutus\n```{r,echo=FALSE}\nmass <- read.table(\"http://kodu.ut.ee/~annes/Rkursus/mass.txt\", sep =\"\\t\", header = T)\n```\nMassachusettsi andmestikus on kokku `r nrow(mass)` inimest; sooline jaotus on järgnev:\n```{r,echo=FALSE}\ntable(mass$SEX)\n```\n## Esimene alapunkt\nNüüd on lisaks tulemusele endale näha, milline koodijupp leiab keskmise vanuse:\n```{r,echo=TRUE}\nmean(mass$AGEP)\n```\n")
 ```
 <br>

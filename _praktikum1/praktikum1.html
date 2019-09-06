@@ -48,11 +48,11 @@ if (window.hljs) {
 
 
 <div id="luhike-sissejuhatus" class="section level1">
-<h1>Lühike sissejuhatus</h1>
+<h1><span class="header-section-number">1</span> Lühike sissejuhatus</h1>
 <p>R on programmeerimiskeel ja -keskkond, mis on arendatud statistiliseks andmetöötluseks. R-i kasutavate inimeste hulk on viimase kümmekonna aasta jooksul oluliselt kasvanud nii ülikoolides kui ka ettevõtetes<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. Eelkõige on populaarsuse põhjus vaba ligipääs, lai valik lisapakette ja kvaliteetsete jooniste tegemise võimalus.</p>
 <p>R-i kodulehelt saab vajaliku tarkvara alla laadida: <a href="http://www.r-project.org/" class="uri">http://www.r-project.org/</a></p>
 <div id="kasutajaliides" class="section level2">
-<h2>Kasutajaliides</h2>
+<h2><span class="header-section-number">1.1</span> Kasutajaliides</h2>
 <p>Programmil R on äärmiselt minimalistlik kasutajaliides. Programmi käivitades on näha ainult konsooliaken. Rea ees olev märk <code>&gt;</code> näitab, et R ootab uut käsku. Käsud saab kirjutada sümboli <code>&gt;</code> järele, sealjuures võib üks käsk paikneda mitmel järjestikusel real. Kui R-i arvates on käsu sisestamine pooleli, on konsoolirea alguses sümbol <code>+</code>, sel juhul võib käsu sisestamist uuest reast jätkata. Kui aga reavahetus on lisatud ekslikult, näiteks on koodis näha viga just eelnevas reas (mida pärast reavahetuse lisamist enam redigeerida ei saa) saab uue tühja käsurea tekitada vajutades <code>Esc</code> klahvi.</p>
 <p>Kui käsk on sisestatud, siis <code>enter</code>-klahvi vajutamise järel käsk täidetakse ja tulemus trükitakse konsooliaknasse. Sageli on siis rea alguses kantsulgudes mingi arv, mis näitab, mitmes tulemuse element on rea alguses – nimelt võib tulemus mõnikord koosneda mitmest elemendist.</p>
 <pre class="r"><code>&gt; 4 * 6</code></pre>
@@ -75,7 +75,7 @@ Kui konsooliaknas olles vajutada üles- või allanooleklahvi, saab sirvida eelne
 <p>Kahjuks on R-i kasutajaliides mõnevõrra ebamugav. Näiteks konsooliaknas ei saa hiirega kursori asukohta muuta. Samuti on kogu tekst sama värvi (koodi värvimine puudub). Üks alternatiivne kasutajaliides R-i kasutamiseks on <strong>RStudio</strong><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>, kus neid puuduseid pole ning millega on natuke hõlpsam koodi kirjutada.</p>
 </div>
 <div id="lihtsam-aritmeetika" class="section level2">
-<h2>Lihtsam aritmeetika</h2>
+<h2><span class="header-section-number">1.2</span> Lihtsam aritmeetika</h2>
 <p>R-is on võimalik teha kõiki lihtsamaid aritmeetilisi tehteid, sealjuures järgitakse matemaatikas kasutatavat tehete järjekorda (sulgusid lisades on võimalik seda muuta):</p>
 <ul>
 <li><code>1 + (2 - 3) * 4 / 5</code></li>
@@ -87,7 +87,7 @@ on sama, mis <span class="math inline">\(\ln{(e^1)} \cdot \cos{(-\pi)} \cdot \sq
 <li><code>0/0</code> annab tulemuseks <code>NaN</code> (<em>not a number</em>)</li>
 </ul>
 <div id="ulesanded" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.2.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Arvuta enda kehamassiindeks: kaal (kg) / pikkus<sup>2</sup> (m<sup>2</sup>). (Õppejõule ei pea näitama.)</li>
 </ol>
@@ -97,7 +97,7 @@ on sama, mis <span class="math inline">\(\ln{(e^1)} \cdot \cos{(-\pi)} \cdot \sq
 </div>
 </div>
 <div id="kasud-ja-abi-saamine" class="section level2">
-<h2>Käsud ja abi saamine</h2>
+<h2><span class="header-section-number">1.3</span> Käsud ja abi saamine</h2>
 <!--Kõige lihtsam on abi saada interneti otsimootorite kaudu. -->
 <p>Ülalolevad aritmeetikaavaldised <code>sqrt(9)</code>, <code>choose(4, 2)</code> jne on tegelikult <strong>käsud</strong> ehk <strong>funktsioonid</strong>, mis oskavad teatud asju teha (praeguses näites teatud arvutusi teha). Kõigil käskudel on sarnane süntaks:</p>
 <p><code>käsk(argumendid)</code></p>
@@ -120,7 +120,7 @@ on sama, mis <span class="math inline">\(\ln{(e^1)} \cdot \cos{(-\pi)} \cdot \sq
 <pre class="r"><code>log(8, BASE = 2)</code></pre>
 <pre><code>## Error in log(8, BASE = 2): unused argument (BASE = 2)</code></pre>
 <div id="ulesanded-1" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">1.3.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Vaata, kuidas töötab käsk <code>log10</code>, mis on selle argumendid.</li>
 <li>Vaata milline abileht avaneb, kui kasutada käsku <code>?&quot;*&quot;</code>.</li>
@@ -130,9 +130,9 @@ on sama, mis <span class="math inline">\(\ln{(e^1)} \cdot \cos{(-\pi)} \cdot \sq
 </div>
 </div>
 <div id="muutujatega-tootamine" class="section level1">
-<h1>Muutujatega töötamine</h1>
+<h1><span class="header-section-number">2</span> Muutujatega töötamine</h1>
 <div id="vaartuste-omistamine-ja-tookeskkond-environment" class="section level2">
-<h2>Väärtuste omistamine ja töökeskkond (<em>environment</em>)</h2>
+<h2><span class="header-section-number">2.1</span> Väärtuste omistamine ja töökeskkond (<em>environment</em>)</h2>
 <p>Sageli on mugav, kui töös kasutatavatele muutujatele nimi anda – siis saame neid edaspidi nimepidi kutsuda. Näiteks kui nimetada <code>kaal &lt;- 70</code> ja <code>pikkus &lt;- 185</code> ehk konsoolil</p>
 <pre class="r"><code>kaal &lt;- 70
 pikkus &lt;- 185</code></pre>
@@ -151,7 +151,7 @@ ls() #kontrolli, kas objektid kustutati töölaualt</code></pre>
 <p>Töökeskkonna salvestamisel salvestatakse kõik antud töökeskkonnas olnud objektid RData-faili. Hiljem saab kõik need objektid jälle RData failist töökeskkonda laadida käsuga <code>load(&quot;.RData&quot;)</code>. RData formaati üldiselt teised statistikaprogrammid lugeda ei oska. Kui salvestatud on käskude ehk skripitfail (laiendiga .R), siis objektide eraldi salvestamine pole enamasti vajalik.</p>
 </div>
 <div id="vektorid.-tehted-vektoritega" class="section level2">
-<h2>Vektorid. Tehted vektoritega</h2>
+<h2><span class="header-section-number">2.2</span> Vektorid. Tehted vektoritega</h2>
 <!--Eelpool andsime andmestikust mitme veeru (või rea) korraga eraldamiseks vajalikud veeru (rea) numbrid ette käsuga `c(.)`.-->
 <p>Eelmises punktis vaatasime juhtu, muutujate väärtuseks oli üks arv. Objekti võib aga moodustada ka mitmest väärtusest, näiteks omistame kuue uuritava kaalud muutujale nimega <code>kaalud</code> ja muutujale <code>liik</code> uuritavate liigid:</p>
 <pre class="r"><code>kaalud &lt;- c(7, 3.5, 0.4, 2, 3.2, 20.2)
@@ -196,7 +196,7 @@ liik &lt;- c(&quot;koer&quot;, &quot;kass&quot;, &quot;rott&quot;, &quot;kass&qu
 <pre class="r"><code>(1:10)[-c(2, 4)] # negatiivne indeks jätab vastavad vaatlused välja</code></pre>
 <pre><code>## [1]  1  3  5  6  7  8  9 10</code></pre>
 <div id="ulesanded-2" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">2.2.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Moodusta vektor nimega <code>y</code>, mille väärtuseks oleks arvud <code>1 1 1  2 2 2 2  3 3 3 3 3</code> kasutades käsku <code>rep</code>.</li>
 <li>Leia vektor <code>z</code>, mille liitmisel <code>y</code>-le on tulemuseks vektor, mille kõik koordinaadid on võrdsed <code>7</code>.</li>
@@ -206,7 +206,7 @@ liik &lt;- c(&quot;koer&quot;, &quot;kass&quot;, &quot;rott&quot;, &quot;kass&qu
 </div>
 </div>
 <div id="puuduvad-vaartused" class="section level2">
-<h2>Puuduvad väärtused</h2>
+<h2><span class="header-section-number">2.3</span> Puuduvad väärtused</h2>
 <p>Andmete kogumisel võib juhtuda, et kõigil uuritavatel ei õnnestu vajalikke mõõtmisi teha ja andmetesse tekivad lüngad. Puuduva väärtuse tähistamiseks on R-is tähekombinatsioon <code>NA</code> (<em>Not Available</em>). Oletame, et analüüsil on vaja teada ka uuritavate vanust, teise vaatlusaluse kohta pole aga see teada: <!-- kuudes vanus--></p>
 <pre class="r"><code>vanused &lt;- c(7, NA, 3, 53, 53, 95)
 vanused</code></pre>
@@ -238,7 +238,7 @@ round(vanused/12, 1)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 ##     3.0     7.0    53.0    42.2    53.0    95.0       1</code></pre>
 <div id="ulesanded-3" class="section level3">
-<h3>Ülesanded</h3>
+<h3><span class="header-section-number">2.3.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Kuidas käitub funktsioon <code>sum(.)</code> kui argumendiks satub puuduvate väärtustega vektor?</li>
 <li>Kas funktsioonil <code>which.min(.)</code> on lisaargument, mis reguleerib puuduvate väärtustega tegelemist?</li>

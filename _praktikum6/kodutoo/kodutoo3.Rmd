@@ -1,7 +1,8 @@
 ---
 title: "Rakendustarkvara R - 3. kodutöö"
 output: 
-  pdf_document:
+  html_document:
+    theme: null
     number_sections: true
 ---
 
