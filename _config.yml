@@ -5,7 +5,7 @@ permalink:        pretty
 theme: jekyll-theme-minimal
 
 # Setup
-title:            Rakendustarkvara: R
+title:            "Rakendustarkvara: R"
 tagline:          LTMS.00.016
 url:              http://rkursus.github.io/
 paginate:         1
