@@ -1,8 +1,8 @@
 # Permalinks
-permalink:        pretty
+#permalink:        pretty
 
 # Theme
-theme: jekyll-theme-minimal
+theme:            jekyll-theme-minimal
 
 # Setup
 title:            "Rakendustarkvara: R"
