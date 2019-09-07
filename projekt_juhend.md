@@ -6,17 +6,16 @@ layout: page
 
 **Projekt tuleb esitada hiljemalt**
 
-- **I rühm**:   26. oktoober 2019 kell 10:00
-- **II rühm**:  14. detsember 2019 kell 10:00
+- **I rühm**:   24. oktoober 2019 kell 12:00
+- **II rühm**:  05. detsember 2019 kell 12:00
 
 Projektid esitage Moodle keskkonna kaudu. Kõikides saadetud töö failide nimedes peab kajastuma tudengi nimi.
 
 Projektide valmimise käigus tekkinud küsimuste ja probleemide lahendamiseks on võimalus tulla ja küsida järgmistel aegadel:
 
-- **I rühm** N, 25. oktoober 2019 kell 16:00
-- **II rühm** N, 13. detsember 2019 kell 16:00 
+- **I rühm** N, 22. oktoober 2019 kell 10:15 aud. J.Liivi 2 - 003.
+- **II rühm** N, 03. detsember 2019 kell 10:15 aud. J.Liivi 2 - 003.
 
-Olen vahemikus 16:00 - 16:20 klassis 003 või kuniks küsijaid jagub.
 
 
 ## Eesmärk

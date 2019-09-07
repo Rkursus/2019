@@ -18,11 +18,14 @@ Aine läbinud üliõpilane:
 * oskab kasutada kirjeldava statistika meetodeid,
 * oskab visualiseerida andmeid ja seoseid tunnuste vahel.
 
+
 # Õppeaine eesmärgid
 
 * Tutvustada üliõpilastele tarkvara R, anda ülevaade R-i võimalustest ja peamistest vigadest mida kiputakse tegema.
 * Õppida käske andmetest ülevaate saamiseks, andmete töötlemiseks ja visualiseerimiseks.
 * Tutvustada tarkvara R võimalusi reprodutseeritava analüüsi läbiviimiseks ning tulemuste visualiseerimiseks.
+
+<br/>
 
 Miks just R tarkvara?
 
@@ -72,16 +75,16 @@ Aine läbimiseks on vaja:
 Õppeaine toimub 2019/2020. õppeaasta sügissemestril. 
 
 * Praktikumid **teisipäeviti kell 10:15** ja **neljapäeviti kell 8:15** ruumis 003
-	* 1. rühm nädalatel 2 - 6
-	* 2. rühm nädalatel 8 - 12
-* **Projektide tähtaeg:
-	* 1. rühm **neljapäeval 24. oktoober kell 12:00** (nädal 8).
-	* 2. rühm **neljapäeval 5. detsember kell 12:00** (nädal 14).
-* **Projektide ettekandmine:
-	* 1. rühm (kokkuleppel)
-	* 2. rühm **teisipäeval 10. detsember kell 10:15** (nädal 15).
+	* I rühm nädalatel 2 - 6
+	* II rühm nädalatel 8 - 12
+* **Projektide tähtaeg**:
+	* I rühm **neljapäeval 24. oktoober kell 12:00** (nädal 8).
+	* II rühm **neljapäeval 5. detsember kell 12:00** (nädal 14).
+* **Projektide ettekandmine**:
+	* I rühm **teisipäeval 29. oktoober kell 10:15** (nädal 9).
+	* II rühm **teisipäeval 10. detsember kell 10:15** (nädal 15).
 
 # Kontakt ja küsimused
 
-* 1. rühm - Kaur Lumiste kaur.lumiste [at] ut.ee ja Liivi 2-519.
-* 2. rühm - Anne Selart anne.selart [at] ut.ee ja Liivi 2-519.
+* I rühm - Kaur Lumiste kaur.lumiste [at] ut.ee ja Liivi 2-519.
+* II rühm - Anne Selart anne.selart [at] ut.ee ja Liivi 2-519.

@@ -9,9 +9,6 @@ params:
 
 ## Praktikum 1
 
-<span id="init"><script>
-var d = new Date('2019-09-10');
-</script></span>
 
 Ülevaade statistikakeelest R, tutvumine kasutajaliidesega, R kui kalkulaator, abi saamine R-is, lihtsamad funktsioonid, objektid, töökeskkond, puuduvad väärtused, vektorid, tehted vektoritega. 
  
@@ -29,8 +26,9 @@ Andmete importimine, väärtustetüübid ja teisendused, lisapakettide kasutamin
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum2/praktikum2_kood.R)
 * [Kodutöö](praktikum2_kodutoo)
     * Tähtaeg:
-		* I grupp - <script>document.getElementById("init").innerHTML = d.toDateString();</script> kell 10:15.
-		* II grupp - 25.02.2019 kell 10:15.
+		* I rühm - 19.09.2019 kell 08:15.
+		* II rühm - 31.10.2019 kell 08:15.
+
 
 ## Praktikum 3
 
@@ -50,8 +48,8 @@ Andmestiku teisendused, veel andmestruktuure (pikk ja lai andmetabel), andmestru
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum4/praktikum4_kood.R)
 * [Kodutöö](praktikum4_kodutoo)
     * Tähtaeg:
-		* I grupp - 25.02.2019 kell 10:15.
-		* II grupp - 25.02.2019 kell 10:15.
+		* I rühm - 26.09.2019 kell 08:15.
+		* II rühm - 07.11.2019 kell 08:15.
 
 
 ## Praktikum 5
@@ -72,8 +70,8 @@ Joonised `ggplot2`-ga jätkub - joonisele kihtide lisamine, skaalade muutmine, j
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum6/praktikum6_kood.R)
 * [Kodutöö](praktikum6_kodutoo)
     * Tähtaeg:
-		* I grupp - 25.02.2019 kell 10:15.
-		* II grupp - 25.02.2019 kell 10:15.
+		* I rühm - 03.10.2019 kell 08:15.
+		* II rühm - 14.11.2019 kell 08:15.
 
 ## Praktikum 7
 
@@ -93,8 +91,8 @@ Kuupäevad paketiga `lubridate` ja sõnetöötlus paketiga `stringr`.
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum8/praktikum8_kood.R)
 * [Kodutöö](../praktikum8_kodutoo)
     * Tähtaeg:
-		* I grupp - 25.02.2019 kell 10:15.
-		* II grupp - 25.02.2019 kell 10:15.
+		* I rühm - 10.10.2019 kell 08:15.
+		* II rühm - 21.11.2019 kell 08:15.
 	
 
 ## Praktikum 9
@@ -115,5 +113,5 @@ Tulemuste vormistamine pakettidega `knitr` ja `rmarkdown`.
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum10/praktikum10_kood.R)
 * [Kodutöö](praktikum10_kodutoo)
     * Tähtaeg:
-		* I grupp - 25.02.2019 kell 10:15.
-		* II grupp - 25.02.2019 kell 10:15.
+		* I rühm - 17.10.2019 kell 08:15.
+		* II rühm - 28.11.2019 kell 08:15.
