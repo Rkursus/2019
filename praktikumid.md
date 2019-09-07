@@ -2,16 +2,16 @@
 layout: page
 title: Praktikumimaterjalid
 params:
-	start_date: Date()
+	start_date: Date('2019-09-10')
+	days_between_weekly_labs: 2
 ---
 
-Praktikumi materjalid täienevad jooksvalt, 2018. aasta materjalidega saab tutvuda [siin](../../2018/praktikumid/).
 
 ## Praktikum 1
 
-<span id="demo"><script>
-var d = new Date();
-document.getElementById("demo").innerHTML = d.toDateString();
+<span id="init"><script>
+var d = new Date('2019-09-10');
+document.getElementById("init").innerHTML = d.toDateString();
 </script></span>
 
 Ülevaade statistikakeelest R, tutvumine kasutajaliidesega, R kui kalkulaator, abi saamine R-is, lihtsamad funktsioonid, objektid, töökeskkond, puuduvad väärtused, vektorid, tehted vektoritega. 
@@ -30,7 +30,9 @@ Andmete importimine, väärtustetüübid ja teisendused, lisapakettide kasutamin
 * [Praktikumi R kood](../_praktikum2/praktikum2_kood.R)
 * [Kodutöö](../praktikum2_kodutoo)
     * Tähtaeg:
-		* I grupp - 25.02.2019 kell 10:15.
+		* I grupp - <span id="new"><script>
+document.getElementById("init").innerHTML = d.toDateString();
+</script></span> kell 10:15.
 		* II grupp - 25.02.2019 kell 10:15.
 
 ## Praktikum 3
