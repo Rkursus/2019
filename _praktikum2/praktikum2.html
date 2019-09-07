@@ -300,7 +300,7 @@ liik == &quot;kass&quot; | liik == &quot;koer&quot;</code></pre>
 <p>Teine võimalus on kasutada tavalist kaldkriipsu, nagu MacOS-is ja Linuxites:</p>
 <pre class="r"><code>setwd(&quot;C:/Users/mina/Rkursus/&quot;)</code></pre>
 <p>Andmete sisselugemisel tuleks anda andmetabelile nimi (salvestada see mingi objektina), vastasel juhul andmestik trükitakse lihtsalt ekraanile ja sellega enam midagi muud teha ei saa:</p>
-<pre class="r"><code>näide1 &lt;- read.table(&quot;http://kodu.ut.ee/~annes/Rkursus/esimene.txt&quot;, 
+<pre class="r"><code>naide1 &lt;- read.table(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/esimene.txt&quot;, 
                      header = T, sep = &quot;\t&quot;, dec = &quot;,&quot;)</code></pre>
 <p>Töökeskkonnas olevaid andmetabeleid saab faili kirjutada käsuga <code>write.table(.)</code>, andes käsule ette salvestatava andmestiku nime ning loodava faili nime jutumärkides (vajaduse korral koos kataloogiteega):</p>
 <pre class="r"><code>write.table(näide1, &quot;failinimi.txt&quot;, sep = &quot;\t&quot;)</code></pre>
@@ -308,8 +308,8 @@ liik == &quot;kass&quot; | liik == &quot;koer&quot;</code></pre>
 <h3><span class="header-section-number">2.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li><p>Vaata <code>read.table</code> käsu argumentide täielikku loetelu abifailist.</p></li>
-<li><p>Aadressil <a href="http://www.ut.ee/~annes/Rkursus/" class="uri">http://www.ut.ee/~annes/Rkursus/</a> leiad failid <em>tabel1.csv</em>, <em>tabel2</em>, <em>tabel3.txt</em>, <em>tabel4.tab</em>. Tutvu nendega (Notepadi vmt kasutades) ja proovi need seejärel R-i korrektselt sisse lugeda. Veendu, et R-is olevates tabelites on sama palju veerge kui originaalandmestikes.</p></li>
-<li><p>USA riiklikud institutsioonid võimaldavad päris sageli andmekogudele vaba ligipääsu. Selles aines kasutame näidisandmestikena USA Rahvaloendusbüroo<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> poolt kogutud andmeid, millele saab ligi IPUMS-USA<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> liidese kaudu<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Aadressil <a href="http://www.ut.ee/~annes/Rkursus/" class="uri">http://www.ut.ee/~annes/Rkursus/</a> on fail <em>mass.txt</em>, milles on Massachusettsi osariigis ühe valikuuringuga kogutud andmed. Loe see R-i sisse, andmestiku objektile pane nimeks <code>andmed</code>. Tutvu ka tunnuste kirjeldusega: <a href="http://www.ut.ee/~annes/Rkursus/descr.txt" class="uri">http://www.ut.ee/~annes/Rkursus/descr.txt</a>. Andmestikuobjektist esmase ülevaate saamiseks kasuta käsku <code>str(andmed)</code>.</p></li>
+<li><p>Aadressil <a href="https://github.com/Rkursus/sygis2019/tree/master/data/" class="uri">https://github.com/Rkursus/sygis2019/tree/master/data/</a> leiad failid <em>tabel1.csv</em>, <em>tabel2</em>, <em>tabel3.txt</em>, <em>tabel4.tab</em>. Tutvu nendega (Notepadi vmt kasutades) ja proovi need seejärel R-i korrektselt sisse lugeda. Veendu, et R-is olevates tabelites on sama palju veerge kui originaalandmestikes.</p></li>
+<li><p>USA riiklikud institutsioonid võimaldavad päris sageli andmekogudele vaba ligipääsu. Selles aines kasutame näidisandmestikena USA Rahvaloendusbüroo<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> poolt kogutud andmeid, millele saab ligi IPUMS-USA<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> liidese kaudu<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Aadressil <a href="https://github.com/Rkursus/sygis2019/tree/master/data/" class="uri">https://github.com/Rkursus/sygis2019/tree/master/data/</a> on fail <em>mass.txt</em>, milles on Massachusettsi osariigis ühe valikuuringuga kogutud andmed. Loe see R-i sisse, andmestiku objektile pane nimeks <code>andmed</code>. Tutvu ka tunnuste kirjeldusega: <a href="https://github.com/Rkursus/sygis2019/raw/master/data/descr.txt" class="uri">https://github.com/Rkursus/sygis2019/raw/master/data/descr.txt</a>. Andmestikuobjektist esmase ülevaate saamiseks kasuta käsku <code>str(andmed)</code>.</p></li>
 </ol>
 </div>
 </div>
@@ -331,7 +331,7 @@ install.packages(&quot;haven&quot;)
 <h2><span class="header-section-number">2.3</span> Andmete import programmide MS Excel, SAS, Stata, SPSS failidest</h2>
 <div id="ms-excel-failid" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> MS Excel failid</h3>
-<p>Lisapaketi <code>readxl</code> käsu <code>read_excel(.)</code> abil saab importida MS Exceli failide (nii <em>.xlsx</em> kui <em>xls</em>) töölehti. Salvesta aadressilt <a href="http://www.ut.ee/~annes/Rkursus/" class="uri">http://www.ut.ee/~annes/Rkursus/</a> oma töökataloogi fail <em>tudengite-arv.xlsx</em>, mis sisaldab infot TÜ tudengite arvude kohta aastate lõikes. Ava esmalt fail MS Exceli abil ning vaata millised töölehed failis on. Seejärel vaata ka R abil millised on töölehtede nimed ja impordi teine tööleht, millel on andmed avatud ülikooli õpilaste arvude kohta.</p>
+<p>Lisapaketi <code>readxl</code> käsu <code>read_excel(.)</code> abil saab importida MS Exceli failide (nii <em>.xlsx</em> kui <em>xls</em>) töölehti. Salvesta aadressilt <a href="https://github.com/Rkursus/sygis2019/tree/master/data/" class="uri">https://github.com/Rkursus/sygis2019/tree/master/data/</a> oma töökataloogi fail <em>tudengite-arv.xlsx</em>, mis sisaldab infot TÜ tudengite arvude kohta aastate lõikes. Ava esmalt fail MS Exceli abil ning vaata millised töölehed failis on. Seejärel vaata ka R abil millised on töölehtede nimed ja impordi teine tööleht, millel on andmed avatud ülikooli õpilaste arvude kohta.</p>
 <pre class="r"><code>list.files() # vaata, mis nimega failid on töökaustas
 excel_sheets(&quot;tudengite-arv.xlsx&quot;) # töölehtede nimed MS Exceli failis
 AY &lt;- read_excel(&quot;tudengite-arv.xlsx&quot;, sheet = &quot;avatud ylikool&quot;) # importimine
@@ -343,7 +343,7 @@ str(tabel)</code></pre>
 </div>
 <div id="sas-stata-ja-spss-failid" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> SAS, Stata ja SPSS failid</h3>
-<p>Programmide SAS, Stata ja SPSS failide importimiseks saab kasutada paketi <code>haven</code> vastavaid funktsioone <code>read_sas(.), read_stata(.)</code> ja <code>read_spss(.)</code>. Salvesta aadressilt <a href="http://www.ut.ee/~annes/Rkursus/" class="uri">http://www.ut.ee/~annes/Rkursus/</a> oma töökataloogi kolm faili nimega <em>effort</em> ja loe need R-i:</p>
+<p>Programmide SAS, Stata ja SPSS failide importimiseks saab kasutada paketi <code>haven</code> vastavaid funktsioone <code>read_sas(.), read_stata(.)</code> ja <code>read_spss(.)</code>. Salvesta aadressilt <a href="https://github.com/Rkursus/sygis2019/tree/master/data/" class="uri">https://github.com/Rkursus/sygis2019/tree/master/data/</a> oma töökataloogi kolm faili nimega <em>effort</em> ja loe need R-i:</p>
 <pre class="r"><code>library(haven)
 andmestik_SAS &lt;- read_sas(&quot;effort.sas7bdat&quot;)
 andmestik_Stata &lt;-  read_stata(&quot;effort.dta&quot;)

@@ -51,11 +51,11 @@ if (window.hljs) {
 <h1><span class="header-section-number">1</span> Andmete R-i toimetamine</h1>
 <div id="andmete-import-1" class="section level2">
 <h2><span class="header-section-number">1.1</span> Andmete import 1</h2>
-<p>Impordi andmed tekstifailist *<a href="http://kodu.ut.ee/~annes/R/tulemused.txt*" class="uri">http://kodu.ut.ee/~annes/R/tulemused.txt*</a>. Failis on kirjas inimeste nimed ja nende testitulemused. Pööra tähelepanu sellele, mis on failis tunnuseveergude eraldaja ning kuidas on esitatud murdarvud.</p>
+<p>Impordi andmed tekstifailist <a href="https://github.com/Rkursus/sygis2019/raw/master/data/tulemused.txt" class="uri">https://github.com/Rkursus/sygis2019/raw/master/data/tulemused.txt</a>. Failis on kirjas inimeste nimed ja nende testitulemused. Pööra tähelepanu sellele, mis on failis tunnuseveergude eraldaja ning kuidas on esitatud murdarvud.</p>
 <div id="ulesanded" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Ülesanded</h3>
 <ul>
-<li><strong>Ülesanne 1</strong> Kasutades käsku <code>read.table()</code> impordi R-i fail <em>tulemused.txt</em> aadressilt *<a href="http://kodu.ut.ee/~annes/R/tulemused.txt*" class="uri">http://kodu.ut.ee/~annes/R/tulemused.txt*</a>, omista andmestik muutujale <code>andmed2</code>. Prindi andmestik ekraanile</li>
+<li><strong>Ülesanne 1</strong> Kasutades käsku <code>read.table()</code> impordi R-i fail <em>tulemused.txt</em> aadressilt <a href="https://github.com/Rkursus/sygis2019/raw/master/data/tulemused.txt" class="uri">https://github.com/Rkursus/sygis2019/raw/master/data/tulemused.txt</a>, omista andmestik muutujale <code>andmed2</code>. Prindi andmestik ekraanile</li>
 <li><strong>Ülesanne 2</strong> Vaata andmestiku tunnuste ülevaadet käsuga <code>summary()</code>.</li>
 </ul>
 <p><strong>Vihjed</strong></p>
@@ -96,13 +96,13 @@ if (window.hljs) {
 #install.packages('rstudioapi')
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))</code></pre>
 <p>Nüüd edaspidi piisab kui viitad allalaetud failidele nende nime järgi, mitte täieliku failipuu aadressiga.</p>
-<p>Lae alla andmed *<a href="http://kodu.ut.ee/~annes/R/A.csv*" class="uri">http://kodu.ut.ee/~annes/R/A.csv*</a> ja õpime kasutama funktsioonie <code>read.csv()</code> ja <code>read.csv2()</code>.</p>
-<pre class="r"><code>download.file(&quot;http://kodu.ut.ee/~annes/R/A.csv&quot;, &quot;A.csv&quot;,  mode = &quot;wb&quot;)</code></pre>
+<p>Lae alla andmed <a href="https://github.com/Rkursus/sygis2019/raw/master/data/A.csv" class="uri">https://github.com/Rkursus/sygis2019/raw/master/data/A.csv</a> ja õpime kasutama funktsioonie <code>read.csv()</code> ja <code>read.csv2()</code>.</p>
+<pre class="r"><code>download.file(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/A.csv&quot;, &quot;A.csv&quot;,  mode = &quot;wb&quot;)</code></pre>
 <div id="ulesanded-2" class="section level3">
 <h3><span class="header-section-number">1.3.1</span> Ülesanded</h3>
 <ul>
 <li><strong>Ülesanne 1</strong> Loe funktsioonide <code>read.csv()</code> ja <code>read.csv2()</code> abilehte. Tee kindlaks, mis argumendi abil saab määrata maksimaalse imporditava ridade arvu. Omista selle argumendi nimi stringina muutujale nimega <code>argumendinimi</code>.</li>
-<li><strong>Ülesanne 2</strong>: Kontrolli, kas fail <em>A.csv</em> on juba töökaustas olemas, kasuta selleks käsku <code>list.files()</code>. Tulemuseks peab olema töökaustas failide nimed. Faili saad vaadata ka aadressil *<a href="http://kodu.ut.ee/~annes/R/A.csv*" class="uri">http://kodu.ut.ee/~annes/R/A.csv*</a><br />
+<li><strong>Ülesanne 2</strong>: Kontrolli, kas fail <em>A.csv</em> on juba töökaustas olemas, kasuta selleks käsku <code>list.files()</code>. Tulemuseks peab olema töökaustas failide nimed. Faili saad vaadata ka aadressil <a href="https://github.com/Rkursus/sygis2019/raw/master/data/A.csv" class="uri">https://github.com/Rkursus/sygis2019/raw/master/data/A.csv</a><br />
 </li>
 <li><strong>Ülesanne 3</strong>: Impordi failist <em>A.csv</em> andmed, kasuta selleks funktsiooni <code>read.csv()</code> või <code>read.csv2()</code>, vali see funktsioon, mille korral pead vähem argumente väärtustama st see, mis argumentide vaikeväärtuste poolest paremini sobib. Omista andmestik muutujale <code>andmed4</code>. Pane tähele, et failis on andmeteploki all kommentaaritekst, mille peab importimisel välja jätma.</li>
 <li><strong>Ülesanne 4</strong>: Omista muutujale <code>valik</code> andmestikust <code>andmed4</code> esimesed 10 rida ja kõik veerud väljaarvatud neljas ja viies. Prindi see ekraanile.</li>
@@ -131,7 +131,7 @@ valik</code></pre>
 <div id="andmete-import-4" class="section level2">
 <h2><span class="header-section-number">1.4</span> Andmete import 4</h2>
 <p>Lae töölauale andmestik nimega <em>B.csv</em>, failis on andmed 160 isiku testitulemustega. Fail on R-i imporditav järgmise käsu abil:</p>
-<pre class="r"><code>download.file(&quot;http://kodu.ut.ee/~annes/R/B.csv&quot;, &quot;B.csv&quot;,  mode = &quot;wb&quot;)
+<pre class="r"><code>download.file(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/B.csv&quot;, &quot;B.csv&quot;,  mode = &quot;wb&quot;)
 andmed5a &lt;- read.csv2(&quot;B.csv&quot;)</code></pre>
 <p>Kui andmestiku objekti uurida, siis ilmneb, et midagi on impordil läinud valesti. Ülesandes peadki leidma vea ja tegema importimise käsku parandused.</p>
 <div id="ulesanded-3" class="section level3">
@@ -172,7 +172,7 @@ valik &lt;- __________________________</code></pre>
 <li><code>b1</code> – esimese poja pea laius</li>
 <li><code>b2</code> – teise poja pea laius</li>
 </ul>
-<pre class="r"><code>pojad &lt;- read.table(&quot;http://math.ut.ee/~annes/R/pojad.txt&quot;, header = T)</code></pre>
+<pre class="r"><code>pojad &lt;- read.table(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/pojad.txt&quot;, header = T)</code></pre>
 <div id="ulesanded-4" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Ülesanded</h3>
 <ul>
@@ -207,7 +207,7 @@ ______(pojad1)</code></pre>
 <li><code>HeadWt</code> - kapsapea kaal, kg</li>
 <li><code>VitC</code> - kapsapea C-vitamiini sisaldus</li>
 </ul>
-<pre class="r"><code>kapsad &lt;- read.table(&quot;http://math.ut.ee/~annes/R/cabbages.txt&quot;, header = T)</code></pre>
+<pre class="r"><code>kapsad &lt;- read.table(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/cabbages.txt&quot;, header = T)</code></pre>
 <div id="ulesanded-5" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Ülesanded</h3>
 <ul>
@@ -281,8 +281,8 @@ uus &lt;- pojad[, ____________]</code></pre>
 <div id="paranda-viga-andmestikus" class="section level2">
 <h2><span class="header-section-number">2.4</span> Paranda viga andmestikus</h2>
 <p>Enne analüüsiga alustamist on alati vaja andmeid ka kontrollida ja võimalusel leitud vead parandada.</p>
-<p>Lae ÕIS-st kodutööde kaustast alla fail <code>dieet.csv</code>, paiguta see oma töökausta ja loe töölauale andmestik <code>dieet</code>. Tegu on teatavate dieetide mõju uuringuga. Uuringus osalejaid on kaalutud enne dieeti (<code>kaal1</code>) ja pärast dieeti (<code>kaal2</code>). Lisaks on teada iga inimese identifikaator ja dieedi tüüp.</p>
-<pre class="r"><code>dieet &lt;- read.csv2(&quot;dieet.csv&quot;, header = T)</code></pre>
+<p>Loe R’i sisse fail <code>https://github.com/Rkursus/sygis2019/raw/master/data/dieet.csv</code>, paiguta see oma töökausta ja loe töölauale andmestik <code>dieet</code>. Tegu on teatavate dieetide mõju uuringuga. Uuringus osalejaid on kaalutud enne dieeti (<code>kaal1</code>) ja pärast dieeti (<code>kaal2</code>). Lisaks on teada iga inimese identifikaator ja dieedi tüüp.</p>
+<pre class="r"><code>dieet &lt;- read.csv2(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/dieet.csv&quot;, header = T)</code></pre>
 <div id="ulesanded-7" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Ülesanded</h3>
 <ul>
@@ -320,8 +320,8 @@ uus &lt;- pojad[, ____________]</code></pre>
 <li>andmestikus <code>A</code> on kirjas vastajate id-kood, sugu, elukoht, vanus, pikkus, kaal, käte siruulatus ning arstivisiidi toimumine</li>
 <li>andmestikus <code>B</code> on kirjas vastajate id-kood, uuringugrupi tunnus ning vastused mitmesugustele testidele</li>
 </ul>
-<pre class="r"><code>A &lt;- read.csv2(&quot;http://kodu.ut.ee/~annes/R/A.csv&quot;, nrows = 45)
-B &lt;- read.csv2(&quot;http://kodu.ut.ee/~annes/R/B.csv&quot;, nrows = 160)
+<pre class="r"><code>A &lt;- read.csv2(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/A.csv&quot;, nrows = 45)
+B &lt;- read.csv2(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/B.csv&quot;, nrows = 160)
 B &lt;- B[, c(&quot;id&quot;, &quot;grupp&quot;, sort(names(B)[-(1:2)]))]</code></pre>
 <p>Uurida tuleb vaatlusobjektide kattuvust. Andmestike ühendamiseks nn võtmetunnuse kaudu saab kasutada käsku <code>merge</code>. Loe tähelepanelikult ülesannete teksti!</p>
 <div id="ulesanded-8" class="section level3">

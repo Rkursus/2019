@@ -206,7 +206,7 @@ iris.sort2 <- iris[____, ]
 
 Loe töölauale andmestik `B`. Andmestikus on 160 inimese kohta mitmete testide (40 testi) tulemused.
 ```{r eval = F}
-B <-  read.csv2(file = "http://kodu.ut.ee/~annes/R/B.csv",   nrows = 160, stringsAsFactors = T)
+B <-  read.csv2(file = "https://github.com/Rkursus/sygis2019/raw/master/data/B.csv",   nrows = 160, stringsAsFactors = T)
 B <- B[, substr(names(B), 1, 3) %in% c("id", "gru", "tes") ]
 ```
 
@@ -242,7 +242,7 @@ _____(testid.pikk)
 
 ## Andmestiku viimine laia formaati
 
-Lae ÕIS-st alla anmdestik `rotid.csv` ja loe andmestik töölauale nimega `rotid`. 
+Lae alla andmestik [rotid](https://github.com/Rkursus/sygis2019/raw/master/data/rotid.csv) ja loe andmestik töölauale nimega `rotid`. 
 
 ```{r eval = F}
 # file.choose() avab akna, kus saad andmestiku 'rotid.csv' üles otsida
@@ -377,7 +377,7 @@ Siis pööratud tabelis oleks aastad ridadeks ja vanusgrupid veergudeks:
 Loe töölauale tabel nimega  `arstiabita`, kus on kirjas eri aastatel arsiabi mittesaanud inimeste osakaalud (Eesti sotsiaaluuringu andmete põhjal). Aktiveeri pakett **reshape2** kui seda pole seni tehtud. Ülesandeks on antud tabeli pööramine.
  
 ```{r eval = F}
-arstiabita <- read.table("http://math.ut.ee/~annes/R/eisaanud-arstiabi.txt", 
+arstiabita <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/eisaanud-arstiabi.txt", 
                          sep = "\t", dec = ",", header = T, check.names = FALSE)
 
 ```

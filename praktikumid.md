@@ -14,13 +14,11 @@ var d = new Date();
 document.getElementById("demo").innerHTML = d.toDateString();
 </script></span>
 
-`params$start_date`
-
 Ülevaade statistikakeelest R, tutvumine kasutajaliidesega, R kui kalkulaator, abi saamine R-is, lihtsamad funktsioonid, objektid, töökeskkond, puuduvad väärtused, vektorid, tehted vektoritega. 
  
 * [Korralduslik info](../pr1_esitlus.pdf)
-* [Praktikumi materjalid](../praktikum1)
-* [Praktikumi R kood](../_praktikum1/praktikum1_kood.R)
+* [Praktikumi materjalid](praktikum1)
+* [Praktikumi R kood](_praktikum1/praktikum1_kood.R)
 
 
 ## Praktikum 2

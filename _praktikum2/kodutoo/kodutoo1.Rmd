@@ -19,11 +19,11 @@ Antud kodutöös on praktikumi teemad lühidalt kokku võetud ning iga teema all
 
 Kui vastust on palutud kommenteerida, siis lisa samuti seletus kommentaarina. **NB!** Pane koodi kaasa kõik andmed, mis on vajalikud vastuse leidmiseks. Lõpuks peaks vastuse fail olema iseseisvalt R-s käivitatav ehk kui vastuste faili jagada, siis kõik saaksid R koodi vigadeta käivitada.
 
-Faili nimeks pane `<initsiaal>_<perekonnanimi>_Rkodutöö_<nr>.R`. Näiteks `K_Lumiste_Rkodutöö_1.R` ja saada e-postile kaur.lumiste@ut.ee **hiljemalt 20. septembriks, kella 16:00-ks (1. rühm), 8. novembriks, kella 16:00-ks (rühm2)** ehk praktikumi alguseks.
+Faili nimeks pane `<initsiaal>_<perekonnanimi>_Rkodutöö_<nr>.R`. Näiteks `M_Maasikas_Rkodutöö_1.R` ja lae Moodle keskkonnas vastava kodutöö alla. Pea kinni tähtaegadest!
 
-Iga ülesande õige vastus annab 1 punkti ning kodutöö edukaks sooritamiseks on vajalik saada vähemalt 50% punktidest. Kui mõni ülesanne valmistab raskusi või mõnest kohast ei saa edasi, siis on võimalus abi küsida esmaspäevases praktikumis.
+Iga ülesande õige vastus annab 1 punkti ning kodutöö edukaks sooritamiseks on vajalik saada vähemalt 50% punktidest. Kui mõni ülesanne valmistab raskusi või mõnest kohast ei saa edasi, siis on võimalus abi küsida järgmises praktikumis.
 
-Järgmiste kodutööde puhul kehtivad samad juhised ja juhiseid eraldi välja toodud pole.
+**Järgmiste kodutööde puhul kehtivad samad juhised ja juhiseid eraldi välja toodud pole.**
 
 Edasi teemade ja ülesannete juurde.
 

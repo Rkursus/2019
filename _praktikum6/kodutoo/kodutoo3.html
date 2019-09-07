@@ -210,7 +210,7 @@ iris.sort2 &lt;- iris[____, ]
 <div id="andmestiku-viimine-pikka-formaati" class="section level2">
 <h2><span class="header-section-number">3.1</span> Andmestiku viimine pikka formaati</h2>
 <p>Loe töölauale andmestik <code>B</code>. Andmestikus on 160 inimese kohta mitmete testide (40 testi) tulemused.</p>
-<pre class="r"><code>B &lt;-  read.csv2(file = &quot;http://kodu.ut.ee/~annes/R/B.csv&quot;,   nrows = 160, stringsAsFactors = T)
+<pre class="r"><code>B &lt;-  read.csv2(file = &quot;https://github.com/Rkursus/sygis2019/raw/master/data/B.csv&quot;,   nrows = 160, stringsAsFactors = T)
 B &lt;- B[, substr(names(B), 1, 3) %in% c(&quot;id&quot;, &quot;gru&quot;, &quot;tes&quot;) ]</code></pre>
 <div id="ulesanded-5" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Ülesanded</h3>
@@ -240,7 +240,7 @@ _____(testid.pikk)</code></pre>
 </div>
 <div id="andmestiku-viimine-laia-formaati" class="section level2">
 <h2><span class="header-section-number">3.2</span> Andmestiku viimine laia formaati</h2>
-<p>Lae ÕIS-st alla anmdestik <code>rotid.csv</code> ja loe andmestik töölauale nimega <code>rotid</code>.</p>
+<p>Lae alla andmestik <a href="https://github.com/Rkursus/sygis2019/raw/master/data/rotid.csv">rotid</a> ja loe andmestik töölauale nimega <code>rotid</code>.</p>
 <pre class="r"><code># file.choose() avab akna, kus saad andmestiku 'rotid.csv' üles otsida
 rotid &lt;- read.csv(file.choose(), header = T, stringsAsFactors = F, 
                   colClasses = c(&quot;numeric&quot;, &quot;character&quot;, &quot;character&quot;, &quot;factor&quot;))</code></pre>
@@ -400,7 +400,7 @@ Siis pööratud tabelis oleks aastad ridadeks ja vanusgrupid veergudeks:</p>
 </table>
 <p><br />
 Loe töölauale tabel nimega <code>arstiabita</code>, kus on kirjas eri aastatel arsiabi mittesaanud inimeste osakaalud (Eesti sotsiaaluuringu andmete põhjal). Aktiveeri pakett <strong>reshape2</strong> kui seda pole seni tehtud. Ülesandeks on antud tabeli pööramine.</p>
-<pre class="r"><code>arstiabita &lt;- read.table(&quot;http://math.ut.ee/~annes/R/eisaanud-arstiabi.txt&quot;, 
+<pre class="r"><code>arstiabita &lt;- read.table(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/eisaanud-arstiabi.txt&quot;, 
                          sep = &quot;\t&quot;, dec = &quot;,&quot;, header = T, check.names = FALSE)</code></pre>
 <div id="ulesanded-9" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Ülesanded</h3>

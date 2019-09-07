@@ -65,15 +65,15 @@ str_sub(sõnad, end = -3)
 
 ### Ülesanded
 1. Loe sisse Massatchusettsi andmestik:\newline
-`link <- "http://kodu.ut.ee/~annes/Rkursus/"`\
+`link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"`\
 `andmed <- read.table(str_c(link, "mass.txt"), sep = "\t", header = T)`\linebreak
 Andmetabelis on veerus OCCP iga inimese amet, sealjuures kolme esimese tähega on kodeeritud vastav valdkond; näiteks kõik puhastusteenustega seotud ametid algavad tähtedega CLN. Mitu erinevat valdkonda on selles andmetabelis?
 1. Kasutades sama tunnnust (`OCCP`) lisa andmestikku uus veerg `OCCP1`, mille väärtused oleks samad kui `OCCP`-l, kuid töötutel oleks tunnuse väärtus kujul *"UNE-UNEMPLOYED, LAST WORKED 5 YEARS AGO OR EARLIER OR NEVER"*.
 ```{r, eval=FALSE, include=FALSE}
-andmed <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt", sep = "\t", header=T)
+andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header=T)
 
 
-link <- "http://kodu.ut.ee/~annes/Rkursus/"
+link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
 andmed <- read.table(str_c(link, "mass.txt"), sep = "\t", header = T)
 
 
@@ -136,7 +136,7 @@ str_replace("telefoninumber: +372 55-549-85", "[a-zA-Z: ]*(\\+[0-9]*)*( )*(.*)",
 
 ### Ülesanded
 1.  Massatchusettsi andmestikus on veerus `COW` ära toodud, kelle heaks inimene töötab. Kui tegemist on palgatöötajaga, sisaldab `COW` väärtus vastava inimese puhul sõna *Employee* või *employee*. Milline on palgatöötajate keskmine palk (`WAGP`)? Andmestik:\
-`link <- "http://kodu.ut.ee/~annes/Rkursus/"`\
+`link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"`\
 `mass <- read.table(str_c(link, "mass.txt"), sep = "\t", header = T)` 
 1. Eesti isikukoodi formaat^[http://et.wikipedia.org/wiki/Isikukood] on järgmine: abcdefghijk, kus a -- sugu ja sajand (paaritu arv mees, paarisarv naine, 1,2 -- 1800, 3,4 -- 1900, 5,6 -- 2000); bc -- aasta, de -- kuu, fg -- päev, hij -- (haigla) sel päeval (selles haiglas) sündimise järjekord, k -- kontrollnumber.   
     1. Loe sisse komaga eraldatud isikukoodide jada:  
@@ -146,7 +146,7 @@ str_replace("telefoninumber: +372 55-549-85", "[a-zA-Z: ]*(\\+[0-9]*)*( )*(.*)",
     1. Lisa veerg, kus oleks kirjas, mis sugu iga inimene selles andmetabelis on.
 ```{r, eval=FALSE, include=FALSE}
 # 1
-andmed <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt", sep = "\t", header = T)
+andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header = T)
 
 cbind(table(andmed$COW))
 
@@ -162,7 +162,7 @@ by(andmed$WAGP,andmed$emp, mean, na.rm = T)
 
 #2
 # 1
-isikukoodid <- read.table("http://www.ut.ee/~annes/Rkursus/isikukoodid.txt")[1,]
+isikukoodid <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/isikukoodid.txt")[1,]
 
 # 2. eralda
 ik <- unlist(str_split(isikukoodid, ",") )
@@ -220,7 +220,7 @@ Vaatame edasi isikukoodide vektori (`isikukoodid` eelmisest ülesandest) põhjal
 1. Lisa veerg, mis annab inimese vanuse täisaastates tänasel päeval (arvestades, et aastas on ~365,25 päeva).
 1. Leia kuupäev, mil said/saad  10 000 päeva vanuseks.
 ```{r, eval=FALSE, include=FALSE}
-isikukoodid <- (read.table("http://www.ut.ee/~annes/Rkursus/isikukoodid.txt"))[1,]
+isikukoodid <- (read.table("https://github.com/Rkursus/sygis2019/raw/master/data/isikukoodid.txt"))[1,]
 ik <- unlist(str_split(isikukoodid, ",") )
 isikud <- data.frame(ID = ik)
 sugunr <- as.numeric(str_sub(ik, 1, 1))

@@ -9,7 +9,7 @@ output:
 ```{r, include=FALSE, warning=FALSE}
 library(reshape2)
 library(ggplot2)
-link <- "http://kodu.ut.ee/~annes/Rkursus/"
+link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
 mk <- read.table(paste0(link, "maakonnad.txt"), sep = " ", header=T)
 #mk <- read.table("C:\\Users\\annes\\Documents\\10 AinedÕpetamine\\R kursus\\R kursus 2017 EAP3\\praksid\\failid-veebist-Mait\\maakonnad.txt", sep = " ", header=T)
 

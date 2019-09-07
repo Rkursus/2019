@@ -48,11 +48,10 @@ if (window.hljs) {
 
 
 <!-- 2017, 2018: ggplot2 näide välja võetus, sest see tuleb tagapool -->
-<p>=(Date())</p>
 <div id="toimingud-andmestikuga" class="section level1">
 <h1><span class="header-section-number">1</span> Toimingud andmestikuga</h1>
 <p>Impordime uuesti andmestiku, mida korra kasutasime ka eelmises praktikumis (Massachusettsi andmestik), ja vaatame andmestikust ülevaadet</p>
-<pre class="r"><code>andmed &lt;- read.table(&quot;http://kodu.ut.ee/~annes/Rkursus/mass.txt&quot;, header = T, sep = &quot;\t&quot;)
+<pre class="r"><code>andmed &lt;- read.table(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt&quot;, header = T, sep = &quot;\t&quot;)
 str(andmed)</code></pre>
 <div id="veergude-ja-ridade-eraldamine-andmestikust-indeksi-ja-nime-jargi" class="section level2">
 <h2><span class="header-section-number">1.1</span> Veergude ja ridade eraldamine andmestikust: indeksi ja nime järgi</h2>

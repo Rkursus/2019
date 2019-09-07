@@ -2,55 +2,126 @@
 layout: page
 ---
 
-Aine läbimiseks tuleb läbi viia kas praktiline andmeanalüüs ning kirjutada saadud tulemustest populaarteaduslikus vormis artikkel või teha Shiny rakendus. Projekti tulem on illustreeritud asjakohaste joonistega ning on arusaadav ka mittestatistikule. Projekti võib teha kas üksinda või paaristööna. Tulemusi on vaja esitleda suulisel kaitsmisel.
+# Projektitöö juhend
 
-Inspiratsiooniks saab vaadata [2015.](https://andmeteadus.github.io/2015/projektid/), [2017.](https://andmeteadus.github.io/2017/projektid/) ja  [2018.](https://andmeteadus.github.io/2018/projektid/) aasta projekte. 
+**Projekt tuleb esitada hiljemalt**
 
-### Tähtajad 
+- **I rühm**:   26. oktoober 2019 kell 10:00
+- **II rühm**:  14. detsember 2019 kell 10:00
 
-* Teema valimine - 25.03.2019
-* Projekti esitamise tähtaeg - 12.05.2019 kell 23.59.
-* Projekti tulemuste müümine (st esitlus) - 20.05.2019 kell 10:15 ruumis 004
+Projektid esitage Moodle keskkonna kaudu. Kõikides saadetud töö failide nimedes peab kajastuma tudengi nimi.
 
-Mõned meie välja pakutud teemad on [siin](https://docs.google.com/spreadsheets/d/1pWFMwq3mPY0OXMGVlFcxJIqnfTv41c8Xvr4rNEOGfpg/edit#gid=0). Samas failis saab ka oma teemad registreerida.
+Projektide valmimise käigus tekkinud küsimuste ja probleemide lahendamiseks on võimalus tulla ja küsida järgmistel aegadel:
 
-### Mida on vaja esitada?
+- **I rühm** N, 25. oktoober 2019 kell 16:00
+- **II rühm** N, 13. detsember 2019 kell 16:00 
 
-**a1. Artikkel**
+Olen vahemikus 16:00 - 16:20 klassis 003 või kuniks küsijaid jagub.
 
-Valminud populaarteaduslik artikkel tehakse avalikuks [aine veebilehel](../projektid/).
 
-Vaja on esitada märgenduskeeles Markdown kirjutatud artikkel.
-Kuna aine veebilehe postitused on kirjutatud Markdownis, siis on lihtsam projekte veebilehele lisada, kui need on tehtud Markdownis.
-Näiteks selle sama lehe lähtekoodi näed [siit](https://raw.githubusercontent.com/andmeteadus/2019/gh-pages/projekt_juhend.md).
+## Eesmärk
 
-Artikli puhtandi võid kirjutada näiteks RStudios, aga see fail ei tohi sisaldada R-i koodi.
-Joonise lisamiseks salvesta see eraldi pildifailina ja lisa see pilt Markdownis kirjutatud artiklisse näiteks nii:
+Projektitöö eesmärgiks on näidata, kuivõrd on tudeng omandanud oskused kasutada R-i andmete töötlemiseks. Samuti oskust R-ga analüüside tulemusi vormistada (nt. joonised).
 
-```
-![](joonis1.png)
-```
+Sobilik on näiteks kirjeldava analüüsi läbiviimine mõnel andmestikul. Kirjeldav analüüs võiks sisaldada kirjeldavat statistikat (keskmised, mediaanid, miinimum, maksimum jms, mis on parasjagu oluline), jaotuseid (sagedus-, jaotustabelid), graafikuid (histogrammid, karpdiagrammid, hajuvusgraafikud ja muu parasjagu oluline) ja vastuseid andmestikust kerkinud olulistele küsimustele.
 
-aga mitte nii:
 
-```
-ggplot(data, aes(x, y)) + geom_point()
-```
+## Andmestik
 
-Abiks on järgmised [Markdowni näpunäited](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images).
+Projektis kasutage oma andmestikku või otsige internetist midagi sobivat (vt. nt. [www.data.gov](https://www.data.gov/), [data.gov.uk](https://data.gov.uk/), [www.europeansocialsurvey.org](https://www.europeansocialsurvey.org/data/country.html?c=estonia) *guugelda* "sample datasets" jne). Andmete päritolu tuleb töös viidata.
 
-**a2. Rakendus**
+**NB! Andmestik peaks kindlasti sisaldama: **
 
-Ka valminud Shiny rakendused teeme veebis kättesaadavaks. Esitada tuleb nii R-i kood(id) kui ka kasutatud andmetabelid.
+* vähemalt ühte pidevat tunnust (nt. pikkus, kaal, kestus, sissetulek jne);
+*	vähemalt kahte kategoriseerivat (nominaalset) tunnust (nt. haridus, sugu, elukoht jne); 
+*	vähemalt ühte diskreetset tunnust (nt. laste arv leibkonnas, vanuse kategooriad, kroonlehtede arv õiel jne.);
+*	kas aja tunnust või mingit teksti sisendit. 
 
-**b. Kood**
 
-Vaja on esitada andmeanalüüsi R-i kood.
+## Nõuded projektile
 
-Selle eesmärgiks on veenduda, et analüüs on reprodutseeritav. 
+Projekt peab olema sisukas, eesmärk ei ole näidata seosetuid R käskude kasutamist, vaid oskust vastavalt andmestikule valida sobivaid R-i vahendeid andmete analüüsiks. Enne valitud andmestikuga tegelema hakkamist võiks valmis mõelda olulisemad küsimused või mida konkreetsest andmestikust teada saada võiks, mis on kõige huvitavamad küsimused.
 
-### Hindamine
+**Soovitus** Enne kui hakkad R-ga koodi kirjutama püstita 4 küsimust, mida sinu valitud andmestikust saaks järgi uurida.
 
-* Kas populaarteaduslik artikkel / rakendus on põnev ja selge?
-* Kas visualisatsioonid on atraktiivsed ja annavad vastuse uuritud küsimusele?
-* Kas andmeanalüüs on reprodutseeritav?
+Projekt peab olema korrektselt (sealhulgas keeleliselt korrektselt) vormistatud PDF-formaadis fail. Pikkus ca 8 lehekulge A4 formaadis. 
+
+\pagebreak
+
+Projekti võib esitada kahel viisil:
+
+1. Rmarkdown keeles kirjutatud raport (soovitatav), esitada tuleb:
+
+    * kasutatud andmestik(ud) eraldi failina;
+    * Rmarkdown fail, mis sisaldab nii koodi (NB! kommentaaridega!!) kui analüüsiteksti;
+    * Rmarkdown faili PDF väljatükk.
+
+
+1. Mõne teise tekstitöötlus-programmis (nt. MS Word, OpenOffice, LaTeX) vormindatud raport. Esitada tuleb:
+
+    * kasutatud andmestik(ud) eraldi failina;
+    * vormistatud analüüsi tekst (ei sisalda koodi ega vormindamata R väljatrükki!);
+    * kommenteeritud R koodi eraldi failina (tõrgeteta töötav).
+
+
+
+### Nõuded detailsemalt
+
+Oskused, mida kasutada võiks:
+
+* andmete sisselugemine (nt. `read.table`, `read_excel`, jne)
+* tüübiteisendused (nt. `as.numeric`, `as.character`, faktorite moodustamine või tasemete ümberjärjestamine)
+* esmane andmekirjeldus (nt. `summary`, `nrow`, `ncol`, `names`)
+* kirjeldav statistika (nt. `mean`, `sd`, `median`, `min`, `max`, sagedus- ja jaotustabelid jmt)
+* alamhulkade eraldamine andmetest (nt. `select`, `filter`, [, $, veerunimed, reaindeksid, eriti aga tõeväärtusvektorid)
+* sõnetöötlus, kuupäevade töötlemine (nt. isikukoodist soo eraldamine, moodustada `<aasta>-<nädal>` muutuja)
+* andmete teisendamine pika ja laia formaadi vahel (nt. `melt`, `cast`, koos agregeerimisega)
+* graafika `ggplot2`-ga
+* paketi `dplyr` või `data.table` käskude kasutamine
+* lisafunktsioonide kirjutamine (nt. arvutuskäik, mida tihti kasutatakse muudetakse funktsiooniks)
+
+
+## Projekti hindamine
+
+Projekti hindamisel võetakse aluseks:
+
+* Analüüsist lähtuvalt õigesti ja asjakohaselt kasutatud oskuste arv "Nõuded detailsemalt"" loetelust (kuni 10 p)
+* Jooniste vormistus (1 p)
+* Teksti vormistus (2 p)
+* Projekti sisukus (2 p)
+* Boonuspunktid (2 p)
+
+
+Boonuspunkte võib saada õppejõu äranägemise järgi järgmiste tingimuste olemasolul:
+
+* Praktikumis käsitletud R-i käskude/pakettide/funktsioonide äärmiselt oskuslik kasutamine, 
+* Praktikumis mitte käsitletud käskude/pakettide/funktsioonide laialdane kasutamine,
+* Ilusasti vormistatud R-i kood koos ammendavate kommentaaridega.
+
+
+**Projektitöö on arvestatud kui töö eest on saadud vähemalt 8 punkti.**
+
+**Soovitus** Ärge võtke seda projekti kui aine eksamit vaid osa õppeprotsessist ehk kui miski kohe ei õnnestu siis uurige internetist või raamatutest juurde. Kirjutage kõik tekkinud probleemid üles ning tooge need näiteks R-i koodis kommentaarina välja. Proovime leida lahendused dokumendi alguses toodud aegadel.
+
+
+## Korduma kippuvad vead
+
+* eesmärgistamata töö/analüüs; 
+* puudub pealkiri, autor;
+* ebaühtlane või lohakas vormistus;
+* inglise ja eesti keele segamini kasutamine;
+* erineva vormindusega joonised (nt. üks joonis sinise taustaga, teine kollase taustaga; üks lihtne joonis ggplot2-ga, teine lihtne joonis aga baasgraafikaga);
+* jooniste toimetamata jätmine (x-, y-telje nimed on võetud veerupealkirjadest, nt on ingliskeelsed);
+* R väljundi kopeerimine-kleepimine analüüsifaili ilma toimetamata (nt `summary`);
+* analüüsi seisukohast otstarbetute käskude/funktsioonide kasutamine (nt: `nimedkoos <- str_c(names(andmed),collapse = "_"); nimederaldi <- unlist(str_split(nimedkoos, "_"))` );
+* lihtsate asjade lahendamine keerulisel moel (nt tsükli kasutamine olukorras, kus oleks saanud rakendada vektortehteid vms), eriti kui praktikumis on ühte võimalikku lahendust käsitletud;
+* koodi väga halb vormindamine, liiga vähene kommenteeritud kood;
+* vigane/mittetöötav kood.
+
+
+**Näited**
+
+Hea näide analüüsi kohta: http://kodu.ut.ee/~annes/Rkursus/hea.pdf (autor eelistas mustvalgeid jooniseid, aga see pole kohustuslik.) Tööl oli ka korrektselt vormistatud tiitelleht, mis näidisfailis anonüümsuse tagamiseks eemaldati.
+
+Halb näide projektitööst: http://kodu.ut.ee/~annes/Rkursus/halb.pdf (on esitatud palju käske, mille järele sisulist vajadust ei ole; vormistuse puhul on kasutatud liigselt värve ja liiga palju erinevaid vormingutüüpe).
+

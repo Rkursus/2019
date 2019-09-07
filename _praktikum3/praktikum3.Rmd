@@ -16,14 +16,11 @@ library(ggplot2)
 ```
 
 
-=(Date())
-
-
 # Toimingud andmestikuga
 
 Impordime uuesti andmestiku, mida korra kasutasime ka eelmises praktikumis (Massachusettsi andmestik), ja vaatame andmestikust ülevaadet
 ```{r, results='hide'}
-andmed <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt", header = T, sep = "\t")
+andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", header = T, sep = "\t")
 str(andmed)
 ```
 

@@ -55,7 +55,7 @@ if (window.hljs) {
 <h2><span class="header-section-number">1.1</span> Andmestike täiendamine ja ühendamine</h2>
 <p>Oleme tutvunud, kuidas andmestikust saab eraldada alamhulki (nt ridu või veerge, mis vastavad teatud kriteeriumitele). Ühekaupa saab uusi veerge <code>data.frame</code>-tüüpi objektile lisada nii dollarimärgi kui kantsulgude abil, kui anname ette uue veeru nime.</p>
 <p>Vaatame siin näiteandmestikuna andmestikku <code>mk</code> (<em>maakonnad.txt</em>), mis sisaldab infot USA 5 osariigi mõnede maakondade kohta (425 maakonda). Loeme andmed sisse <!--ja lisame tunnuse, mis näitab, kas maakonna sündimuskordaja väärtus ületab 2.1 piiri:--></p>
-<pre class="r"><code>mk &lt;- read.table(&quot;http://kodu.ut.ee/~annes/Rkursus/maakonnad.txt&quot;, sep = &quot; &quot;, header = TRUE)</code></pre>
+<pre class="r"><code>mk &lt;- read.table(&quot;https://github.com/Rkursus/sygis2019/raw/master/data/maakonnad.txt&quot;, sep = &quot; &quot;, header = TRUE)</code></pre>
 <p>Mitut uut veergu või rida saab andmestikule lisada <code>cbind(.)</code> ja <code>rbind(.)</code> käskudega. Neid kasutades tuleb aga olla ettevaatlik: lisatavas reas peab olema sama palju elemente kui on andmestikus veerge ja lisatavas veerus peab olema sama palju elemente, kui on andmestikus ridu. Tunnuste nimed lisatavates ridades peavad vastama andmestiku omale, samuti peab lisatavates veergudes objektide järjestus olema sama kui esialgses andmestikus. <!--Probleeme võib tekkida ridade lisamisel, kui esineb `Factor`-tüüpi tunnuseid ja lisatavates andmetes on uusi faktoritasemeid, mida esialgses andmestikus pole välja toodud.  
 <!-- Probleem kui ntx enne faktor, lisatakse arvud??--> <!-- kui veergudel on päised ja veerud on liidetavates andmestikes eri järjekorras, siis rbind oskab ümber järjestada!, cbind ridu mitte  --></p>
 <pre class="r"><code># teeme kaks uut tunnust
@@ -133,7 +133,7 @@ kokku[order(kokku$vanus, kokku$tulemus, decreasing = TRUE), ] </code></pre>
 <h3><span class="header-section-number">1.2.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Loe sisse kaks andmestikku ja tutvu nendega (dimensioon, tunnused):<br />
-<code>link &lt;- &quot;http://kodu.ut.ee/~annes/Rkursus/&quot;</code><br />
+<code>link &lt;- &quot;https://github.com/Rkursus/sygis2019/raw/master/data/&quot;</code><br />
 <code>visiidid &lt;- read.table(paste0(link, &quot;visiidid.txt&quot;), sep = &quot;\t&quot;, header = TRUE)</code><br />
 <code>inimesed &lt;- read.table(paste0(link, &quot;isikud.txt&quot;), sep = &quot;\t&quot;, header = TRUE)</code></li>
 </ol>
@@ -259,7 +259,7 @@ vr &lt;- data.frame(nimi = c(&quot;Mari&quot;, &quot;Jaan&quot;, &quot;Jyri&quot
 <h3><span class="header-section-number">2.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Kasuta arstivisiitide ja isikute andmestiku ühte alamosa:<br />
-<code>link &lt;- &quot;http://kodu.ut.ee/~annes/Rkursus/&quot;</code><br />
+<code>link &lt;- &quot;https://github.com/Rkursus/sygis2019/raw/master/data/&quot;</code><br />
 <code>valik &lt;- read.table(paste0(link, &quot;valik.txt&quot;), sep = &quot;\t&quot;, header = TRUE)</code>. Vaata andmestik üle <code>head(valik)</code>. Tegu on valikuga isikutest, tunnuste osas on lisatud visiidi järjekorranumber.
 <ul>
 <li>Vii andmed laiale kujule, kus iga isiku jaoks oleks andmestikus üks rida, kus on kirjas isikukood, sugu, sünnikuupäev, vanus ning vererõhu väärtus esimesel ja teisel visiidil.</li>
