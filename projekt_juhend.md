@@ -121,7 +121,5 @@ Boonuspunkte võib saada õppejõu äranägemise järgi järgmiste tingimuste ol
 
 **Näited**
 
-Hea näide analüüsi kohta: http://kodu.ut.ee/~annes/Rkursus/hea.pdf (autor eelistas mustvalgeid jooniseid, aga see pole kohustuslik.) Tööl oli ka korrektselt vormistatud tiitelleht, mis näidisfailis anonüümsuse tagamiseks eemaldati.
-
-Halb näide projektitööst: http://kodu.ut.ee/~annes/Rkursus/halb.pdf (on esitatud palju käske, mille järele sisulist vajadust ei ole; vormistuse puhul on kasutatud liigselt värve ja liiga palju erinevaid vormingutüüpe).
+Näited leiad [projektide lehelt](projektid)
 
