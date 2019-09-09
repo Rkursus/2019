@@ -3,7 +3,7 @@ layout: frontpage
 ---
 
 <div class="head_example">
- {% include banner22.html %}
+ {% include banner.html %}
 </div>
 
 
