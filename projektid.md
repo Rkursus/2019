@@ -3,7 +3,7 @@ layout: page
 title: Projektid
 ---
 
-Projekti juhend on leitav [siit](https://Rkursus.github.io/sygis2019/projekt_juhend/).
+Projekti juhend on leitav [siit](https://Rkursus.github.io/sygis2019/projekt_juhend).
 <br><br>
 
 
