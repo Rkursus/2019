@@ -3,7 +3,7 @@ layout: frontpage
 ---
 
 <div class="head_example">
- {% include banner.html %}
+ {% include banner22.html %}
 </div>
 
 
@@ -54,7 +54,7 @@ Lisaks praktikumidele sisaldab õppeaine järgnevaid komponente:
 * **Kodutööd:** Kokku antakse 5 kodutööd. 
   * Kodutöö koosneb iseseisvalt lahendavatest ülesannetest praktikumis läbitud teemadel. Iga kodutöö tulemuseks on *.R fail koodi ning kommentaaridega.  
   * Kodutööde esitamine käib läbi Moodle keskkonna.
-* **Projekt:** Lisaks tuleb läbi viia üks praktiline projekt vabalt valitud andmestiku peal. Projektitöö eesmärgiks on näidata, kuivõrd on tudeng omandanud oskused kasutada R-i andmete töötlemiseks. Samuti oskust R-ga analüüside tulemusi vormistada (nt. joonised)
+* **Projekt:** Lisaks tuleb läbi viia üks praktiline projekt vabalt valitud andmestiku peal. Projektitöö eesmärgiks on näidata, kuivõrd on tudeng omandanud oskused kasutada R-i andmete töötlemiseks. Samuti oskust R-ga analüüside tulemusi vormistada (nt. joonised).
   * Projekti võib teha kas üksinda või paaristööna. 
   * Tulemusi on vaja esitleda suulisel kaitsmisel. 
   * Projektid riputatakse pärast esitamist avalikult [projektid](https://Rkursus.github.io/sygis2019/projekt_juhend) lehele.
