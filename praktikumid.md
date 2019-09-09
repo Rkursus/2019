@@ -12,7 +12,6 @@ params:
 
 Ülevaade statistikakeelest R, tutvumine kasutajaliidesega, R kui kalkulaator, abi saamine R-is, lihtsamad funktsioonid, objektid, töökeskkond, puuduvad väärtused, vektorid, tehted vektoritega. 
  
-* [Korralduslik info](../pr1_esitlus.pdf)
 * [Praktikumi materjalid](praktikum1)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum1/praktikum1_kood.R)
 
