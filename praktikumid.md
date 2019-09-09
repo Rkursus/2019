@@ -1,9 +1,6 @@
 ﻿---
 layout: page
 title: Praktikumimaterjalid
-params:
-	start_date: Date('2019-09-10')
-	days_between_weekly_labs: 2
 ---
 
 
