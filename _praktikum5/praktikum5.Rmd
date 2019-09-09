@@ -1,5 +1,8 @@
 ---
-title: 'Rakendustarkvara: R. Sügis 2018, 5. praktikum^[Praktikumijuhendid põhinevad aine MTMS.01.092 Rakendustarkvara: R (2 EAP) materjalidel, mille autorid on Mait Raag ning Raivo Kolde]'
+title: | 
+  | Rakendustarkvara: R 
+  | 5. praktikum^[Praktikumijuhendid põhinevad aine MTMS.01.092 Rakendustarkvara: R (2 EAP) materjalidel, mille autorid on Mait Raag ning Raivo Kolde]
+  
 output: 
   html_document:
     theme: null

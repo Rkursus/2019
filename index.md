@@ -18,6 +18,7 @@ Aine läbinud üliõpilane:
 * oskab kasutada kirjeldava statistika meetodeid,
 * oskab visualiseerida andmeid ja seoseid tunnuste vahel.
 
+<br/>
 
 # Õppeaine eesmärgid
 
@@ -41,6 +42,7 @@ Miks just R tarkvara?
 # Sihtgrupp
 
 Kursus on mõeldud statistikahuvilistele üliõpilastele, kes pole varem tarkvaraga R kokku puutunud. 
+
 <br/>
 
 # Õppetöö korraldus
