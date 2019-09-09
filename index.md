@@ -9,7 +9,7 @@ layout: frontpage
 
 # Õppeaine lühikirjeldus
 
-Tegemist on statistikute lemmik tarkvara R kursusega, kus antakse ülevaade R keele peamistest konstruktsioonidest ja andmetüüpidest, andmetöötlusvõimalustest ning hõlpsast jooniste tegemisest teegi ggplot2 vahenditega.
+Tegemist on statistikute lemmik tarkvara R kursusega, kus antakse ülevaade R keele peamistest konstruktsioonidest ja andmetüüpidest, andmetöötlusvõimalustest ning hõlpsast jooniste tegemisest paketi `ggplot2` vahenditega.
 
 Aine läbinud üliõpilane:
 
@@ -25,22 +25,23 @@ Aine läbinud üliõpilane:
 * Õppida käske andmetest ülevaate saamiseks, andmete töötlemiseks ja visualiseerimiseks.
 * Tutvustada tarkvara R võimalusi reprodutseeritava analüüsi läbiviimiseks ning tulemuste visualiseerimiseks.
 
-<br/>
 
 Miks just R tarkvara?
 
 * R on programmeerimiskeel ja -keskkond, mis on peamiselt arendatud statistiliseks andmetöötluseks,
 * R-i kasutajaskond on viimase kümmekonna aasta jooksul [oluliselt kasvanud](r4stats.com/articles/popularity/) ülikoolides ja ettevõtetes,
-* R on vabavara,
-* R-ga käib kaasas lai valik lisapakette,
+* [R on vabavara](https://cran.r-project.org/),
+* R-ga käib kaasas [lai valik lisapakette](https://cran.r-project.org/web/packages/available_packages_by_name.html),
 * R võimaldab tänapäeval juba [palju enamat](https://www.google.com/search?q=r+possibilities) kui ainult andmetöötlus,
 * R on ühildatav pea kõigi tuntumate andmetöötlusprogrammidega (nt. MS Excel, Tableau, SPSS, Qlik, Power BI, ...)
 * ...
 
+<br/>
 
 # Sihtgrupp
 
 Kursus on mõeldud statistikahuvilistele üliõpilastele, kes pole varem tarkvaraga R kokku puutunud. 
+<br/>
 
 # Õppetöö korraldus
 
@@ -70,19 +71,23 @@ Aine läbimiseks on vaja:
 * projekti esitluse ettevalmistus ja esitamine 4 tundi,
 * kaastudengi projekti retsenseerimine 2 tundi.
 
+<br/>
+
 # Tunniplaan
 
 Õppeaine toimub 2019/2020. õppeaasta sügissemestril. 
 
-* Praktikumid **teisipäeviti kell 10:15** ja **neljapäeviti kell 8:15** ruumis 003
+* Praktikumid **teisipäeviti kell 14:15** ja **neljapäeviti kell 8:15** ruumis 003
 	* I rühm nädalatel 2 - 6
 	* II rühm nädalatel 8 - 12
 * **Projektide tähtaeg**:
 	* I rühm **neljapäeval 24. oktoober kell 12:00** (nädal 8).
 	* II rühm **neljapäeval 5. detsember kell 12:00** (nädal 14).
 * **Projektide ettekandmine**:
-	* I rühm **teisipäeval 29. oktoober kell 14:15** (nädal 9).
+	* I rühm **teisipäeval 5. november kell 14:15** (nädal 10).
 	* II rühm **teisipäeval 17. detsember kell 14:15** (nädal 16).
+
+<br/>
 
 # Kontakt ja küsimused
 
