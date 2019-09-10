@@ -23,30 +23,27 @@ month.name
 x <- c(0:5, "tekst", "T", 234.5, "234,5")
 x
 
-# kas on sõned? as.character()
-is.character(month.name)
-is.character(x)
+# Kas on sõned?
+is.character(____)
+is.character(____)
 
-# proovime arvuks teisendada: is.numeric()
-as.numeric(month.name) # ei saa ühtegi teisendada
-as.numeric(x)          # päästetakse nii palju kui saab
+# Proovi arvuks teisendada: as.numeric()
+as.numeric(____) 
+as.numeric(____)
 
 
 
-# 2
+# 2.
+# Miks on tulemused erinevad?
 is.integer(1:4)
 is.integer(c(1, 2, 3))
-# operaator ":" moodustab jada täisarvudest
-# arvud kujul 1, 2, 3 loetakse reaalarvudeks
-# kui tahame moodustada täisarvuliste väärtustega vektorit, peab arvud kirja panema kujul 1L, 2L, ... jne
-x <- c(1L, 3L, 234L)
-x # ekraanil ei erista kas on täisarv !
-is.integer(x)
 
-# 3
+
+# 3.
+# Kas tulemus on oodatav?
 z <- c("a", "NA", NA, 0)
 is.na(z)
-# tekst 'NA' ei ole tühik!
+
 
  
 # --- 1.1 Tõeväärtused ja tõeväärtusvektorid ----
@@ -76,26 +73,24 @@ sum(is.na(vanused))
 
 # ---- ÜL 1.1.1 ----
 # 1.
-x <- c(T, F, T, NA, T)
+x <- c(__, __, __, __, __)
 x
 as.numeric(x)
-# Na jääb NA-ks
+# Mis sai NA-st?
 
 # 2.
 ?as.logical
+# Kontrolli
 nr <- c(-3, -1/3, 0, 1, 2, Inf, -Inf, NA, NaN, 1:4)
 as.logical(nr)
-# 0 teisendub FALSE, muud arvud -> TRUE; NA ja NaN läheb NA-ks
 
 
 # 3.  
 NA | FALSE
 NA | TRUE
-# puuduv väärtus liita TRUE -> TRUE
 
 NA & FALSE
 NA & TRUE
-# puuduv väärtus korda FALSE -> FALSE
 
 !NA 
 
@@ -103,18 +98,23 @@ NA & TRUE
 # 4.
 as.integer(c("tere", 0, 1, TRUE, FALSE)) 
 as.integer(c(        0, 1, TRUE, FALSE))
-# esimesel juhl teisendadakse kõik komponendid vektoris sõnedeks (kuna vektoris on üks sõne)
+# Miks on tulemused erinevad?
 
 
+# LISA
 
-# mis tekst teisendub loogikaväärtuseks ?
+# Mis tekst teisendub loogikaväärtuseks?
 # vt  
 ?logical
 #  c("T", "TRUE", "True", "true") are regarded as true,
 #  c("F", "FALSE", "False", "false") as false
+# Kontrolli
 tekst <- c("T", "TRUE", "True", "true", "F", "FALSE", "False", "false", "skljgsdfj", "TRue", "truE", "fals", "FAlse")
 as.logical(tekst)
  
+
+
+
 # --- 2. Andmestik, andmete import ----
 
 # --- 2.1 Andmete sisselugemine ja faili kirjutamine (tekstifail) ----
@@ -146,26 +146,20 @@ write.table(näide1, "failinimi.txt", sep = "\t")
 
 
 # 2. 
-tab1 <- read.table("http://kodu.ut.ee/~annes/Rkursus/tabel1.csv", 
-                   sep = ",", header = TRUE)
+tab1 <- read.table("http://kodu.ut.ee/~annes/Rkursus/____", ____)
 
-tab2 <- read.table("http://kodu.ut.ee/~annes/Rkursus/tabel2", 
-                   sep = ";", header = TRUE)
+tab2 <- read.table("http://kodu.ut.ee/~annes/Rkursus/____", ____)
 
-tab3 <- read.table("http://kodu.ut.ee/~annes/Rkursus/tabel3.txt", 
-                   sep = "\t", header = TRUE, na.strings = ".")
+tab3 <- read.table("http://kodu.ut.ee/~annes/Rkursus/____", ____)
 
-tab4 <- read.table("http://kodu.ut.ee/~annes/Rkursus/tabel4.tab",
-                   sep = " ", header = TRUE, quote = "")
+tab4 <- read.table("http://kodu.ut.ee/~annes/Rkursus/____", ____)
 
 tab1;tab2;tab3;tab4
 
  
 
 # 3.
-andmed <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt", 
-                     header = T, 
-                     sep = "\t")
+andmed <- read.table(____)
 
 # ülevaate saamine andmstikust, kontroll
 str(andmed)
@@ -235,18 +229,18 @@ View(andmestik_SAS)
 # näiteks write_sas() käsu tulemust uuem SAS omaks ei tunnista 
  
 
-
-
 # ---- ÜL 2.3.3 ----
 # 1.
 # vaata esmalt abifaili
 ?read_excel
 
-# imporditaval töölehel pole veergudel päist, 
-# tunnusenimed tuleb ise ette anda argumendiga 'col_names', kas öeldes, et päiseid pole või andmes ette nimede vektori
-kokku <- read_excel("praks1import/tudengite-arv.xlsx", sheet = "kokku", col_names = F) # R paneb ise nimed
-kokku <- read_excel("tudengite-arv.xlsx", sheet = "kokku", col_names = c("aasta", "tudengitearv")) # nimed ette anda
+# NB! imporditaval töölehel pole veergudel päist, kuidas need ette anda?
+kokku <- read_excel(____)
 str(kokku)
+
+
+
+
 
 
 

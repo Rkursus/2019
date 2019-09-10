@@ -1,5 +1,5 @@
 # --- Rakendustarkvara R
-# --- IV praktikum ----
+# --- V praktikum ----
 
 
 # --- 1 Joonised paketiga ggplot2 ----
@@ -44,34 +44,35 @@ link <- "http://kodu.ut.ee/~annes/Rkursus/"
 mk <- read.table(paste0(link, "maakonnad.txt"), sep = " ", header=T)
 
 # 2. hajuvusdiagramm: high_scl vs bachelor
-ggplot(mk, aes(x = high_scl, y = bachelor)) +
-  geom_point()
+ggplot(mk, aes(_____,______)) +
+  geom_____()
 
 
 # 3. täiendada + State (proovida erinevaid skaalasid siduda)
-ggplot(mk, aes(x = high_scl, y = bachelor)) +
-  geom_point(aes(color = State))
+ggplot(mk, aes(_____,______)) +
+  geom_____(aes(color = State))
 
-ggplot(mk, aes(x = high_scl, y = bachelor)) +
-  geom_point(aes(shape = State))
+ggplot(mk, aes(_____,______)) +
+  geom_____(aes(shape = State))
 
-ggplot(mk, aes(x = high_scl, y = bachelor)) +
-  geom_point(aes(fill = State))  # fill ei mõju kõigile kujunditele
+ggplot(mk, aes(_____,______)) +
+  geom_____(aes(fill = State))  # fill ei mõju kõigile kujunditele
 
-ggplot(mk, aes(x = high_scl, y = bachelor)) +
-  geom_point(aes(fill = State), shape = 22, color = "black", size = 2)
+ggplot(mk, aes(_____,______)) +
+  geom_____(aes(fill = State), shape = 22, color = "black", size = 2)
 
-ggplot(mk, aes(x = high_scl, y = bachelor)) +
-  geom_point(aes(size = State))  # see variant ei sobi: punktisuurus nõuab pideval skaalal muutuvat tunnust!
+ggplot(mk, aes(_____,______)) +
+  geom_____(aes(size = State))  # see variant ei sobi: punktisuurus nõuab pideval skaalal muutuvat tunnust!
 
 
 # 4. veel lisada pop_estimate
-ggplot(mk, aes(x = high_scl, y = bachelor)) +
-  geom_point(aes(color = State, size = pop_estimate))
+ggplot(mk, aes(_____,______)) +
+  geom_____(aes(color = State, size = pop_estimate))
 
 
 # Märkuseks: mis vahe on kui lisada fill, color jne ggplot() aes()-funktsioonile 
-# või geom_<xxx> osa aes()-le? Võrdle kahte järgmist joonist
+# või geom_<xxx> osa aes()-le? 
+# Võrdle kahte järgmist joonist
 
 mk$sooylekaal <- factor(mk$females_percent < 50, labels = c("naisi rohkem", "mehi rohkem"))
 
@@ -114,29 +115,29 @@ ggplot(sagedustabel, aes(x = Var1, y = Freq)) + geom_bar(stat = "identity")
 # --- ÜL 1.3.1 ----
 
 # 1.
+# Reastame faktori tasemed ümber
 mk$Birth_factor <- factor(mk$Birth_factor, levels = c("High", "Medium", "Low"))
 
-ggplot(mk, aes(x = Birth_factor, fill = Poverty_factor)) + 
-  geom_bar(position = "fill") + 
+ggplot(mk, aes(_____,______)) + 
+  geom_bar(_______) + 
   ylab("osakaal")
 
 
-# NA välja jätta
+# Kui NA välja jätta
 tingimus <- complete.cases(mk[, c("Birth_factor", "Poverty_factor")])
-ggplot(mk[tingimus, ], aes(x = Birth_factor, 
-                           fill = Poverty_factor)) + 
-  geom_bar(position = "fill") + 
+ggplot(mk[tingimus, ], aes(_____,______)) + 
+  geom_bar(_______) + 
   ylab("osakaal")
 
 
 
 # 2.
-ggplot(mk, aes(x = State, y = per_capita_inc)) +
-  geom_bar(stat = "summary", fun.y = mean)
+ggplot(mk, aes(_____,______)) +
+  geom_bar(stat = ______, fun.y = _____ )
 
 # tulbad ümberjärjestada
-ggplot(mk, aes(x = reorder(State, per_capita_inc, FUN = mean), y = per_capita_inc)) +
-  geom_bar(stat = "summary", fun.y = mean)
+ggplot(mk, aes(x = reorder(State, _____, FUN = _____), y = ________)) +
+  geom_bar(stat = ______, fun.y = _____ )
 
 
 
@@ -165,30 +166,31 @@ ggplot(data = andmed2, aes(x = aeg,y = tulem, colour = grupp)) +
   geom_line() + geom_point()
 
 
+
 # --- ÜL 1.4.1 ----
 
 # 1. bachelor histogramm
-ggplot(mk, aes(x = bachelor)) + geom_histogram(bins = 20)
-ggplot(mk, aes(x = bachelor)) + geom_histogram(breaks = seq(0, 60, 2.5))
+ggplot(mk, aes(_______)) + geom________(bins = 20)
+ggplot(mk, aes(_______)) + geom________(breaks = seq(0, 60, 2.5))
 
 # y teljel 'tihedus' st tulpade pindala = 1
-ggplot(mk, aes(x = bachelor)) + geom_histogram(bins = 20, aes(y = ..density..))
+ggplot(mk, aes(_______)) + geom________(bins = 20, aes(y = ..density..))
 
 # värvilisemaks
-ggplot(mk, aes(x = bachelor)) + 
-  geom_histogram(bins = 20, color = "salmon4", fill = "lightsalmon2", size = 1)
+ggplot(mk, aes(_______)) + 
+  geom________(bins = 20, color = "salmon4", fill = "lightsalmon2", size = 1)
 
 
 # 2. high_scl osariigiti karpdiagramm
-ggplot(mk, aes(x = State, y = high_scl)) + geom_boxplot()
+ggplot(mk, aes(_______,_______)) + geom________()
 
-# kui veel mingi grupeeriv tunnus vaja kaasata v?ib v?rvid appi v?tta
+# kui veel mingi grupeeriv tunnus vaja kaasata võib värvid appi võtta
 mk$sooylekaal <- factor(mk$females_percent < 50, labels = c("naisi rohkem", "mehi rohkem"))
-ggplot(mk, aes(x = State, y = high_scl)) + geom_boxplot(aes(color = sooylekaal))
+ggplot(mk, aes(_______,_______)) + geom________(aes(color = sooylekaal))
 
 
 
-# 3. joondiagramm verer?hkudele (isikukaupa) v?rv soo p?hjal
+# 3. joondiagramm vererõhkudele (isikukaupa) värv soo põhjal
 link <- "http://kodu.ut.ee/~annes/Rkursus/"
 visiidid <- read.table(paste0(link, "visiidid.txt"), sep = "\t", header = TRUE)
 inimesed <- read.table(paste0(link, "isikud.txt"), sep = "\t", header = TRUE)
@@ -196,11 +198,11 @@ inimesed <- read.table(paste0(link, "isikud.txt"), sep = "\t", header = TRUE)
 head(visiidid)
 head(inimesed)
 
-yhenda <- merge(visiidid, inimesed, by = "ik")
+yhenda <- merge(_______)
 head(yhenda)
 
-# ! kuup?ev
-ggplot(yhenda, aes(x = as.Date(visiidi_kp), y = vererohk, color = Sugu, group = ik)) +  geom_line()
+# ! kuupäev
+ggplot(yhenda, aes(x = _______, y = _______, color = _______, group = _______)) +  geom_line()
 
 
 
@@ -221,17 +223,18 @@ ggplot(data = mk, aes(x = bachelor, y = perc_poverty)) + geom_point() +
 # --- ÜL 1.5.1 ----
 
 # 1. hajuvusdiagramm tahkudeks
-mk$S?ndivus <- factor(mk$Birth_factor, levels = c("Low", "Medium", "High"), labels = c("madal", "keskmine", "k?rge"))
-ggplot(data = mk, aes(y = bachelor, x = high_scl)) + 
-  geom_point() + 
-  facet_wrap(facets = ~S?ndivus, labeller = label_both) + 
-  labs(x = "keskkooli l?petanute %", y = "k?rgkooli l?petanute %")
+mk$syndivus <- factor(mk$Birth_factor, levels = c("Low", "Medium", "High"), labels = c("madal", "keskmine", "kõrge"))
 
+ggplot(data = mk, aes(_______,_______)) + 
+  geom________() + 
+  facet_wrap(facets = ~_______, labeller = label_both) + 
+  labs(x = "keskkooli lõpetanute %", y = "kõrgkooli lõpetanute %")
 
-ggplot(data = mk[complete.cases(mk$S?ndivus),], aes(y = bachelor, x = high_scl)) + 
-  geom_point() + 
-  facet_wrap(facets = ~S?ndivus, labeller = label_both) + 
-  labs(x = "keskkooli l?petanute %", y = "k?rgkooli l?petanute %")
+# Kui tahta puuduvad väärtused välja jätta
+ggplot(data = mk[complete.cases(mk$syndivus),], aes(_______,_______)) + 
+  geom________() + 
+  facet_wrap(facets = ~_______, labeller = label_both) + 
+  labs(x = "keskkooli lõpetanute %", y = "kõrgkooli lõpetanute %")
 
 
 # 2. joondiagramm tahkudeks
@@ -240,17 +243,15 @@ ggplot(data = mk[complete.cases(mk$S?ndivus),], aes(y = bachelor, x = high_scl))
 yhenda$sygis <- substr(yhenda$skp, 6, 7) %in% 9:11
 
 
-ggplot(yhenda, aes(x = as.Date(visiidi_kp), y = vererohk, color = sygis, group = ik)) + 
-  geom_line() + 
-  facet_wrap(facets = ~Sugu, labeller = label_both) +
-  labs(color = "S?nnip?ev\n s?gisel", x = "kuup?ev", y = "verer?hk")
+ggplot(yhenda, aes(x = _______, y = _______, color = _______, group = _______)) + 
+  geom________() + 
+  facet_wrap(facets = ~_______, labeller = label_both) +
+  labs(color = "Sünnipäev\n sügisel", x = "kuupäev", y = "vererõhk")
 
 
-# Tahkude siltide muutmine
-ggplot(yhenda, aes(x = as.Date(visiidi_kp), y = vererohk, color = sygis, group = ik)) + 
-  geom_line() + 
-  facet_wrap(facets = ~Sugu, labeller = labeller(Sugu = c("M" = "Mehed", "N" = "Naised"))) + 
-  labs(color = "S?nnip?ev\n s?gisel", x = "kuup?ev", y = "verer?hk")
+# Tahkude siltide muutmiseks kasuta argumenti
+#labeller = labeller(Sugu = c("M" = "Mehed", "N" = "Naised"))
+
 
 
 
@@ -283,35 +284,28 @@ p + geom_point(aes(colour = "blue"))
 
 # --- ÜL 1.6.1 ----
 
-# 1.  p?hijoonis 
-p <- ggplot(data = mk, aes(high_scl, bachelor)) + geom_point()
+# 1.  põhijoonis 
+p <- ggplot(data = mk, aes(_______, _______)) + geom________()
 p
 
 
 
-# 2. joonisele m?ned maakonnanimed lisada
-p1 <- p + geom_text(data = mk[mk$high_scl < 50,], aes(label = County), col = "red", size = 3)
+# 2. joonisele mõned maakonnanimed lisada
+p1 <- p + geom_text(data = mk[_______,_______], aes(label = _______), col = "red", size = 3)
 p1
 
-# +  need punktid ?le v?rvida
-p1 + 
-  geom_point(
-    data = mk[mk$high_scl < 50,], 
-    aes(high_scl, bachelor),  
-    col = "blue", size = 2)
-
-# +  need punktid ?le v?rvida + teksti nihutada
+# +  need punktid üle värvida + teksti nihutada
 p2 <- p + 
   geom_text(
-    data = mk[mk$high_scl < 50,], 
-    aes(label = County), 
+    data = mk[_______,_______], 
+    aes(label = _______), 
     col = "red", 
     size = 3, 
     vjust = 0, 
     hjust = c(0, 0, 1, 0, 1, 0, 1, 1), 
     angle = 45) + 
   geom_point(
-    data= mk[mk$high_scl < 50,],  
+    data= mk[_______,_______],  
     col = "blue", 
     size = 3)
 p2
@@ -319,8 +313,8 @@ p2
 
 # 3.  + verikaaljoon  
 p3 <- p2 + 
-  geom_vline(
-    xintercept = 50, 
+  geom________(
+    xintercept = _______, 
     col = "green", 
     size = 2, 
     alpha = 0.5) 
@@ -328,7 +322,7 @@ p3 <- p2 +
 
 
 # 4. lisada joonisele oma valitud kohta mingi komentaaritekst
-p3 + annotate("text", x = 40, y = 50, label = "Selgituseks v?ib ?elda, et ...", size = 3, hjust = 0)
+p3 + _______("text", x = _______, y = _______, label = "Selgituseks võib öelda, et ...", size = 3, hjust = 0)
 
 
 # --- 1.7 Joonise salvestamine ----

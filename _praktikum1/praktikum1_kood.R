@@ -157,21 +157,21 @@ kaalud[seq(1, 6, 2)]  # iga teine element alates esimesest
 
 # ---- Ül 2.2.1 ----
 # 1
-y <- rep(1:3, times = c(3, 4, 5))
+y <- rep(____)
 y
 
 # 2
-z <- 7 - y
+z <- ____
 z
 y + z
 
 # 3 
 length(z) # mitu elementi on vektoris z? 
-z[seq(1, length(z), 3)]
+z[___] 
 
-#4  Tehte järjekord!
+#4  Tehte järjekord! 
 u <- 8
-1:u - 1
+1:u - 1 
 1:(u - 1)
 
 
@@ -209,16 +209,12 @@ summary(vanused)
 
 # ---- ÜL 2.3.1 ----
 #1 
-sum(vanused)
-sum(vanused, na.rm = T)
-
-# teine võimalus NA eemaldamiseks
-is.na(vanused) # kontrollime elemendikaupa, kas on tühik. tõeväärtused
-vanused[!is.na(vanused)] # valime need vektori elemendid, kus POLE tühik (hüüumärk 'pöörab' tõeväärtused)
+sum(____)
 
 
 #2 
-?which.min # pole lisaargumente NA regulerimiseks
+?which.min 
+
 
 # --- LISA: Kasutajaliidesest veel ---
 
