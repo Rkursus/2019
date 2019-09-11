@@ -7,7 +7,7 @@
 library(ggplot2)
 
 # Maakondade andmestik
-mk <- read.table("http://kodu.ut.ee/~annes/Rkursus/maakonnad.txt", sep = " ", header=T)
+mk <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/maakonnad.txt", sep = " ", header=T)
 head(mk)
 
 # Skaleerimisfunktsiooni rakendamiseks tuleb see lisada joonisele

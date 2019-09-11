@@ -10,7 +10,7 @@ library(dplyr)
 #--- 1.1 Paketi dplyr käskude kasutamine ----
 
 # Andmestik
-mass <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt", sep = "\t", header = T)
+mass <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header = T)
 
 
 # Käsk 'mutate()': arvutame kaks uut tunnust, kustutame ühe vana
@@ -162,7 +162,7 @@ DT[, c("uus1", "uus2") := NULL][]
 # --- ÜL 2.1.1 ----
 
 
-mass <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt",  sep = "\t", header = T)
+mass <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt",  sep = "\t", header = T)
 
 
 # 1. tabeli teisendamine data.table-tüübiks

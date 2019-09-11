@@ -6,7 +6,7 @@
 # --- 1. Toimingud andmestikuga ----
 
 # Andmestik
-andmed <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt",
+andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt",
                      header = T, sep = "\t")
 str(andmed)
 head(andmed)

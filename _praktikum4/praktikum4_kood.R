@@ -6,7 +6,7 @@
 # --- 1. Toimingud andmestikuga - jätk ----
 
 # Andmestik
-mk <- read.table("http://kodu.ut.ee/~annes/Rkursus/maakonnad.txt", sep = " ", header = TRUE)
+mk <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/maakonnad.txt", sep = " ", header = TRUE)
 
 
 
@@ -70,7 +70,7 @@ kokku[order(kokku$vanus, kokku$tulemus, decreasing = TRUE), ]
 
 # --- ÜL 1.2.1 ----
 # 1. Loe sisse andmestikud ja tutvu nendega:
-link <- "http://kodu.ut.ee/~annes/Rkursus/"
+link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
 visiidid <- read.table(paste0(link, "visiidid.txt"), sep = "\t", header = TRUE)
 inimesed <- read.table(paste0(link, "isikud.txt"), sep = "\t", header = TRUE)
 dim(visiidid)
@@ -155,7 +155,7 @@ dcast(m, nimi ~ . , fun.aggregate = mean, na.rm = TRUE, value.var = "value")
 # --- ÜL 2.1.1 ----
 
 # 1 
-link <- "http://kodu.ut.ee/~annes/Rkursus/"
+link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
 valik <- read.table(paste0(link, "valik.txt"), sep = "\t", header = TRUE)
 head(valik)
 

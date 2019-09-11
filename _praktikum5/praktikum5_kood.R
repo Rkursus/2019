@@ -9,7 +9,7 @@
 
 
 # Baasgraafika näited
-andmed <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt",
+andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt",
                      header = T, sep = "\t")
 
 par(mfrow = c(1, 2), cex = 0.6) # see rida võimaldab kaks joonist kõrvuti panna
@@ -23,7 +23,7 @@ legend("topleft", pch = 19, col = 2:3, legend = levels(andmed$SEX))
 library(ggplot2)
 
 # andmed
-mk <- read.table("http://kodu.ut.ee/~annes/Rkursus/maakonnad.txt",
+mk <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/maakonnad.txt",
                  sep = " ", 
                  header = T)
 head(mk)
@@ -40,7 +40,7 @@ ggplot(data = mk, mapping = aes(x = bachelor, y = per_capita_inc)) +
 # --- ÜL 1.2.1 ----
 
 # 1. loe sisse maakondade andmestik
-link <- "http://kodu.ut.ee/~annes/Rkursus/"
+link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
 mk <- read.table(paste0(link, "maakonnad.txt"), sep = " ", header=T)
 
 # 2. hajuvusdiagramm: high_scl vs bachelor
@@ -191,7 +191,7 @@ ggplot(mk, aes(_______,_______)) + geom________(aes(color = sooylekaal))
 
 
 # 3. joondiagramm vererõhkudele (isikukaupa) värv soo põhjal
-link <- "http://kodu.ut.ee/~annes/Rkursus/"
+link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
 visiidid <- read.table(paste0(link, "visiidid.txt"), sep = "\t", header = TRUE)
 inimesed <- read.table(paste0(link, "isikud.txt"), sep = "\t", header = TRUE)
 

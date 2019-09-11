@@ -25,7 +25,7 @@ while(a < 10) {
 #----  ÜL 1.1.1
 
 # Loe sisse andmestik
-mass <- read.table("http://kodu.ut.ee/~annes/Rkursus/mass.txt", sep = "\t", header =
+mass <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header =
                      TRUE)
 library(stringr)
 
@@ -109,7 +109,7 @@ table(ifelse(is.na(mass$WAGP), "palgatu", "palgaga") )
 # --- ÜL 1.2.1 ----
 # 1
 
-visiidid <- read.table("http://kodu.ut.ee/~annes/Rkursus/visiidid.txt", sep = "\t",
+visiidid <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/visiidid.txt", sep = "\t",
                        header = TRUE)
 head(visiidid)
 
@@ -159,7 +159,7 @@ zskoor(c("a", "b"))
 
 # 2
 
-visiidid <- read.table("http://kodu.ut.ee/~annes/Rkursus/visiidid.txt", sep = "\t", header = TRUE)
+visiidid <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/visiidid.txt", sep = "\t", header = TRUE)
 head(visiidid)
 
 
