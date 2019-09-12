@@ -20,6 +20,7 @@ Andmete importimine, väärtustetüübid ja teisendused, lisapakettide kasutamin
 
 * [Praktikumi materjalid](praktikum2)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum2/praktikum2_kood.R)
+* [RStudio snipetid](https://github.com/Rkursus/sygis2019/raw/master/RStudio_snippetid.txt)
 * [Kodutöö](praktikum2_kodutoo)
     * Tähtaeg:
 		* I rühm - 19.09.2019 kell 08:15.
