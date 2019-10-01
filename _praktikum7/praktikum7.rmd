@@ -20,7 +20,7 @@ library(reshape2)
 
 # Andmetöötlus paketiga dplyr
 
-Pakett **dplyr** mõeldud andmetabelite täienduste, tabelis olevate objektide või tunnuste alamhulkade valiku, grupeerimise ja sorteerimise teostamiseks. Samuti saab selle abil leida erinevaid andmeid agregeerivaid tabeleid, mis sobivad kirjeldava statistilise analüüsi läbiviimiseks. Paketi **dplyr** käskude juures võib välja tuua veel nende töö kiiruse suuremate andmestike korral.  Põhjalik ülevaade selle paketi käskudest on paketi dokumentatsioonis^[http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html]. Põhifunktsioonid paketis on järgmised
+Pakett **dplyr** mõeldud andmetabelite täienduste, tabelis olevate objektide või tunnuste alamhulkade valiku, grupeerimise ja sorteerimise teostamiseks. Samuti saab selle abil leida erinevaid andmeid agregeerivaid tabeleid, mis sobivad kirjeldava statistilise analüüsi läbiviimiseks. Paketi **dplyr** käskude juures võib välja tuua veel nende töö kiiruse suuremate andmestike korral.  Põhjalik ülevaade selle paketi käskudest on paketi dokumentatsioonis^[https://cran.rstudio.com/web/packages/dplyr/vignettes/dplyr.html]. Põhifunktsioonid paketis on järgmised
 
 - `mutate()` -- lisab andmestikku uusi tunnuseid, mis on leitud olemasolevate põhjal.
 - `select()` -- valib andmestikust nime põhjal tunnused.
