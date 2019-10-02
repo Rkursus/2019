@@ -86,7 +86,7 @@ Kuupäevad paketiga `lubridate` ja sõnetöötlus paketiga `stringr`.
 
 * [Praktikumi materjalid](praktikum8)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum8/praktikum8_kood.R)
-* [Kodutöö](../praktikum8_kodutoo)
+* [Kodutöö](praktikum8_kodutoo)
     * Tähtaeg:
 		* I rühm - 10.10.2019 kell 08:15.
 		* II rühm - 21.11.2019 kell 08:15.
