@@ -97,13 +97,13 @@ Kui muutuja on väärtustatud, siis edasistes arvutustes võiks muutujat kasutad
 
 ### Ülesanded
 
-1. Omista arv $25 \pi$ muutujale `z`. Arv $\pi$ on R-is muutuja `pi` nime all.
+1. Omista arv $25 \pi$ muutujale `u`. Arv $\pi$ on R-is muutuja `pi` nime all.
 
-1. Leia arvu $25 \pi$ kümnendlogaritm, kasutades muutujat `z`.
+1. Leia arvu $25 \pi$ kümnendlogaritm, kasutades muutujat `u`.
  
-1. Leia arvu $25 \pi$ naturaallogaritm, kasutades muutujat `z`.
+1. Leia arvu $25 \pi$ naturaallogaritm, kasutades muutujat `u`.
 
-1. Kasutades muutujat `z`, arvuta tehte $25 \pi + \frac{1}{25 \pi} - 2^{\frac{25\pi}{19}}$ vastus.
+1. Kasutades muutujat `u`, arvuta tehte $25 \pi + \frac{1}{25 \pi} - 2^{\frac{25\pi}{19}}$ vastus.
 
 
 
@@ -167,14 +167,14 @@ temp
 
 ```{r eval=FALSE}
 # Ülesanne 1: Teisenda temperatuurid celsiuse skaalalt fahrenheiti skaalale (asenda alakriips vajaliku tehtega) ja prindi tulemus ekraanile
-Fahrenheit <- '___________________' 
+Fahrenheit <- ___________________
 Fahrenheit 
 
 # Ülesanne 2. Prindi ekraanile vektor nimega 'lisa'
 
 
 # Ülesanne 3. Moodusta nõutud kujul uus vektor, selleks asenda alakriipsud vajalike objektidega. Prindi tulemus ekraanile.
-temp2 <- c('_____', '_____') 
+temp2 <- c(_____, _____) 
 temp2
 
 ```
@@ -241,20 +241,20 @@ temp[jaam == "Tallinn"]  # valime välja Tallinnale vastava temperatuuri
 
 ### Ülesanded
 1. Tee  näited 1 kuni 3  ükshaaval läbi ja uuri tulemust.
-2. Vali temperatuurivektorist elemendid, mis on paarisarvulistel kohtadel (paarisarvulise vektori moodustamiseks kasuta funktsiooni `seq()`). Omista saadud alamvektor muutujale `vastus1`. Prindi tulemus ekraanile.
-3. Vali välja jaamad, kus temperatuur on olnud -17 või alla selle. Kasuta valiku tegemisel tõeväärtusvektorit ja kandilisi sulge `[]`. Omista saadud alamvektor muutujale `vastus2`.  Prindi tulemus ekraanile.
+2. Vali temperatuurivektorist elemendid, mis on paarisarvulistel kohtadel (paarisarvulise vektori moodustamiseks kasuta funktsiooni `seq()`). Omista saadud alamvektor muutujale `vastus4`. Prindi tulemus ekraanile.
+3. Vali välja jaamad, kus temperatuur on olnud -17 või alla selle. Kasuta valiku tegemisel tõeväärtusvektorit ja kandilisi sulge `[]`. Omista saadud alamvektor muutujale `vastus5`.  Prindi tulemus ekraanile.
 
 ```{R eval = FALSE}
 # Ülesanne 1: Vali nõutud elemendid temperatuurivektorist, omista tulemus muutujale vastus1. 
 # Prindi tulemus ekraanile
-vastus1 <- temp[_______]
-vastus1
+vastus4 <- temp[_______]
+vastus4
 
 
 # Ülesanne 2: Vali välja tingimusele vastavad ilmajaamade nimed, omista tulemus muutujale vastus2. 
 # Prindi tulemus ekraanile
-vastus2 <- ________
-vastus2
+vastus5 <- ________
+vastus5
 
 ```
 
