@@ -54,6 +54,7 @@ Andmestiku teisendused, veel andmestruktuure (pikk ja lai andmetabel), andmestru
 
 Joonised paketiga `ggplot2`.
 
+* Tutvu raamatuga [R Graphics Cookbook](https://r-graphics.org)
 * [Praktikumi materjalid](praktikum5)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum5/praktikum5_kood.R)
 
