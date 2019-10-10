@@ -54,7 +54,7 @@ Andmestiku teisendused, veel andmestruktuure (pikk ja lai andmetabel), andmestru
 
 Joonised paketiga `ggplot2`.
 
-* Tutvu raamatuga [R Graphics Cookbook](https://r-graphics.org)
+* Tutvu raamatuga [Data visualization: a practical introduction](http://socviz.co/)
 * [Praktikumi materjalid](praktikum5)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum5/praktikum5_kood.R)
 
@@ -64,6 +64,7 @@ Joonised paketiga `ggplot2`.
 
 Joonised `ggplot2`-ga jätkub - joonisele kihtide lisamine, skaalade muutmine, joonise viimistlemine.
 
+* Tutvu raamatuga [R Graphics Cookbook](https://r-graphics.org)
 * [Praktikumi materjalid](praktikum6)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum6/praktikum6_kood.R)
 * [Kodutöö](praktikum6_kodutoo)
