@@ -109,7 +109,7 @@ Programmeerimine R-is - tsüklid, tingimuslaused, funktsioonide defineerimine, j
 Tulemuste vormistamine pakettidega `knitr` ja `rmarkdown`.
 
 * [Praktikumi materjalid](praktikum10)
-* [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum10/praktikum10_kood.R)
+* [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum10/praktikum10_kood.Rmd)
 * [Kodutöö](praktikum10_kodutoo)
     * Tähtaeg:
 		* I rühm - 17.10.2019 kell 08:15.
