@@ -24,7 +24,7 @@ Andmete importimine, väärtustetüübid ja teisendused, lisapakettide kasutamin
 * Kodutöö
     * Tähtaeg:
 		* I rühm - 19.09.2019 kell 08:15.
-		* II rühm - 31.10.2019 kell 08:15.
+		* II rühm - 31.10.2019 kell 08:00.
 
 
 ## Praktikum 3
@@ -46,7 +46,7 @@ Andmestiku teisendused, veel andmestruktuure (pikk ja lai andmetabel), andmestru
 * Kodutöö
     * Tähtaeg:
 		* I rühm - 26.09.2019 kell 08:15.
-		* II rühm - 07.11.2019 kell 08:15.
+		* II rühm - 07.11.2019 kell 08:00.
 
 
 ## Praktikum 5
@@ -70,7 +70,7 @@ Joonised `ggplot2`-ga jätkub - joonisele kihtide lisamine, skaalade muutmine, j
 * Kodutöö
     * Tähtaeg:
 		* I rühm - 03.10.2019 kell 08:15.
-		* II rühm - 14.11.2019 kell 08:15.
+		* II rühm - 14.11.2019 kell 08:00.
 
 ## Praktikum 7
 
@@ -91,7 +91,7 @@ Kuupäevad paketiga `lubridate` ja sõnetöötlus paketiga `stringr`.
 * Kodutöö
     * Tähtaeg:
 		* I rühm - 10.10.2019 kell 08:15.
-		* II rühm - 21.11.2019 kell 08:15.
+		* II rühm - 21.11.2019 kell 08:00.
 	
 
 ## Praktikum 9
@@ -113,4 +113,4 @@ Tulemuste vormistamine pakettidega `knitr` ja `rmarkdown`.
 * Kodutöö
     * Tähtaeg:
 		* I rühm - 17.10.2019 kell 08:15.
-		* II rühm - 28.11.2019 kell 08:15.
+		* II rühm - 28.11.2019 kell 08:00.
