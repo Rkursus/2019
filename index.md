@@ -81,7 +81,7 @@ Aine läbimiseks on vaja:
 
 Õppeaine toimub 2019/2020. õppeaasta sügissemestril. 
 
-* Praktikumid **teisipäeviti kell 14:15** ja **neljapäeviti kell 8:15** ruumis 003
+* Praktikumid **teisipäeviti kell 14:15** ja **neljapäeviti kell 8:15** ruumis 203
 	* I rühm nädalatel 2 - 6
 	* II rühm nädalatel 8 - 12
 * **Projektide tähtaeg**:
