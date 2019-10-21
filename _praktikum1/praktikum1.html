@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -7,7 +7,6 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -54,6 +53,7 @@ if (window.hljs) {
 <p>R-i kodulehelt saab vajaliku tarkvara alla laadida: <a href="http://www.r-project.org/" class="uri">http://www.r-project.org/</a></p>
 <div id="kasutajaliides" class="section level2">
 <h2><span class="header-section-number">1.1</span> Kasutajaliides</h2>
+<p>Ava Start-menüü ja otsi programm nimega R, käivita see.</p>
 <p>Programmil R on äärmiselt minimalistlik kasutajaliides. Programmi käivitades on näha ainult konsooliaken. Rea ees olev märk <code>&gt;</code> näitab, et R ootab uut käsku. Käsud saab kirjutada sümboli <code>&gt;</code> järele, sealjuures võib üks käsk paikneda mitmel järjestikusel real. Kui R-i arvates on käsu sisestamine pooleli, on konsoolirea alguses sümbol <code>+</code>, sel juhul võib käsu sisestamist uuest reast jätkata. Kui aga reavahetus on lisatud ekslikult, näiteks on koodis näha viga just eelnevas reas (mida pärast reavahetuse lisamist enam redigeerida ei saa) saab uue tühja käsurea tekitada vajutades <code>Esc</code> klahvi.</p>
 <p>Kui käsk on sisestatud, siis <code>enter</code>-klahvi vajutamise järel käsk täidetakse ja tulemus trükitakse konsooliaknasse. Sageli on siis rea alguses kantsulgudes mingi arv, mis näitab, mitmes tulemuse element on rea alguses – nimelt võib tulemus mõnikord koosneda mitmest elemendist.</p>
 <pre class="r"><code>&gt; 4 * 6</code></pre>
@@ -67,13 +67,31 @@ if (window.hljs) {
 [35] 140 144 148 152 156 160</code></pre>
 <p><br />
 Kui konsooliaknas olles vajutada üles- või allanooleklahvi, saab sirvida eelnevalt täidetud käske.</p>
-<p>Konsooli käskude sisestamise asemel on neid mõistlik kirjutada skriptifaili, et hiljem (nt järgmisel päeval) saaks tehtud tööd (näiteks mingi analüüsi) kiiresti jätkata või uuesti teha kui on lisandunud uued andmed. Skriptifaili tekitamiseks R-is tuleks valida menüüst <code>File</code> valik <code>New script</code>. Avatakse skriptiaken, kuhu saab käske kirjutada. Kui skriptiaknas olles vajutada klahve <code>Ctrl+Enter</code>, siis vastaval real olev käsk saadetakse R-ile täitmiseks. Kui käsk on kirjutatud mitmel real või on soov mitut käsku järjest jooksutada, võib vastavad read skriptiaknas hiirega ära märkida ning seejärel <code>Ctrl+R</code> vajutada. Valides menüüst <code>File</code> valiku <code>Save</code>, salvestatakse <code>.R</code> lõpuga skriptifail kasutaja poolt määratud asukohta.</p>
+<p>Konsooli käskude sisestamise asemel on neid mõistlik kirjutada skriptifaili, et hiljem (nt järgmisel päeval) saaks tehtud tööd (näiteks mingi analüüsi) kiiresti jätkata või uuesti teha kui on lisandunud uued andmed. Skriptifaili tekitamiseks R-is tuleks valida menüüst <code>File</code> valik <code>New script</code>. Avatakse skriptiaken, kuhu saab käske kirjutada. Kui skriptiaknas olles vajutada klahve <code>Ctrl+R</code>, siis vastaval real olev käsk saadetakse R-ile täitmiseks. Kui käsk on kirjutatud mitmel real või on soov mitut käsku järjest jooksutada, võib vastavad read skriptiaknas hiirega ära märkida ning seejärel <code>Ctrl+R</code> vajutada. Valides menüüst <code>File</code> valiku <code>Save</code>, salvestatakse <code>.R</code> lõpuga skriptifail kasutaja poolt määratud asukohta.</p>
 <p>Sriptiaknas on mõislik käskudele lisada kommentaare, et teinekord või teisel inimesel oleks koodi lihtsam lugeda. <strong>Kommentaare</strong> saab R-i koodis lisada ainult rea lõppu, kasutades trellide-sümbolit:</p>
 <pre class="r"><code>log(5.9)  # võtame naturaallogaritmi arvust 5,9</code></pre>
 <pre><code>## [1] 1.774952</code></pre>
 <pre class="r"><code># terve see rida on kommentaar, sest rea alguses on # ehk trellide sümbol</code></pre>
 <p>Pane tähele, et <strong>kümnendmurru eraldamiseks</strong> kasutatakse R-is punkti, mitte koma.</p>
-<p>Kahjuks on R-i kasutajaliides mõnevõrra ebamugav. Näiteks konsooliaknas ei saa hiirega kursori asukohta muuta. Samuti on kogu tekst sama värvi (koodi värvimine puudub). Üks alternatiivne kasutajaliides R-i kasutamiseks on <strong>RStudio</strong><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>, kus neid puuduseid pole ning millega on natuke hõlpsam koodi kirjutada.</p>
+<p>Kahjuks on R-i kasutajaliides mõnevõrra ebamugav. Näiteks konsooliaknas ei saa hiirega kursori asukohta muuta. Samuti on kogu tekst sama värvi (koodi värvimine puudub). Üks alternatiivne kasutajaliides R-i kasutamiseks on <strong>RStudio</strong><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>, kus neid puuduseid pole ning millega on natuke hõlpsam koodi kirjutada. Praktikumides hakkamegi edaspidi kasutama programmi RStudio.</p>
+<p>Ava Start-menüü ja otsi programm nimega RStudio, käivita see.</p>
+<ul>
+<li>Avanenud programmiaken jaguneb neljaks. Akende paigutust saab oma suva järgi muuta, kuid esialgu paiknevad paremal aknad, mis annavad ülevaate kasutatavatest kaustadest, defineeritud muutujatest, graafikutest jne ning vasakul on R-i konsool ja tekstiredaktor käskude kirjapanekuks;</li>
+<li>R konsool
+<ul>
+<li>alumine vasakpoolne aken on programmi R konsooliaknen, kuhu saab programmi käsud kirjutada viiba <code>&gt;</code> järele;</li>
+<li>käsk täidetakse pärast <code>Enter</code>-klahvi vajutamist;</li>
+<li>varem sisestatud käske saab tagasi sirvida nooleklahviga <span class="math inline">\(\uparrow\)</span>;</li>
+<li>plussmärk <code>+</code> rea ees näitab, et käsk on pooleli.</li>
+</ul></li>
+<li>Tekstiredaktor
+<ul>
+<li>tekstiredaktorisse saate kirjutada R-i käsud/koodi ja kommentaarid;</li>
+<li>käsufaili ühel real peab olema kirjutatud üks käsk (reavahetus näitab programmile käsu lõppu), kui soovid ühele reale kirjutada mitu käsku, siis need tuleb eraldada semikooloniga <code>;</code></li>
+<li>kommentaari lisamiseks tuleb vastava rea algusess lisada <code>#</code>-märk;</li>
+<li>mingi koodilõigu käivitamiseks tuleb see hiirega ära valida ning vajutada klahvikombinatsiooni <code>Ctrl+Enter</code>.</li>
+</ul></li>
+</ul>
 </div>
 <div id="lihtsam-aritmeetika" class="section level2">
 <h2><span class="header-section-number">1.2</span> Lihtsam aritmeetika</h2>
@@ -256,9 +274,6 @@ round(vanused/12, 1)</code></pre>
 </ol>
 </div>
 
-
-
-<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
