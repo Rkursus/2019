@@ -30,7 +30,7 @@ Andmete importimine, väärtustetüübid ja teisendused, lisapakettide kasutamin
 ## Praktikum 3
 
 
-Töö andmestikuga, alamhulkade eraldamine andmetest, andmestike ühendamine, unikaalsed ja mitmekordsed elemendid, andmete sorteerimine.
+Töö andmestikuga, alamhulkade eraldamine andmetest, uute tunnuste lisamine. 
 
 * [Praktikumi materjalid](praktikum3)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum3/praktikum3_kood.R)
@@ -39,7 +39,7 @@ Töö andmestikuga, alamhulkade eraldamine andmetest, andmestike ühendamine, un
 ## Praktikum 4
 
 
-Andmestiku teisendused, veel andmestruktuure (pikk ja lai andmetabel), andmestruktuurid.
+Andmestike ühendamine, unikaalsed ja mitmekordsed elemendid, andmete sorteerimine. Andmestiku teisendused (pikk ja lai andmetabel), andmestruktuurid.
 
 * [Praktikumi materjalid](praktikum4)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum4/praktikum4_kood.R)
