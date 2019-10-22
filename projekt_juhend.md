@@ -15,7 +15,7 @@ Projektid esitage Moodle keskkonna kaudu. Kõikides saadetud töö failide nimed
 Projektide valmimise käigus tekkinud küsimuste ja probleemide lahendamiseks on võimalus tulla ja küsida järgmistel aegadel:
 
 - **I rühm** N, 22. oktoober 2019 kell 10:15 aud. J.Liivi 2 - 003.
-- **II rühm** N, 03. detsember 2019 kell 10:15 aud. J.Liivi 2 - 003.
+- **II rühm** T, 03. detsember 2019 kell 14:15 (eelnevalt peaks konsultatsiooni soovist teada andma).
 
 
 
