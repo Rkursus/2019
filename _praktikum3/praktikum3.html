@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -7,7 +7,6 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -86,7 +85,7 @@ str(andmed)</code></pre>
 </div>
 <div id="veergude-ja-ridade-eraldamine-andmestikust-toevaartusvektori-abil" class="section level2">
 <h2><span class="header-section-number">1.2</span> Veergude ja ridade eraldamine andmestikust: tõeväärtusvektori abil</h2>
-<p>Tõeväärtusvektoreid on väga mugav kasutada nn filtritena. Nimelt on <code>data.frame</code> puhul võimalik ridu (ja ka veerge!) eraldada mitte ainult indeksi või -nime järgi, vaid ka tõeväärtusvektori abil. Kui eraldada ridu, siis vastav tõeväärtusvektor peab olema sama pikk kui on andmestikus ridu ning väärtused selles vektoris näitavad, kas vastavat rida kasutada (<code>TRUE</code>) või mitte(<code>FALSE</code>). Tõeväärtusvektorite kombineerimisel saab andmestikust väga spetsiifilisi alamhulki eraldada.</p>
+<p>Tõeväärtusvektoreid on väga mugav kasutada nn filtritena. Nimelt on <code>data.frame</code> puhul võimalik ridu (ja ka veerge!) eraldada mitte ainult indeksi või -nime järgi, vaid ka tõeväärtusvektori abil. Kui eraldada ridu, siis vastav tõeväärtusvektor peab olema sama pikk kui on andmestikus ridu ning väärtused selles vektoris näitavad, kas vastavat rida kasutada (<code>TRUE</code>) või mitte (<code>FALSE</code>). Tõeväärtusvektorite kombineerimisel saab andmestikust väga spetsiifilisi alamhulki eraldada.</p>
 <pre class="r"><code># eraldame kõik read, kus SEX == &quot;Male&quot; ning salvestame selle uueks objektiks
 mehed &lt;- andmed[andmed$SEX == &quot;Male&quot;, ]  
 
@@ -190,9 +189,6 @@ table(palgad)</code></pre>
 </ol>
 </div>
 
-
-
-<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

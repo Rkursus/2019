@@ -80,7 +80,7 @@ str(andmed)
 
 
 ## Veergude ja ridade eraldamine andmestikust: tõeväärtusvektori abil
-Tõeväärtusvektoreid on väga mugav kasutada nn filtritena. Nimelt on `data.frame` puhul võimalik ridu (ja ka veerge!) eraldada mitte ainult indeksi või -nime järgi, vaid ka tõeväärtusvektori abil. Kui eraldada ridu, siis vastav tõeväärtusvektor peab olema sama pikk kui on andmestikus ridu ning  väärtused selles vektoris näitavad, kas vastavat rida kasutada (`TRUE`) või mitte(`FALSE`). Tõeväärtusvektorite kombineerimisel saab andmestikust väga spetsiifilisi alamhulki eraldada.
+Tõeväärtusvektoreid on väga mugav kasutada nn filtritena. Nimelt on `data.frame` puhul võimalik ridu (ja ka veerge!) eraldada mitte ainult indeksi või -nime järgi, vaid ka tõeväärtusvektori abil. Kui eraldada ridu, siis vastav tõeväärtusvektor peab olema sama pikk kui on andmestikus ridu ning  väärtused selles vektoris näitavad, kas vastavat rida kasutada (`TRUE`) või mitte (`FALSE`). Tõeväärtusvektorite kombineerimisel saab andmestikust väga spetsiifilisi alamhulki eraldada.
 ```{r}
 # eraldame kõik read, kus SEX == "Male" ning salvestame selle uueks objektiks
 mehed <- andmed[andmed$SEX == "Male", ]  
