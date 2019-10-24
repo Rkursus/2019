@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -7,7 +7,6 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -280,16 +279,11 @@ liik == &quot;kass&quot; | liik == &quot;koer&quot;</code></pre>
 <td align="left">millega on tekstilised väärtused ümbritsetud? (nt <code>&quot;\&quot;&quot;</code> tähendab, et kahekordsete jutumärkidega)</td>
 </tr>
 <tr class="even">
-<td align="left"><code>dec</code></td>
-<td align="center">-</td>
-<td align="left">kuidas on märgitud kümnendmurru eraldaja? (nt <code>&quot;.&quot;</code> või <code>&quot;,&quot;</code>)</td>
-</tr>
-<tr class="odd">
 <td align="left"><code>na.strings</code></td>
 <td align="center">-</td>
 <td align="left">kuidas on failis puuduvad väärtused tähistatud?</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>fileEncoding</code></td>
 <td align="center">-</td>
 <td align="left">mis tähekodeeringut kasutatakse (Windowsis sageli <code>&quot;latin9&quot;</code>, Macis/Linuxis sageli <code>&quot;utf8&quot;</code>)</td>
@@ -314,56 +308,8 @@ liik == &quot;kass&quot; | liik == &quot;koer&quot;</code></pre>
 </ol>
 </div>
 </div>
-<div id="lisapakettide-kasutamine" class="section level2">
-<h2><span class="header-section-number">2.2</span> Lisapakettide kasutamine</h2>
-<p>Üks R-i populaarseks muutumise põhjuseid on rikkalik lisapakkettide olemasolu. Tõenäoliselt leidub iga praktilise statistika-alase (ja ka mõne muu valdkonna) probleemi jaoks omaette pakett (<em>package</em>). Näiteks paketid <code>foreign</code>, <code>readstata13</code>, <code>haven</code>, <code>readxl</code> sisaldavad funktsioone, mis aitavad teistes kui tekstiformaatides andmestikke hõlpsamini R-i sisse lugeda. Andmete impordiks sobilikke lisapakette on lisaks nimetatutele veel. Siinkohal vaatame aga kahe paketi <code>haven</code> ja <code>readxl</code> võimalusi.</p>
-<p>Lisapaketid ei ole tavaliselt R-iga kaasas, vaid need tuleb installeerida. Kui paigaldatav pakett vajab omakorda mingeid muid pakette, siis installeeritakse ka need. Kui kasutatakse R-i installeerimisel paika pandud vaikeseadistusi, siis töösessiooni korral esimest korda mingit paketti installeerides küsitakse, millisest serverist soovib kasutaja neid alla laadida. Järgmistel kordadel sama töösessiooni jooksul pakette paigaldades seda enam ei küsita.</p>
-<p>Installeerime lisapaketid <code>readxl</code> ja <code>haven</code></p>
-<pre class="r"><code>install.packages(&quot;readxl&quot;)
-install.packages(&quot;haven&quot;)
-# NB! Arvutiklassi arvuti korral võib olla vajalik salvestuskoha ettemääramine
-# install.packages(&quot;readxl&quot;, lib = &quot;C:/kataloog-installimiseks&quot;)</code></pre>
-<p>Kui pakett on installitud, siis järgmisel töösessioonil seda enam uuesti installeerima ei pea. Arvutisse paigaldatud paketid tuleb iga kord uut R-i sessiooni alustades kasutamiseks sisse laadida käsuga <code>library</code> (või <code>require</code>), mille argumendiks on laaditava paketi nimi:</p>
-<pre class="r"><code>library(readxl)
-# Kui installimisel oli käsitsi määratud salvestuskoht:
-# library(readxl, lib.loc = &quot;C:/kataloog-installimiseks&quot;)</code></pre>
-</div>
-<div id="andmete-import-programmide-ms-excel-sas-stata-spss-failidest" class="section level2">
-<h2><span class="header-section-number">2.3</span> Andmete import programmide MS Excel, SAS, Stata, SPSS failidest</h2>
-<div id="ms-excel-failid" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> MS Excel failid</h3>
-<p>Lisapaketi <code>readxl</code> käsu <code>read_excel(.)</code> abil saab importida MS Exceli failide (nii <em>.xlsx</em> kui <em>xls</em>) töölehti. Salvesta aadressilt <a href="https://github.com/Rkursus/sygis2019/tree/master/data/" class="uri">https://github.com/Rkursus/sygis2019/tree/master/data/</a> oma töökataloogi fail <em>tudengite-arv.xlsx</em>, mis sisaldab infot TÜ tudengite arvude kohta aastate lõikes. Ava esmalt fail MS Exceli abil ning vaata millised töölehed failis on. Seejärel vaata ka R abil millised on töölehtede nimed ja impordi teine tööleht, millel on andmed avatud ülikooli õpilaste arvude kohta.</p>
-<pre class="r"><code>list.files() # vaata, mis nimega failid on töökaustas
-excel_sheets(&quot;tudengite-arv.xlsx&quot;) # töölehtede nimed MS Exceli failis
-AY &lt;- read_excel(&quot;tudengite-arv.xlsx&quot;, sheet = &quot;avatud ylikool&quot;) # importimine
-# AY &lt;- read_excel(&quot;tudengite-arv.xlsx&quot;, sheet = 2)  # sama
-str(AY)  # vaata tulemust</code></pre>
-<p>MS Exceli failis ei pruugi andmed alata alati esimesest reast, näiteks töölehel <em>tabel</em> on esimeses reas tabeli nimi ning teine rida on tühi, andmetabel algab kolmandalt realt. Selle, et esimesed kaks rida tuleks andmete impordil vahele jätta, saab käsule <code>read_excel(.)</code> ette anda argumendi <code>skip</code> abil:</p>
-<pre class="r"><code>tabel &lt;- read_excel(&quot;tudengite-arv.xlsx&quot;, sheet = &quot;tabel&quot;, skip = 2)
-str(tabel)</code></pre>
-</div>
-<div id="sas-stata-ja-spss-failid" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> SAS, Stata ja SPSS failid</h3>
-<p>Programmide SAS, Stata ja SPSS failide importimiseks saab kasutada paketi <code>haven</code> vastavaid funktsioone <code>read_sas(.), read_stata(.)</code> ja <code>read_spss(.)</code>. Salvesta aadressilt <a href="https://github.com/Rkursus/sygis2019/tree/master/data/" class="uri">https://github.com/Rkursus/sygis2019/tree/master/data/</a> oma töökataloogi kolm faili nimega <em>effort</em> ja loe need R-i:</p>
-<pre class="r"><code>library(haven)
-andmestik_SAS &lt;- read_sas(&quot;effort.sas7bdat&quot;)
-andmestik_Stata &lt;-  read_stata(&quot;effort.dta&quot;)
-andmestik_SPSS &lt;- read_spss(&quot;effort.sav&quot;)
-
-str(andmestik_SAS)
-str(andmestik_Stata)
-str(andmestik_SPSS)</code></pre>
-<p>R-i andmestiku saab <code>haven</code> paketi abil ka eksportida vaadeldud programmide andmefailiks käsuga <code>write_&lt;...&gt;(.)</code>, kus <code>&lt;...&gt;</code> tuleks siis asendada sobiliku programminimega.</p>
-</div>
-<div id="ulesanded-3" class="section level3">
-<h3><span class="header-section-number">2.3.3</span> Ülesanded</h3>
-<ol style="list-style-type: decimal">
-<li>Impordi failist <em>tudengite-arv.xlsx</em> viimane tööleht <em>kokku</em>, kus on tudengite arvud aastate lõikes (liidetud statsionaar ja avatud ülikool). Vaata esmalt ka abilehte kasutatava funktsiooni kohta: <code>?read_excel</code></li>
-</ol>
-</div>
-</div>
 <div id="esmase-ulevaate-saamine-andmetabelist" class="section level2">
-<h2><span class="header-section-number">2.4</span> Esmase ülevaate saamine andmetabelist</h2>
+<h2><span class="header-section-number">2.2</span> Esmase ülevaate saamine andmetabelist</h2>
 <p>Käsuga <code>read.table(.)</code> sisse loetud andmestik on erilist tüüpi, <strong><code>data.frame</code></strong>-tüüpi objekt. Andmestikust saab kiire ülevaate järgmiste käskudega:</p>
 <!--
 --------------- | ---------------
@@ -416,6 +362,54 @@ str(andmestik_SPSS)</code></pre>
 </table>
 <p>Käsu <code>summary(.)</code> puhul on näha, et mõne tunnuse puhul arvutatakse keskmine, miinimum, maksimum jne, aga teise tunnuse puhul esitatakse sagedused. See, millist kirjeldusviisi kasutatakse, tuleneb tunnuse tüübist. Kui käsuga <code>str(.)</code> vaadata, mis on tunnuste tüübid selles andmestikus, on näha kahte tüüpi tunnuseid: <code>int</code> ja <code>Factor</code>. On näha, et <code>summary(.)</code> käsk arvutab <code>int</code>-tüüpi tunnustele keskmisi jne, <code>Factor</code>-tüüpi tunnustele aga sagedusi. Faktortüüpi tunnus sarnaneb sõnele (<em>character</em>), kuid üheks erinevuseks on näiteks fikseeritud väärtuste hulk. Faktortunnust vaatame järgmises praktikumis ka täpsemalt.</p>
 </div>
+<div id="lisapakettide-kasutamine" class="section level2">
+<h2><span class="header-section-number">2.3</span> Lisapakettide kasutamine</h2>
+<p>Üks R-i populaarseks muutumise põhjuseid on rikkalik lisapakkettide olemasolu. Tõenäoliselt leidub iga praktilise statistika-alase (ja ka mõne muu valdkonna) probleemi jaoks omaette pakett (<em>package</em>). Näiteks paketid <code>foreign</code>, <code>readstata13</code>, <code>haven</code>, <code>readxl</code> sisaldavad funktsioone, mis aitavad teistes kui tekstiformaatides andmestikke hõlpsamini R-i sisse lugeda. Andmete impordiks sobilikke lisapakette on lisaks nimetatutele veel. Siinkohal vaatame aga kahe paketi <code>haven</code> ja <code>readxl</code> võimalusi.</p>
+<p>Lisapaketid ei ole tavaliselt R-iga kaasas, vaid need tuleb installeerida. Kui paigaldatav pakett vajab omakorda mingeid muid pakette, siis installeeritakse ka need. Kui kasutatakse R-i installeerimisel paika pandud vaikeseadistusi, siis töösessiooni korral esimest korda mingit paketti installeerides küsitakse, millisest serverist soovib kasutaja neid alla laadida. Järgmistel kordadel sama töösessiooni jooksul pakette paigaldades seda enam ei küsita.</p>
+<p>Installeerime lisapaketid <code>readxl</code> ja <code>haven</code></p>
+<pre class="r"><code>install.packages(&quot;readxl&quot;)
+install.packages(&quot;haven&quot;)
+# NB! Arvutiklassi arvuti korral võib olla vajalik salvestuskoha ettemääramine
+# install.packages(&quot;readxl&quot;, lib = &quot;C:/kataloog-installimiseks&quot;)</code></pre>
+<p>Kui pakett on installitud, siis järgmisel töösessioonil seda enam uuesti installeerima ei pea. Arvutisse paigaldatud paketid tuleb iga kord uut R-i sessiooni alustades kasutamiseks sisse laadida käsuga <code>library</code> (või <code>require</code>), mille argumendiks on laaditava paketi nimi:</p>
+<pre class="r"><code>library(readxl)
+# Kui installimisel oli käsitsi määratud salvestuskoht:
+# library(readxl, lib.loc = &quot;C:/kataloog-installimiseks&quot;)</code></pre>
+</div>
+<div id="andmete-import-programmide-ms-excel-sas-stata-spss-failidest" class="section level2">
+<h2><span class="header-section-number">2.4</span> Andmete import programmide MS Excel, SAS, Stata, SPSS failidest</h2>
+<div id="ms-excel-failid" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> MS Excel failid</h3>
+<p>Lisapaketi <code>readxl</code> käsu <code>read_excel(.)</code> abil saab importida MS Exceli failide (nii <em>.xlsx</em> kui <em>xls</em>) töölehti. Salvesta aadressilt <a href="https://github.com/Rkursus/sygis2019/tree/master/data/" class="uri">https://github.com/Rkursus/sygis2019/tree/master/data/</a> oma töökataloogi fail <em>tudengite-arv.xlsx</em>, mis sisaldab infot TÜ tudengite arvude kohta aastate lõikes. Ava esmalt fail MS Exceli abil ning vaata millised töölehed failis on. Seejärel vaata ka R abil millised on töölehtede nimed ja impordi teine tööleht, millel on andmed avatud ülikooli õpilaste arvude kohta.</p>
+<pre class="r"><code>list.files() # vaata, mis nimega failid on töökaustas
+excel_sheets(&quot;tudengite-arv.xlsx&quot;) # töölehtede nimed MS Exceli failis
+AY &lt;- read_excel(&quot;tudengite-arv.xlsx&quot;, sheet = &quot;avatud ylikool&quot;) # importimine
+# AY &lt;- read_excel(&quot;tudengite-arv.xlsx&quot;, sheet = 2)  # sama
+str(AY)  # vaata tulemust</code></pre>
+<p>MS Exceli failis ei pruugi andmed alata alati esimesest reast, näiteks töölehel <em>tabel</em> on esimeses reas tabeli nimi ning teine rida on tühi, andmetabel algab kolmandalt realt. Selle, et esimesed kaks rida tuleks andmete impordil vahele jätta, saab käsule <code>read_excel(.)</code> ette anda argumendi <code>skip</code> abil:</p>
+<pre class="r"><code>tabel &lt;- read_excel(&quot;tudengite-arv.xlsx&quot;, sheet = &quot;tabel&quot;, skip = 2)
+str(tabel)</code></pre>
+</div>
+<div id="sas-stata-ja-spss-failid" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> SAS, Stata ja SPSS failid</h3>
+<p>Programmide SAS, Stata ja SPSS failide importimiseks saab kasutada paketi <code>haven</code> vastavaid funktsioone <code>read_sas(.), read_stata(.)</code> ja <code>read_spss(.)</code>. Salvesta aadressilt <a href="https://github.com/Rkursus/sygis2019/tree/master/data/" class="uri">https://github.com/Rkursus/sygis2019/tree/master/data/</a> oma töökataloogi kolm faili nimega <em>effort</em> ja loe need R-i:</p>
+<pre class="r"><code>library(haven)
+andmestik_SAS &lt;- read_sas(&quot;effort.sas7bdat&quot;)
+andmestik_Stata &lt;-  read_stata(&quot;effort.dta&quot;)
+andmestik_SPSS &lt;- read_spss(&quot;effort.sav&quot;)
+
+str(andmestik_SAS)
+str(andmestik_Stata)
+str(andmestik_SPSS)</code></pre>
+<p>R-i andmestiku saab <code>haven</code> paketi abil ka eksportida vaadeldud programmide andmefailiks käsuga <code>write_&lt;...&gt;(.)</code>, kus <code>&lt;...&gt;</code> tuleks siis asendada sobiliku programminimega.</p>
+</div>
+<div id="ulesanded-3" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Ülesanded</h3>
+<ol style="list-style-type: decimal">
+<li>Impordi failist <em>tudengite-arv.xlsx</em> viimane tööleht <em>kokku</em>, kus on tudengite arvud aastate lõikes (liidetud statsionaar ja avatud ülikool). Vaata esmalt ka abilehte kasutatava funktsiooni kohta: <code>?read_excel</code></li>
+</ol>
+</div>
+</div>
 </div>
 <div class="footnotes">
 <hr />
@@ -427,9 +421,6 @@ str(andmestik_SPSS)</code></pre>
 </ol>
 </div>
 
-
-
-<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
