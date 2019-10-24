@@ -99,6 +99,7 @@ Töötamine kuupäevadega ja sõnetöötlus paketiga `stringr`.
 
 Programmeerimine R-is - tsüklid, tingimuslaused, funktsioonide defineerimine, juhuarvude simuleerimine.
 
+* Tutvu raamatuga [Hands-On Programming with R](https://rstudio-education.github.io/hopr/)
 * [Praktikumi materjalid](praktikum9)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum9/praktikum9_kood.R)
 
@@ -108,9 +109,19 @@ Programmeerimine R-is - tsüklid, tingimuslaused, funktsioonide defineerimine, j
 
 Tulemuste vormistamine pakettidega `knitr` ja `rmarkdown`.
 
+* Tutvu raamatuga [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 * [Praktikumi materjalid](praktikum10)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum10/praktikum10_kood.Rmd)
 * Kodutöö
     * Tähtaeg:
 		* I rühm - 17.10.2019 kell 08:15.
 		* II rühm - 28.11.2019 kell 08:00.
+		
+		
+## Lisa materjali:
+
+* [MTMS.01.100 Statistiline andmeteadus ja visualiseerimine](https://andmeteadus.github.io/2019/) - praeguse R kursuse jätkukursus.
+* Hulk [RStudio soovitatud raamatuid](https://rstudio.com/resources/books/) (mitmed tasuta _online_ versioonidega).
+* [R-bloggers](https://www.r-bloggers.com/) - Blogi huvitavatest R-i rakendustest.
+* [Simply Statistics](https://simplystatistics.org/) - Huvitav R-i blogi.
+
