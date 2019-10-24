@@ -128,7 +128,7 @@ setwd("C:\\Users\\mina\\Rkursus\\")
 setwd("C:/Users/mina/Rkursus/")
 
 # RStudios saab töökataloogi ka automaatselt seada käesoleva skripti asukoha järgi
-# vt. ÕISis õppematerjalide all kausta "R nipid"
+# vt. faili "RStudio snipetid"   
 
 # Näide andmete sisselugemisest
 näide1 <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/esimene.txt",
