@@ -14,7 +14,7 @@ Projektid esitage Moodle keskkonna kaudu. Kõikides saadetud töö failide nimed
 
 Projektide valmimise käigus tekkinud küsimuste ja probleemide lahendamiseks on võimalus tulla ja küsida järgmistel aegadel:
 
-- **I rühm** N, 22. oktoober 2019 kell 10:15 aud. J.Liivi 2 - 003.
+- **I rühm** T, 22. oktoober 2019 kell 14:15 aud. J.Liivi 2 - 003 (eelnevalt peab konsultatsiooni soovist teada andma).
 - **II rühm** T, 03. detsember 2019 kell 14:15 (eelnevalt peaks konsultatsiooni soovist teada andma).
 
 
@@ -46,7 +46,6 @@ Projekt peab olema sisukas, eesmärk ei ole näidata seosetuid R käskude kasuta
 
 Projekt peab olema korrektselt (sealhulgas keeleliselt korrektselt) vormistatud PDF-formaadis fail. Pikkus ca 8 lehekulge A4 formaadis. 
 
-\pagebreak
 
 Projekti võib esitada kahel viisil:
 
