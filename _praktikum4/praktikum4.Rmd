@@ -60,7 +60,7 @@ lisa <- rep(seq(1, nrow(mk), by = 60),c(1:3, 1:3, 1, 1))
 mktopelt <- rbind(mk, mk[lisa, ])
 ```
 
-Sageli on analüüsiks vajaminevad andmed mitmes erinevas andmetabelis, mis võivad olla objektide arvu poolest ka erinevad. Näiteks jooksuvõistluste andmete puhul võivad ühes tabelis kirjas isikuandmed kohta (nimi, sugu, vanus), teises tabelis aga võistlustulemuste andmed. Kui sooviks analüüsida tulemuste jaotust sugude vahel või sõltuvalt vanusest, oleks mugav need tabelid mestida käsuga `merge(.)`. Andmete ühendamiseks peaks mõlemas tabelis olema nn võtmetunnus, mille abil read vastavusse pannakse.
+Sageli on analüüsiks vajaminevad andmed mitmes erinevas andmetabelis, mis võivad olla objektide arvu poolest ka erinevad. Näiteks jooksuvõistluste andmete puhul võivad ühes tabelis olla kirjas isikuandmed (nimi, sugu, vanus), teises tabelis aga võistlustulemuste andmed. Kui sooviks analüüsida tulemuste jaotust sugude vahel või sõltuvalt vanusest, oleks mugav need tabelid mestida käsuga `merge(.)`. Andmete ühendamiseks peaks mõlemas tabelis olema nn võtmetunnus, mille abil read vastavusse pannakse.
 ```{r}
 isikud <- data.frame(nimi = c("Peeter", "Mari", "Tiina", "Laine"),
       sugu = c("M", "N", "N", "N"), vanus = c(30, 22, 25, 20))
