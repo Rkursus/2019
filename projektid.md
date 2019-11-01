@@ -36,6 +36,8 @@ Mitte nii hea näide projektitööst: on esitatud palju käske, mille järele si
 
 ## [USA patsientide analüüs](projektid/group1/R_projekt_Annilo.pdf)
 
+## [Olümpiamängude analüüs](projektid/group1/Sona_projekt.pdf)
+
 
 
 <!--
