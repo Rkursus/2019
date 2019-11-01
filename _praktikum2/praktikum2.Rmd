@@ -234,7 +234,6 @@ Kõige olulisem käsk tekstikujul andmestike sisselugemiseks on `read.table()`. 
 `sep`              -     millise sümboliga on veerud eraldatud? (nt `"\t"` - tabulaatori sümboliga)
 `dec`              -     kuidas on märgitud kümnendmurru eraldaja? (nt `"."` või `","`)
 `quote`            -     millega on tekstilised väärtused ümbritsetud? (nt `"\""` tähendab, et kahekordsete jutumärkidega)
-`dec`              -     kuidas on märgitud kümnendmurru eraldaja? (nt `"."` või `","`)
 `na.strings`       -     kuidas on failis puuduvad väärtused tähistatud?
 `fileEncoding`     -     mis tähekodeeringut kasutatakse (Windowsis sageli `"latin9"`, Macis/Linuxis sageli `"utf8"`)
 --------------   -----   ------------------------------------------------------------------------------------------------------
@@ -284,6 +283,34 @@ tab1;tab2;tab3;tab4
 andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", header = T, sep = "\t")
 ```
 
+
+
+## Esmase ülevaate saamine andmetabelist
+
+Käsuga `read.table(.)` sisse loetud andmestik on erilist tüüpi, **`data.frame`**-tüüpi objekt. Andmestikust saab kiire ülevaate järgmiste käskudega:
+
+<!--
+--------------- | ---------------
+`nrow(andmed)`  | mitu rida on andmestikus
+`ncol(andmed)`  | mitu veergu on andmestikus
+`dim(andmed)`   | mitu rida ja mitu veergu on andmestikus
+`str(andmed)`   | andmestiku struktuur: mis tüüpi iga tunnus on ja millised on mõned esimesed väärtused
+`summary(andmed)` | lühike kirjeldav statistika iga tunnuse kohta
+`names(andmed)` | veergude nimed
+`head(andmed)`  | andmestiku mõned esimesed read
+-->
+
+---------------   -----   ------------------------------------------------------------------------------------------------
+`nrow(andmed)`      -     mitu rida on andmestikus
+`ncol(andmed)`      -     mitu veergu on andmestikus
+`dim(andmed)`       -     mitu rida ja mitu veergu on andmestikus
+`str(andmed)`       -     andmestiku struktuur: mis tüüpi iga tunnus on ja  esimesed väärtused
+`summary(andmed)`   -     lühike kirjeldav statistika iga tunnuse kohta
+`names(andmed)`     -     veergude nimed
+`head(andmed)`      -     andmestiku mõned esimesed read
+---------------   -----   ------------------------------------------------------------------------------------------------
+
+Käsu `summary(.)` puhul on näha, et mõne tunnuse puhul arvutatakse keskmine, miinimum, maksimum jne, aga teise tunnuse puhul esitatakse sagedused. See, millist kirjeldusviisi kasutatakse, tuleneb tunnuse tüübist. Kui käsuga `str(.)` vaadata, mis on tunnuste tüübid selles andmestikus, on näha kahte tüüpi tunnuseid: `int` ja `Factor`. On näha, et `summary(.)` käsk arvutab `int`-tüüpi tunnustele keskmisi jne, `Factor`-tüüpi tunnustele aga sagedusi. Faktortüüpi tunnus sarnaneb sõnele (*character*), kuid üheks erinevuseks on näiteks fikseeritud väärtuste hulk. Faktortunnust vaatame järgmises praktikumis ka täpsemalt.
 
 
 
@@ -360,33 +387,5 @@ summary(kokku)
 ```
 
 
-
-
-## Esmase ülevaate saamine andmetabelist
-
-Käsuga `read.table(.)` sisse loetud andmestik on erilist tüüpi, **`data.frame`**-tüüpi objekt. Andmestikust saab kiire ülevaate järgmiste käskudega:
-
-<!--
---------------- | ---------------
-`nrow(andmed)`  | mitu rida on andmestikus
-`ncol(andmed)`  | mitu veergu on andmestikus
-`dim(andmed)`   | mitu rida ja mitu veergu on andmestikus
-`str(andmed)`   | andmestiku struktuur: mis tüüpi iga tunnus on ja millised on mõned esimesed väärtused
-`summary(andmed)` | lühike kirjeldav statistika iga tunnuse kohta
-`names(andmed)` | veergude nimed
-`head(andmed)`  | andmestiku mõned esimesed read
--->
-
----------------   -----   ------------------------------------------------------------------------------------------------
-`nrow(andmed)`      -     mitu rida on andmestikus
-`ncol(andmed)`      -     mitu veergu on andmestikus
-`dim(andmed)`       -     mitu rida ja mitu veergu on andmestikus
-`str(andmed)`       -     andmestiku struktuur: mis tüüpi iga tunnus on ja  esimesed väärtused
-`summary(andmed)`   -     lühike kirjeldav statistika iga tunnuse kohta
-`names(andmed)`     -     veergude nimed
-`head(andmed)`      -     andmestiku mõned esimesed read
----------------   -----   ------------------------------------------------------------------------------------------------
-
-Käsu `summary(.)` puhul on näha, et mõne tunnuse puhul arvutatakse keskmine, miinimum, maksimum jne, aga teise tunnuse puhul esitatakse sagedused. See, millist kirjeldusviisi kasutatakse, tuleneb tunnuse tüübist. Kui käsuga `str(.)` vaadata, mis on tunnuste tüübid selles andmestikus, on näha kahte tüüpi tunnuseid: `int` ja `Factor`. On näha, et `summary(.)` käsk arvutab `int`-tüüpi tunnustele keskmisi jne, `Factor`-tüüpi tunnustele aga sagedusi. Faktortüüpi tunnus sarnaneb sõnele (*character*), kuid üheks erinevuseks on näiteks fikseeritud väärtuste hulk. Faktortunnust vaatame järgmises praktikumis ka täpsemalt.
 
  
