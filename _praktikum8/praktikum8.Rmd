@@ -69,15 +69,15 @@ str_sub(sõnad, end = -3)
 ### Ülesanded
 1. Loe sisse Massatchusettsi andmestik:\newline
 `link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"`\
-`andmed <- read.table(str_c(link, "mass.txt"), sep = "\t", header = T)`\linebreak
+`mass <- read.table(str_c(link, "mass.txt"), sep = "\t", header = T)`\
 Andmetabelis on veerus OCCP iga inimese amet, sealjuures kolme esimese tähega on kodeeritud vastav valdkond; näiteks kõik puhastusteenustega seotud ametid algavad tähtedega CLN. Mitu erinevat valdkonda on selles andmetabelis?
 1. Kasutades sama tunnnust (`OCCP`) lisa andmestikku uus veerg `OCCP1`, mille väärtused oleks samad kui `OCCP`-l, kuid töötutel oleks tunnuse väärtus kujul *"UNE-UNEMPLOYED, LAST WORKED 5 YEARS AGO OR EARLIER OR NEVER"*.
 ```{r, eval=FALSE, include=FALSE}
-andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header=T)
+mass <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header=T)
 
 
 link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"
-andmed <- read.table(str_c(link, "mass.txt"), sep = "\t", header = T)
+mass <- read.table(str_c(link, "mass.txt"), sep = "\t", header = T)
 
 
 # 1
@@ -149,7 +149,7 @@ str_replace("telefoninumber: +372 55-549-85", "[a-zA-Z: ]*(\\+[0-9]*)*( )*(.*)",
     1. Lisa veerg, kus oleks kirjas, mis sugu iga inimene selles andmetabelis on.
 ```{r, eval=FALSE, include=FALSE}
 # 1
-andmed <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header = T)
+mass <- read.table("https://github.com/Rkursus/sygis2019/raw/master/data/mass.txt", sep = "\t", header = T)
 
 cbind(table(andmed$COW))
 

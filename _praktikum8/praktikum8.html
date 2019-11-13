@@ -7,7 +7,6 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -107,7 +106,8 @@ str_split(c(lause1, lause2), c(&quot;ja&quot;, &quot;või&quot;))</code></pre>
 <h3><span class="header-section-number">1.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
 <li>Loe sisse Massatchusettsi andmestik:<code>link &lt;- &quot;https://github.com/Rkursus/sygis2019/raw/master/data/&quot;</code><br />
-<code>andmed &lt;- read.table(str_c(link, &quot;mass.txt&quot;), sep = &quot;\t&quot;, header = T)</code>Andmetabelis on veerus OCCP iga inimese amet, sealjuures kolme esimese tähega on kodeeritud vastav valdkond; näiteks kõik puhastusteenustega seotud ametid algavad tähtedega CLN. Mitu erinevat valdkonda on selles andmetabelis?</li>
+<code>mass &lt;- read.table(str_c(link, &quot;mass.txt&quot;), sep = &quot;\t&quot;, header = T)</code><br />
+Andmetabelis on veerus OCCP iga inimese amet, sealjuures kolme esimese tähega on kodeeritud vastav valdkond; näiteks kõik puhastusteenustega seotud ametid algavad tähtedega CLN. Mitu erinevat valdkonda on selles andmetabelis?</li>
 <li>Kasutades sama tunnnust (<code>OCCP</code>) lisa andmestikku uus veerg <code>OCCP1</code>, mille väärtused oleks samad kui <code>OCCP</code>-l, kuid töötutel oleks tunnuse väärtus kujul <em>“UNE-UNEMPLOYED, LAST WORKED 5 YEARS AGO OR EARLIER OR NEVER”</em>.</li>
 </ol>
 
@@ -217,7 +217,7 @@ d2 - d1</code></pre>
 <pre class="r"><code>d3 &lt;- Sys.Date()
 paevad &lt;- c(d1, d2, d3)
 mean(paevad)</code></pre>
-<pre><code>## [1] &quot;2012-10-09&quot;</code></pre>
+<pre><code>## [1] &quot;2012-10-31&quot;</code></pre>
 <pre class="r"><code>d2 %in% paevad</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <p>Küll aga ei saa näiteks leida kuupäevast logaritmi või ruutjuurt.Põhjus on selles, et R talletab kuupäevi tegelikult päevade arvuna alates nullpunktist, sealjuures nullpunktiks loetakse vaikimisi 1970-01-01. Selles võime veenduda <code>as.numeric(.)</code> käsku kasutades.</p>
@@ -229,7 +229,7 @@ mean(paevad)</code></pre>
 <pre><code>## [1] -2</code></pre>
 <p><em>Date</em>-tüüpi muutuja väärtuse saab sobival kujul sõneks teisendada käsuga <code>format(.)</code>, see võimaldab kombineerida teksti ja kuupäeva elemente:</p>
 <pre class="r"><code>format(Sys.Date(), &quot;Kuupäev: %d. %B, (aastal %Y). Nädal nr %V.&quot;)</code></pre>
-<pre><code>## [1] &quot;Kuupäev: 09. september, (aastal 2019). Nädal nr 37.&quot;</code></pre>
+<pre><code>## [1] &quot;Kuupäev: 13. november, (aastal 2019). Nädal nr 46.&quot;</code></pre>
 <div id="ulesanded-2" class="section level3">
 <h3><span class="header-section-number">2.0.1</span> Ülesanded</h3>
 <p>Vaatame edasi isikukoodide vektori (<code>isikukoodid</code> eelmisest ülesandest) põhjal tekitatud isikute info andmestikku.</p>
@@ -249,9 +249,6 @@ mean(paevad)</code></pre>
 </ol>
 </div>
 
-
-
-<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
