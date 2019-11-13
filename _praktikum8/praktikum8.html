@@ -105,7 +105,8 @@ str_split(c(lause1, lause2), c(&quot;ja&quot;, &quot;või&quot;))</code></pre>
 <div id="ulesanded" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Ülesanded</h3>
 <ol style="list-style-type: decimal">
-<li>Loe sisse Massatchusettsi andmestik:<code>link &lt;- &quot;https://github.com/Rkursus/sygis2019/raw/master/data/&quot;</code><br />
+<li>Loe sisse Massatchusettsi andmestik:<br />
+<code>link &lt;- &quot;https://github.com/Rkursus/sygis2019/raw/master/data/&quot;</code><br />
 <code>mass &lt;- read.table(str_c(link, &quot;mass.txt&quot;), sep = &quot;\t&quot;, header = T)</code><br />
 Andmetabelis on veerus OCCP iga inimese amet, sealjuures kolme esimese tähega on kodeeritud vastav valdkond; näiteks kõik puhastusteenustega seotud ametid algavad tähtedega CLN. Mitu erinevat valdkonda on selles andmetabelis?</li>
 <li>Kasutades sama tunnnust (<code>OCCP</code>) lisa andmestikku uus veerg <code>OCCP1</code>, mille väärtused oleks samad kui <code>OCCP</code>-l, kuid töötutel oleks tunnuse väärtus kujul <em>“UNE-UNEMPLOYED, LAST WORKED 5 YEARS AGO OR EARLIER OR NEVER”</em>.</li>

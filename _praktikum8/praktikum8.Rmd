@@ -67,7 +67,7 @@ str_sub(sõnad, end = -3)
 ```
 
 ### Ülesanded
-1. Loe sisse Massatchusettsi andmestik:\newline
+1. Loe sisse Massatchusettsi andmestik:\
 `link <- "https://github.com/Rkursus/sygis2019/raw/master/data/"`\
 `mass <- read.table(str_c(link, "mass.txt"), sep = "\t", header = T)`\
 Andmetabelis on veerus OCCP iga inimese amet, sealjuures kolme esimese tähega on kodeeritud vastav valdkond; näiteks kõik puhastusteenustega seotud ametid algavad tähtedega CLN. Mitu erinevat valdkonda on selles andmetabelis?
