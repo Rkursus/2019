@@ -21,7 +21,7 @@ Andmete importimine, väärtustetüübid ja teisendused, lisapakettide kasutamin
 * [Praktikumi materjalid](praktikum2)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum2/praktikum2_kood.R)
 * [RStudio snipetid](https://github.com/Rkursus/sygis2019/raw/master/RStudio_snippetid.txt)
-* Kodutöö
+* [Kodutöö](praktikum2_kodutoo)
     * Tähtaeg:
 		* I rühm - 19.09.2019 kell 08:15.
 		* II rühm - 31.10.2019 kell 08:00.
@@ -43,7 +43,7 @@ Andmestike ühendamine, unikaalsed ja mitmekordsed elemendid, andmete sorteerimi
 
 * [Praktikumi materjalid](praktikum4)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum4/praktikum4_kood.R)
-* Kodutöö
+* [Kodutöö](praktikum4_kodutoo)
     * Tähtaeg:
 		* I rühm - 26.09.2019 kell 08:15.
 		* II rühm - 07.11.2019 kell 08:00.
@@ -67,7 +67,7 @@ Joonised `ggplot2`-ga jätkub - joonisele kihtide lisamine, skaalade muutmine, j
 * Tutvu raamatuga [R Graphics Cookbook](https://r-graphics.org)
 * [Praktikumi materjalid](praktikum6)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum6/praktikum6_kood.R)
-* Kodutöö
+* [Kodutöö](praktikum6_kodutoo)
     * Tähtaeg:
 		* I rühm - 03.10.2019 kell 08:15.
 		* II rühm - 14.11.2019 kell 08:00.
@@ -88,7 +88,7 @@ Töötamine kuupäevadega ja sõnetöötlus paketiga `stringr`.
 
 * [Praktikumi materjalid](praktikum8)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum8/praktikum8_kood.R)
-* Kodutöö
+* [Kodutöö](praktikum8_kodutoo)
     * Tähtaeg:
 		* I rühm - 10.10.2019 kell 08:15.
 		* II rühm - 21.11.2019 kell 08:00.
@@ -112,7 +112,7 @@ Tulemuste vormistamine pakettidega `knitr` ja `rmarkdown`.
 * Tutvu raamatuga [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 * [Praktikumi materjalid](praktikum10)
 * [Praktikumi R kood](https://github.com/Rkursus/sygis2019/raw/master/_praktikum10/praktikum10_kood.Rmd)
-* Kodutöö
+* [Kodutöö](praktikum10_kodutoo)
     * Tähtaeg:
 		* I rühm - 17.10.2019 kell 08:15.
 		* II rühm - 28.11.2019 kell 08:00.
