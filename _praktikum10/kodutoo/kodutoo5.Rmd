@@ -1,5 +1,5 @@
 ---
-title: "Rakendustarkvara R - 4. kodutöö"
+title: "Rakendustarkvara R - 5. kodutöö"
 output: 
   html_document:
     theme: null
