@@ -40,6 +40,10 @@ Mitte nii hea näide projektitööst: on esitatud palju käske, mille järele si
 
 
 
+# Rühm 2
+
+## [Odra ja kaera eri sortide võrdlus]()
+
 <!--
 {% for post in site.posts %}
 ## [ {{ post.title }} ](..{{ post.url }})
