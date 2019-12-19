@@ -42,7 +42,7 @@ Mitte nii hea näide projektitööst: on esitatud palju käske, mille järele si
 
 # Rühm 2
 
-## [Odra ja kaera eri sortide võrdlus]()
+## [Odra ja kaera eri sortide võrdlus](projektid/group2/Projekti analüüs_SVain_uus.pdf)
 
 <!--
 {% for post in site.posts %}
