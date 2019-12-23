@@ -43,6 +43,7 @@ Mitte nii hea näide projektitööst: on esitatud palju käske, mille järele si
 # Rühm 2
 
 ## [Odra ja kaera eri sortide võrdlus](projektid/group2/Projekti_analüüs_SVain_uus.pdf)
+## [Koolitulistamised USA-s aastal 2018](projektid/group2/Artur Näägo.pdf)
 
 <!--
 {% for post in site.posts %}
