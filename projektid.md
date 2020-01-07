@@ -46,7 +46,7 @@ Mitte nii hea näide projektitööst: on esitatud palju käske, mille järele si
 ## [Koolitulistamised USA-s aastal 2018](projektid/group2/Artur Näägo.pdf)
 ## [KBA C618 tootmisandmete analüüs](projektid/group2/KBA C618 mikk kull.pdf)
 
-KBA C618 mikk kull
+ 
 
 <!--
 {% for post in site.posts %}
