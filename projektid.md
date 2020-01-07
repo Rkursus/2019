@@ -45,7 +45,9 @@ Mitte nii hea näide projektitööst: on esitatud palju käske, mille järele si
 ## [Odra ja kaera eri sortide võrdlus](projektid/group2/Projekti_analüüs_SVain_uus.pdf)
 ## [Koolitulistamised USA-s aastal 2018](projektid/group2/Artur Näägo.pdf)
 ## [KBA C618 tootmisandmete analüüs](projektid/group2/KBA C618 mikk kull.pdf)
+## [Jalgpallikoondiste omavahelised kohtumised aastast 1872 kuni 2019](projektid/group2/Rprojekt_Salu_Joonas.pdf)
 
+ 
  
 
 <!--
