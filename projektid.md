@@ -47,7 +47,8 @@ Mitte nii hea näide projektitööst: on esitatud palju käske, mille järele si
 ## [KBA C618 tootmisandmete analüüs](projektid/group2/KBA C618 mikk kull.pdf)
 ## [Jalgpallikoondiste omavahelised kohtumised aastast 1872 kuni 2019](projektid/group2/Rprojekt_Salu_Joonas.pdf)
 ## [Runescapei majanduse uurimine](projektid/group2/Projekt_Markus-Maarjus_Saulys.pdf)
- 
+## [Videomängude müük maailmas](projektid/group2/Projekt-Karl-Hans-Siimer.pdf)
+
  
 
 <!--
