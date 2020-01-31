@@ -48,6 +48,7 @@ Mitte nii hea näide projektitööst: on esitatud palju käske, mille järele si
 ## [Jalgpallikoondiste omavahelised kohtumised aastast 1872 kuni 2019](projektid/group2/Rprojekt_Salu_Joonas.pdf)
 ## [Runescapei majanduse uurimine](projektid/group2/Projekt_Markus-Maarjus_Saulys.pdf)
 ## [Videomängude müük maailmas](projektid/group2/Projekt-Karl-Hans-Siimer.pdf)
+## [Riikide võrdlus CIA World Factbook näitajate abil](projektid/group2/RakendustarkvaraR_projekt_Riigid_Uduste_v4.pdf)
 
  
 
